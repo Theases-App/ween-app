@@ -25,10 +25,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 
-app.use(express.static(__dirname + '../../index.html'))
+// app.use(express.static(__dirname + '../../index.html'))
 
-// app.use("/athentification",athentification)
-// app.use("/block",block)
+app.use("/token",athentification)
+app.use("/block",block)
 // app.use("/category",categorydetails)
 // app.use("/chat",chat)
 app.use("/event",event)
