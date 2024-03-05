@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
-const Block=require("../models/block")
+const Block=require("../models/block").Block
 
 const User = sequelize.define('user', {
     iduser: {
@@ -41,7 +41,8 @@ const User = sequelize.define('user', {
     tableName: 'user',
     timestamps: false
   });
-  User.belongsTo(Block)
+  // User.belongsTo(Block)
+
   const getOneUser = (email) => {
     return User.findOne({where: {emailphone: email}})
   }

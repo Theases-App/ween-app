@@ -1,7 +1,7 @@
 const sequelize = require('../database/index')
 
 const Authorisation=require("./authorisation").Authorisation
-const Block=require("./block")
+const Block=require("./block").Block
 const Categorydetails=require("./categorydetails")
 const Chat=require("./chat")
 const Event=require("./event").Event
@@ -52,7 +52,7 @@ Favorit.belongsTo(User)
 
 Authorisation.belongsTo(User)
 
-Block.belongsTo(User)
+User.hasMany(Block)
 
 Message.belongsTo(User)
 

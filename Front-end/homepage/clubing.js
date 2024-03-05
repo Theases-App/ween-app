@@ -1,24 +1,35 @@
+import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect, useState } from 'react';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
-import Index from './signin & signup/index.js';
-import Homepage from "./homepage/index.js"
-export default function App() {
+
+export default function Clubing() {
+
+    const [data,setData]=useState([])
+
+      useEffect(()=>{
+    axios.get("https://localhost:8080/event/getall").then((res)=>{
+         setData(res.data)
+         console.log(res.data)
+    }).catch((err)=>{
+        console.log(err,"err")
+    })
+      },[])
+    
   return (
 
-    <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
-     
-   
+    <View >
+    
    <TouchableOpacity style={{color:"#ff0000"}} >
-    
-      
 
+
+
+    
       </TouchableOpacity>
-    
-    {/* <Homepage/> */}
-    <Index/>
-
-     </View>
      
+    
+ 
+     </View>
   );
 }
 

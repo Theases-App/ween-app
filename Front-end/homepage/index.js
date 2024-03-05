@@ -1,24 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
-import Index from './signin & signup/index.js';
-import Homepage from "./homepage/index.js"
-export default function App() {
+import Clubing from "./clubing"
+export default function index() {
   return (
 
-    <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
-     
+    <View >
    
+  
    <TouchableOpacity style={{color:"#ff0000"}} >
     
-      
-
       </TouchableOpacity>
-    
-    {/* <Homepage/> */}
-    <Index/>
-
-     </View>
      
+ <Clubing/>
+ 
+     </View>
   );
 }
 

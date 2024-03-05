@@ -1,24 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
-import Index from './signin & signup/index.js';
-import Homepage from "./homepage/index.js"
-export default function App() {
+import Signup from "./signup"
+import Signin from './signin';
+export default function index() {
   return (
 
-    <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
-     
+    <View >
+        <Image style={{position:"absolute",top:-150,height:100,width:100,left:97}} source={require("../idk/image.png")} ></Image>
+  
    
    <TouchableOpacity style={{color:"#ff0000"}} >
     
-      
-
       </TouchableOpacity>
-    
-    {/* <Homepage/> */}
-    <Index/>
-
-     </View>
      
+    <Signin/>
+ 
+     </View>
   );
 }
 
