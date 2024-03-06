@@ -120,6 +120,16 @@ const getadmins = async (req,res) =>{
     catch(err){
 console.log(err);
     }
+
+}
+const getOne = async (req, res) => {
+    const email = req.params.email
+    try {
+        const user = await getOneUser(email)
+        res.send(user)
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-module.exports = {signUp, signIn, updateUser, destroyUser, getusers, getClients, getadmins}
+module.exports = {signUp, signIn, updateUser, destroyUser, getusers, getClients, getadmins,getOne}

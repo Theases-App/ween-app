@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
-
+import Edituser from './components/edituser';
+//khalil
 export default function App() {
   return (
 
@@ -9,7 +10,7 @@ export default function App() {
     <StatusBar style="auto" />
    
    <TouchableOpacity style={{color:"#ff0000"}} >
-       
+      <Edituser/> 
       
 
       </TouchableOpacity>

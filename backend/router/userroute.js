@@ -15,5 +15,5 @@ router.get('/getallusers',controller.getusers)
 router.get('/getclients',controller.getClients)
 
 router.get('/getadmins',controller.getadmins)
-
+router.get('/getuser/:emailphone', controller.getOne)
 module.exports = router
