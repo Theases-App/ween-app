@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
-import IndexC from './country/IndexC.jsx';
-import EventCntry from './country/EventCntry.jsx';
+
+
 import Nav from './Nav/Nav.jsx';
 import Search from './Search/Search.jsx';
 import Home from './Homes.jsx';
@@ -21,20 +21,6 @@ export default function App() {
 
 <NavigationContainer>
       <Stack.Navigator>
-        
-      <Stack.Screen
-          name="IndexC"
-          component={IndexC}
-          options={{ headerShown: false
-          
-          }
-        }
-        />
-        <Stack.Screen
-          name="EventCntry"
-          component={EventCntry} 
-          
-        />
       
         <Stack.Screen
         

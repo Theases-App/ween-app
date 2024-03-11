@@ -118,9 +118,6 @@ const getAllEventcategory = (categroy) => {
 const getAllEvent=(id)=>{
   return Event.findAll({where:{idevent:id}})
 }
-const getAllbyCountry=(countrys)=>{
-  return Event.findAll({where:{country:countrys}})
-}
 const getAllEvents=()=>{
   return Event.findAll()
 }
@@ -138,4 +135,4 @@ const getEventByName = (eventName) => {
 };
 
 
-module.exports = {Event,getAllEvent,addevent,editevent,deleteevent,getAllEventcategory,getAllEvents,getAllbyCountry,getEventByName}
+module.exports = {Event,getAllEvent,addevent,editevent,deleteevent,getAllEventcategory,getAllEvents,getEventByName}

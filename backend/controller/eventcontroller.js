@@ -1,4 +1,4 @@
-const{getAllEvent,getAllEvents,addevent,editevent,deleteevent, getAllEventcategory,getAllbyCountry,getEventByName}=require('../models/event')
+const{getAllEvent,getAllEvents,addevent,editevent,deleteevent, getAllEventcategory,getEventByName}=require('../models/event')
 
 
 const getAll = (req, res) => {
@@ -19,20 +19,9 @@ res.status(200).json(result)
 res.status(500).json(err)
 })
 }
-
-const getByCountry = async(req,res)=>{
-    const cntry=req.params.country
-     await getAllbyCountry(cntry).then((result)=>{
-    res.status(200).json(result)
-    }).catch((err)=>{
-    res.status(500).json(err)
-     })
-}
-
-
 const   geteventbycategory = async(req,res)=>{
-    const name=req.params.eventcategory
-     await getAllEventcategory(name)
+
+     await getAllEventcategory(categoryname)
     .then((result)=>{
     res.status(200).json(result)
     }).catch((err)=>{
@@ -81,4 +70,4 @@ await getEventByName(name).then((result)=>{
 })
 }
 
-module.exports = {addevents,deletedevents,getAll,updateevent,getevent,geteventbycategory,getByCountry,getEventByName}
+module.exports = {addevents,deletedevents,getAll,updateevent,getevent,geteventbycategory,getEventByNames}
