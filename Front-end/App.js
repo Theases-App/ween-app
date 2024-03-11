@@ -39,6 +39,7 @@ export default function App() {
           component={Search} 
 
         />
+        
         <Stack.Screen
           name="Allcategory"
           component={Allcategory}
@@ -53,12 +54,12 @@ export default function App() {
 
       ),
     }
-       
+   
 
-    <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
+    // <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
      
    
-   <TouchableOpacity style={{color:"#ff0000"}} >
+  //  <TouchableOpacity style={{color:"#ff0000"}} >
     
 
       
@@ -82,14 +83,13 @@ export default function App() {
      
   )
 
-      </TouchableOpacity>
+      // </TouchableOpacity>
     
-    <Homepage/>
-    {/* <Index/> */}
+  
 
-     </View>
+    //  </View>
      
-  );
+  ;
 
 }
 
