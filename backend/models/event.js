@@ -130,5 +130,9 @@ const editevent=(data,id)=>{
 const deleteevent=(id)=>{
   return Event.destroy({where :{idevent:id}})
 }
+const getEventByName = (eventName) => {
+  return Event.findOne({ where: { eventname: eventName } });
+};
 
-module.exports = {Event,getAllEvent,addevent,editevent,deleteevent,getAllEventcategory,getAllEvents}
+
+module.exports = {Event,getAllEvent,addevent,editevent,deleteevent,getAllEventcategory,getAllEvents,getEventByName}
