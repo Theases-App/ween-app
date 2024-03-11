@@ -4,7 +4,11 @@ require('dotenv').config()
 
 
 
+
+const sequelize = new Sequelize('ween', 'root', 'hamouda3', {
+
 const sequelize = new Sequelize('ween', 'root', '22802888', {
+
     host:'localhost',
     dialect:'mysql',
     define:{timestamps:false}

@@ -1,23 +1,16 @@
 const {  DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
 
-
-const UserHasChat = sequelize.define('user_has_chat', {
+const UserHasNotifications = sequelize.define('user_has_notifications', {
   user_iduser: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    allowNull: false
   },
-  chat_idchat: {
+  notifications_idnotification: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    allowNull: false
-  }
-}, {
-  tableName: 'user_has_chat',
-  timestamps: false, 
+  },
 });
 
 
-  
-  module.exports = UserHasChat;
+module.exports = UserHasNotifications;
