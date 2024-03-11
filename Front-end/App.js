@@ -31,7 +31,7 @@ export default function App() {
           }
         }
         
-
+       
 
         />
         <Stack.Screen
@@ -39,7 +39,7 @@ export default function App() {
           component={Search} 
 
         />
-        
+       
         <Stack.Screen
           name="Allcategory"
           component={Allcategory}

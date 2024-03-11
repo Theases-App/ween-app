@@ -50,7 +50,7 @@ import {IP} from "../ip.json"
                 } })
    
   return (
-     <View style={{marginTop:140}}>
+     <View style={{marginTop:190}}>
 
 <ScrollView  style={{marginBottom:50}}>
 
@@ -71,7 +71,7 @@ import {IP} from "../ip.json"
    <FlatList 
        data={clubing} horizontal={true} renderItem={({item})=><View>
       
-         <ScrollView>
+        
 
 
 <TouchableOpacity style={{justifyContent:"space-between",padding:5}}>
@@ -127,7 +127,7 @@ import {IP} from "../ip.json"
 
      </View>
     </TouchableOpacity>
-    </ScrollView>
+  
        </View>}
 
       />
@@ -150,7 +150,7 @@ import {IP} from "../ip.json"
    <FlatList 
        data={hotelresto} horizontal={true} renderItem={({item})=><View>
       
-         <ScrollView>
+       
 
 
 <TouchableOpacity style={{justifyContent:"space-between",padding:5}}>
@@ -206,7 +206,7 @@ import {IP} from "../ip.json"
 
      </View>
     </TouchableOpacity>
-    </ScrollView>
+  
        </View>}
 
       />
@@ -230,7 +230,7 @@ import {IP} from "../ip.json"
    <FlatList 
        data={sports} horizontal={true} renderItem={({item})=><View>
       
-         <ScrollView>
+        
 
 
 <TouchableOpacity style={{justifyContent:"space-between",padding:5}}>
@@ -286,7 +286,7 @@ import {IP} from "../ip.json"
 
      </View>
     </TouchableOpacity>
-    </ScrollView>
+   
        </View>}
 
       />
@@ -310,7 +310,7 @@ import {IP} from "../ip.json"
    <FlatList 
        data={concerts} horizontal={true} renderItem={({item})=><View>
       
-         <ScrollView>
+         
 
 
 <TouchableOpacity style={{justifyContent:"space-between",padding:5}}>
@@ -366,7 +366,7 @@ import {IP} from "../ip.json"
 
      </View>
     </TouchableOpacity>
-    </ScrollView>
+    
        </View>}
 
       />
@@ -390,7 +390,7 @@ import {IP} from "../ip.json"
    <FlatList 
        data={spectacles} horizontal={true} renderItem={({item})=><View>
       
-         <ScrollView>
+    
 
 
 <TouchableOpacity style={{justifyContent:"space-between",padding:5}}>
@@ -446,7 +446,7 @@ import {IP} from "../ip.json"
 
      </View>
     </TouchableOpacity>
-    </ScrollView>
+   
        </View>}
 
       />
