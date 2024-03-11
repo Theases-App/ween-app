@@ -5,8 +5,12 @@ import {useState,useEffect} from 'react';
 import { counterEvent } from 'react-native/Libraries/Performance/Systrace';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {NavigationContainer} from '@react-navigation/native';
+import {useNavigation} from'@react-navigation/native'
 import {IP} from "../ip.json"
 export default function Signup() {
+  
+
+  const navigation=useNavigation()
   
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -108,7 +112,7 @@ export default function Signup() {
     />
    
     <View  style={{top:90,height:200,width:150,marginLeft:80,flex:1}}>
-      <Button  onPress={()=>handleSubmit(obj)}
+      <Button  onPress={()=> {navigation.navigate("signin"), handleSubmit(obj)}}
        
        style={{borderColor:"black"}}
       color="#ff5252"

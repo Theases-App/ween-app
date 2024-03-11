@@ -109,8 +109,9 @@ const Event = sequelize.define('event', {
 
 module.exports = Event;
 
-
-
+const getAllbyCountry=(countrys)=>{
+  return Event.findAll({where:{country:countrys}})
+}
 
 const getAllEventcategory = (categroy) => {
   return Event.findAll({where:{eventcategory:categroy}} )
@@ -135,4 +136,4 @@ const getEventByName = (eventName) => {
 };
 
 
-module.exports = {Event,getAllEvent,addevent,editevent,deleteevent,getAllEventcategory,getAllEvents,getEventByName}
+module.exports = {Event,getAllEvent,addevent,editevent,deleteevent,getAllEventcategory,getAllEvents,getEventByName,getAllbyCountry}

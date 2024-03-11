@@ -67,6 +67,18 @@ sequelize.sync()
 })
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // const Authorisation=require("./authorisation").Authorisation
 // const Block=require("./block").Block
 // const Categorydetails=require("./categorydetails")

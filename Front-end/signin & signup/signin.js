@@ -10,7 +10,7 @@
  import {IP} from "../ip.json"
 
  export default function Signin() {
- 
+  const navigation=useNavigation()
    
   const [email, setEmail] = useState("");
   const [psw, setPsw] = useState("");

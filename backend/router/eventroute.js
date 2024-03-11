@@ -9,6 +9,6 @@ router.get('/getall/:id',controller.getevent)
 router.post('/add/:userIduser',controller.addevents)
 router.put('/update/:id',controller.updateevent)
 router.delete('/delete/:id',controller.deletedevents)
-
+router.get('/getall//:country',controller.getByCountry)
 
 module.exports=router

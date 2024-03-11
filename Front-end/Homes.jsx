@@ -5,7 +5,7 @@ import Search from './Search/Search.jsx';
 import Allcategory from './Search/Allcategory.jsx';
 import axios from 'axios';
 import { IP } from './ip.json';
-
+import Homepage from './homepage/homepage.js';
 export default function Home() {
   const [date, setdate] = useState([]);
 
@@ -27,16 +27,19 @@ export default function Home() {
           <Image source={require("./idk/image.png")} style={styles.img} />
           <View style={styles.circleContainer}>
             {date.map((event) => (
-              <View key={event.idevent} style={styles.eventContainer}>
-                <Text style={{color:"white"}}>{event.date.slice(5,10)}</Text>
+              <View key={event.idevent} style={styles.eventContainer}>  
+              <View style={{backgroundColor:"white"}}> 
+             <Text style={{color:"white"}}>{event.date.slice(5,10)}</Text>
+             </View>
                 <View style={styles.circle}>
-                  <Text style={{color:"white"}}>{event.date.length}</Text>
+                  <Text style={{color:"white"}}>{event.date.length}</Text>                
                 </View>
               </View>
             ))}
           </View>
         </View>
         <Search />
+        <Homepage/>
         <Nav />
       </View>
     
@@ -49,23 +52,25 @@ const styles = StyleSheet.create({
     backgroundColor: "#111111",
     flex: 1,
     justifyContent: "center",
+    
   },
   viewstyle: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+   
   },
   img: {
     position: "absolute",
     top: 10,
     height: 100,
     width: 100,
+    marginTop:15
   },
   circleContainer: {
     flexDirection: 'row', 
     justifyContent: 'center', // Align circles in the center horizontally
-    marginTop: 20,  
-    paddingBottom:600
+    marginTop:250
   },
   circle: {
     width: 30,
