@@ -5,35 +5,109 @@ const sequelize = require('../database/index');
 const Event = sequelize.define('event', {
   idevent: {
     type: DataTypes.INTEGER,
+    allowNull: false,
     primaryKey: true,
     autoIncrement: true
   },
-  eventname: DataTypes.STRING(45),
-  eventcategory: DataTypes.STRING(45),
-  image: DataTypes.STRING(45),
-  price: DataTypes.INTEGER,
-  country: DataTypes.STRING(45),
-  location: DataTypes.STRING(45),
-  placename: DataTypes.STRING(45),
-  date: DataTypes.DATE,
-  time: DataTypes.TIME,
-  payment: DataTypes.INTEGER,
-  reservation: DataTypes.INTEGER,
-  description: DataTypes.STRING(225),
-  map: DataTypes.STRING(225),
-  map2: DataTypes.STRING(225),
-  phonenumber: DataTypes.INTEGER,
-  email: DataTypes.STRING(45),
-  facebook: DataTypes.STRING(225),
-  instagram: DataTypes.STRING(225),
-  numberpeople: DataTypes.INTEGER,
-  adminmessage: DataTypes.STRING(225),
-  new: DataTypes.INTEGER
+  eventname: {
+    type: DataTypes.STRING(45),
+    allowNull: true
+  },
+  eventcategory: {
+    type: DataTypes.STRING(45),
+    allowNull: true
+  },
+  image: {
+    type: DataTypes.STRING(45),
+    allowNull: true
+  },
+  price: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  country: {
+    type: DataTypes.STRING(45),
+    allowNull: true
+  },
+  location: {
+    type: DataTypes.STRING(45),
+    allowNull: true
+  },
+  placename: {
+    type: DataTypes.STRING(45),
+    allowNull: true
+  },
+  date: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
+  time: {
+    type: DataTypes.TIME,
+    allowNull: true
+  },
+  payment: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  reservation: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  description: {
+    type: DataTypes.STRING(225),
+    allowNull: true
+  },
+  map: {
+    type: DataTypes.STRING(225),
+    allowNull: true
+  },
+  map2: {
+    type: DataTypes.STRING(225),
+    allowNull: true
+  },
+  phonenumber: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  email: {
+    type: DataTypes.STRING(45),
+    allowNull: true
+  },
+  facebook: {
+    type: DataTypes.STRING(225),
+    allowNull: true
+  },
+  instagram: {
+    type: DataTypes.STRING(225),
+    allowNull: true
+  },
+  numberpeople: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  adminmessage: {
+    type: DataTypes.BOOLEAN,
+    allowNull: true,
+    defaultValue: 0
+  },
+  new: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  userIduser: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: 'user',
+      key: 'iduser'
+    }
+  }
 }, {
   tableName: 'event',
   timestamps: false
 });
 
+module.exports = Event;
 
 
 
@@ -59,5 +133,9 @@ const editevent=(data,id)=>{
 const deleteevent=(id)=>{
   return Event.destroy({where :{idevent:id}})
 }
+const getEventByName = (eventName) => {
+  return Event.findOne({ where: { eventname: eventName } });
+};
 
-module.exports = {Event,getAllEvent,addevent,editevent,deleteevent,getAllEventcategory,getAllEvents,getAllbyCountry}
+
+module.exports = {Event,getAllEvent,addevent,editevent,deleteevent,getAllEventcategory,getAllEvents,getAllbyCountry,getEventByName}

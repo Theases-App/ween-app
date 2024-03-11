@@ -8,12 +8,6 @@ const Favorit = sequelize.define('favorit', {
     primaryKey: true,
     autoIncrement: true
   },
-  event: DataTypes.STRING(225)
-}, {
-  tableName: 'favorit',
-  timestamps: false
 });
-
-
 
 module.exports = Favorit;
