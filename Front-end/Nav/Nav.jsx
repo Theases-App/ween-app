@@ -3,9 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {  TouchableWithoutFeedback,StyleSheet, View } from 'react-native';
-
+import {useNavigation} from'@react-navigation/native'
 const Nav = () => {
-
+  const navigation=useNavigation()
   const [selectedIcon, setSelectedIcon] = useState('home');
 
   const handleIconPress = (iconName) => {
@@ -42,8 +42,8 @@ const Nav = () => {
 
     
 
-      <TouchableWithoutFeedback onPress={() => handleIconPress('star')}>
-        <Icon name="star" style={iconStyle('star')} size={30} />
+      <TouchableWithoutFeedback onPress={() =>{ navigation.navigate("EventCntry") , handleIconPress('star')}}>
+        <Icon name="star" style={ iconStyle('star')} size={30} />
       </TouchableWithoutFeedback>
 
       <TouchableWithoutFeedback onPress={() => handleIconPress('home')}>
@@ -54,7 +54,7 @@ const Nav = () => {
         <Icon name="bell" style={iconStyle('bell')} size={30} />
       </TouchableWithoutFeedback>
 
-      <TouchableWithoutFeedback onPress={() => handleIconPress('user')}>
+      <TouchableWithoutFeedback onPress={() =>navigation.navigate("signup")  }>
         <Icon name="user" style={iconStyle('user')} size={30} />
       </TouchableWithoutFeedback>
     </View>
