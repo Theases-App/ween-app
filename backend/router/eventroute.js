@@ -4,6 +4,7 @@ const controller = require('../controller/eventcontroller')
 
 router.get('/getall', controller.getAll)
 router.get('/getall/:eventcategory',controller.geteventbycategory)
+router.get('/getall//:country',controller.getByCountry)
 router.get('/getall/:id',controller.getevent)
 router.post('/add/:id',controller.addevents)
 router.put('/update/:id',controller.updateevent)

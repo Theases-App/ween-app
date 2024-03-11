@@ -1,22 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
-
+import IndexC from './country/IndexC.jsx';
+import EventCntry from './country/EventCntry.jsx';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+const Stack= createNativeStackNavigator()
 export default function App() {
   return (
 
-    <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
-       <Image style={{marginTop:"-180%",height:100,width:100}} source={require("./idk/image.png")} ></Image>
-    <StatusBar style="auto" />
-   
-   <TouchableOpacity style={{color:"#ff0000"}} >
-       
+    <NavigationContainer>
+      <Stack.Navigator>
       
-
-      </TouchableOpacity>
-    
-    
+        <Stack.Screen
+          name="IndexC"
+          component={IndexC}
+          options={{ headerShown: false
+          
+          }
+        }
+        />
+        <Stack.Screen
+          name="EventCntry"
+          component={EventCntry} 
+          
+        />
  
-     </View>
+      </Stack.Navigator>
+
+     </NavigationContainer>
+
+
+
   );
 }
 
