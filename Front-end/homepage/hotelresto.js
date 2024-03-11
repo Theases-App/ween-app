@@ -5,10 +5,10 @@ import axios from 'axios';
 import {IP} from "../ip.json"
 
 
-const concerts=()=>{
+const hotelresto=()=>{
     const [refresh, setRefresh] = useState(true);
     const [data,setData]=useState([])
-    const concerts=[]
+    const hotelresto=[]
     useEffect(()=>{
         axios.get(`http://${IP}:8080/event/getall`).then((res)=>{
              setData(res.data)
@@ -18,8 +18,8 @@ const concerts=()=>{
           },[refresh])
 
           data.map((e)=>{
-            if (e.eventcategory === "concerts" && e.adminmessage == 1){
-              concerts.push(e)
+            if (e.eventcategory === "Hotel & resto" && e.adminmessage == 1){
+              hotelresto.push(e)
             } })
         
 return (
@@ -31,7 +31,7 @@ return (
 <View>
   
 
-  <Text style={{fontFamily:"Inter-Black",fontSize:24,color:"#ececec",alignItems:"center",marginTop:-20,marginLeft:150}}> Concerts </Text>
+  <Text style={{fontFamily:"Inter-Black",fontSize:24,color:"#ececec",alignItems:"center",marginTop:-20,marginLeft:130}}> Hotel & Resto </Text>
  
   </View>
 
@@ -45,7 +45,7 @@ return (
 
 
    <FlatList 
-       data={concerts}  renderItem={({item})=><View>
+       data={hotelresto}  renderItem={({item})=><View>
       
          <ScrollView>
 
@@ -115,4 +115,4 @@ return (
 )
 
 }
-export default concerts
+export default hotelresto

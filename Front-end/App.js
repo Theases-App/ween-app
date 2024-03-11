@@ -14,8 +14,8 @@ export default function App() {
 
       </TouchableOpacity>
     
-    {/* <Homepage/> */}
-    <Index/>
+    <Homepage/>
+    {/* <Index/> */}
 
      </View>
      
