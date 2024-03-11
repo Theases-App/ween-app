@@ -2,9 +2,6 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
 
 
-
-const Event = require('./event');
-
 const CategoryDetails = sequelize.define('categorydetails', {
   idcategorydetails: {
     type: DataTypes.INTEGER,
