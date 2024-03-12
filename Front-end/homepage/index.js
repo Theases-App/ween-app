@@ -1,6 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
-import Clubing from "./clubing"
+import Homepage from "./homepage"
+import Clubbing from "./clubing"
+import Concerts from "./concerts"
+import Sports from "./sports"
+import Hotelresto from "./hotelresto"
+import Spectacles from './spectacles';
 export default function index() {
   return (
 
@@ -10,9 +15,13 @@ export default function index() {
    <TouchableOpacity style={{color:"#ff0000"}} >
     
       </TouchableOpacity>
-     
- <Clubing/>
- 
+      {/* <Clubbing/> */}
+      {/* <Sports/> */}
+      {/* <Concerts/> */}
+      <Homepage/>
+      {/* <Hotelresto/> */}
+      {/* <Spectacles/> */}
+
      </View>
   );
 }

@@ -10,7 +10,7 @@
  import {IP} from "../ip.json"
 
  export default function Signin() {
- 
+  const navigation=useNavigation()
    
   const [email, setEmail] = useState("");
   const [psw, setPsw] = useState("");
@@ -18,15 +18,16 @@
   const [refresh, setRefresh] = useState(true);
 
  
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
 const obj={emailphone:email,password:psw}
 
   const handleSubmit = async (data) => {
     if (data.emailphone === "ween@rbk.tn" && data.password === "12345678") {
-      navigation.navigate("/admin");
+      // navigation.navigate("/admin");
+      console.log("welcome to admin dashboard")
     } else {
-      await axios.post("http://192.168.11.38:8080/user/signin", data)
+      await axios.post(`http://${IP}:8080/user/signin`, data)
         .then((result) => {
          console.log(result.data)
           author(result.data.iduser, result.data.token, result.data.role);
@@ -43,7 +44,7 @@ const  author = async (id, token, role) => {
     const data = { token: token };
     await axios.post(`http://${IP}:8080/token/add/${id}`, data)
       .then(() => {
-        axios.get(`http://192.168.11.38:8080/block/check/${id}`)
+        axios.get(`http://${IP}:8080/block/check/${id}`)
           .then(async(result) => {
             console.log(result);
             if (result.data) {
@@ -51,7 +52,7 @@ const  author = async (id, token, role) => {
                 "you are blocked by the admin, please contact with him on tel: 20 048 441"
               );
             } else {
-              AsyncStorage.setItem("id", id)
+              AsyncStorage.setItem("id",toString(id))
               if (role === "client") {
                 // navigation.navigate("/");
                 console.log("done")
@@ -76,28 +77,48 @@ const  author = async (id, token, role) => {
      <ScrollView style={{marginTop:140}}>
        <View style={{justifyContent:'center',alignItems:"center",marginTop:40}}>
       
-     
+ 
         <TextInput
         style={styles.input}
         placeholderTextColor={"#111111"}
         placeholder="Email Adress Or Phone Number"
         onChangeText={setEmail}
         value={email}
-       
+         
       />
-      <TextInput
-        style={styles.input}
+    
+    {wrong ? (
+           <TextInput
+           onPress={()=>{!refresh}}
+          style={styles.input}
         placeholderTextColor={"#111111"}
         placeholder="Password"
         onChangeText={setPsw}
-        value={psw}
-        secureTextEntry
-      />
+         value={psw}
+         secureTextEntry
+        refresh
+                    
+     />
+        ) : (
+     <TextInput
+     onPress={()=>{!refresh}}
+       autoFocus={true}
+      style={styles.input2}
+    
+      placeholderTextColor={"#111111"}
+      placeholder="Password"
+      onChangeText={setPsw}
+      value={psw}
+      secureTextEntry
+   
+                  />
+                  )
+                  }
+    
      
    
     <View  style={{top:5 ,height:100,width:150}}>
-      <Button  onPress={()=>handleSubmit(obj
-            ,console.log('click'))}
+      <Button  onPress={()=>handleSubmit(obj)}
        
        style={{borderColor:"black"}}
       color="#ff5252"
@@ -174,6 +195,20 @@ const styles = StyleSheet.create({
       fontFamily:"sans-serif-light",
       marginBottom:30
     },
+    input2: {
+    
+      backgroundColor:"#ececec",
+        width: 300,
+        height: 40,
+        marginVertical: 10,
+        padding: 10,
+        borderColor: 'red',
+        borderWidth: 1.5,
+        borderRadius: 5,
+        color:"black",
+        fontFamily:"sans-serif-light",
+        marginBottom:30
+      },
     button: {
       padding: 10,
       borderRadius: 5,
