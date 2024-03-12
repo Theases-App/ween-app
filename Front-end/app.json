@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "ija-Application",
-    "slug": "ija-Application",
+    "name": "Ween-Application",
+    "slug": "Ween-Application",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./idk/image.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./idk/image.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
