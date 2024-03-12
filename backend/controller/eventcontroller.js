@@ -30,7 +30,7 @@ const   geteventbycategory = async(req,res)=>{
     }
 
 const addevents=async(req,res)=>{
-    const id=req.params.id
+    const id=req.params.idevent
     const {eventname,eventcategory,image,price,country,location,placename,date,time,payment,reservation,description,map,map2,phonenumber,email,facebook,instagram,numberpeople,adminmessage} =req.body
     await addevent({eventname:eventname,eventcategory:eventcategory,image:image,price:price,country:country,location:location,placename:placename,date:date,time:time,payment:payment,reservation:reservation,description:description,map:map,map2:map2,phonenumber:phonenumber,email:email,facebook:facebook,instagram:instagram,numberpeople:numberpeople,adminmessage:adminmessage},id)
      .then(()=>{

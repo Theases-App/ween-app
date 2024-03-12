@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
-const Block=require("../models/block")
+const Block=require("../models/block").Block
 
 const User = sequelize.define('user', {
     iduser: {
@@ -41,14 +41,16 @@ const User = sequelize.define('user', {
     tableName: 'user',
     timestamps: false
   });
-  User.belongsTo(Block)
-  const getOneUser = (email) => {
-    return User.findOne({where: {emailphone: email}})
+  // User.belongsTo(Block)
+
+  const getOneUser = (iduser) => {
+    return User.findOne({where: {iduser: iduser}})
   }
   
   const addUser = (data) => {
     return User.create(data)
   }
+  
   
   const editUser = (id, data) => {
     return User.update(data, {where: {iduser: id}})
@@ -72,8 +74,11 @@ const User = sequelize.define('user', {
         }
       });
       }
+      const deleteUser=(id)=>{
+        return User.destroy({where :{iduser:id}})
+      }
     
-    module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findadmins} 
+    module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findadmins,deleteUser} 
 
  
 
