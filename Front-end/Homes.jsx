@@ -6,6 +6,7 @@ import Allcategory from './Search/Allcategory.jsx';
 import axios from 'axios';
 import { IP } from './ip.json';
 import Homepage from './homepage/homepage.js';
+import Map from './Map/Map.jsx'
 export default function Home() {
   const [date, setdate] = useState([]);
 
@@ -25,21 +26,11 @@ export default function Home() {
       <View style={styles.viewstyle1}>
         <View style={styles.viewstyle}>
           <Image source={require("./idk/image.png")} style={styles.img} />
-          <View style={styles.circleContainer}>
-            {date.map((event) => (
-              <View key={event.idevent} style={styles.eventContainer}>  
-              <View style={{backgroundColor:"white"}}> 
-             <Text style={{color:"white"}}>{event.date.slice(5,10)}</Text>
-             </View>
-                <View style={styles.circle}>
-                  <Text style={{color:"white"}}>{event.date.length}</Text>                
-                </View>
-              </View>
-            ))}
-          </View>
+         
         </View>
         <Search />
-        <Homepage/>
+        {/* <Homepage/> */}
+        <Map/>
         <Nav />
       </View>
     
@@ -49,7 +40,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   viewstyle1: {
-    backgroundColor: "#111111",
+    backgroundColor: "white",
     flex: 1,
     justifyContent: "center",
     
@@ -69,7 +60,7 @@ const styles = StyleSheet.create({
   },
   circleContainer: {
     flexDirection: 'row', 
-    justifyContent: 'center', // Align circles in the center horizontally
+    justifyContent: 'center',
     marginTop:250
   },
   circle: {

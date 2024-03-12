@@ -30,7 +30,7 @@ const EditPictureAndCountry = () => {
         console.log(error);
       });
   }
-
+  
   return (
     <View style={styles.container}>
       {userData && (
