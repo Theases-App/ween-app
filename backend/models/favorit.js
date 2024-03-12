@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
-
+const User = require("../models/user").User
 
 const Favorit = sequelize.define('favorit', {
   idfavorit: {
@@ -15,5 +15,10 @@ const Favorit = sequelize.define('favorit', {
 });
 
 
+const getUserFavorites = (iduser) => {
+  return Favorit.findAll({
+    where: { user_iduser: iduser }
+  });
+};
 
-module.exports = Favorit;
+module.exports = { Favorit, getUserFavorites };

@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
 const Block=require("../models/block").Block
 
+
 const User = sequelize.define('user', {
     iduser: {
       type: DataTypes.INTEGER,
@@ -42,6 +43,7 @@ const User = sequelize.define('user', {
     timestamps: false
   });
   // User.belongsTo(Block)
+
 
   const getOneUser = (iduser) => {
     return User.findOne({where: {iduser: iduser}})
