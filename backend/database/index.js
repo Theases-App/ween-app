@@ -4,7 +4,7 @@ require('dotenv').config()
 
 
 
-const sequelize = new Sequelize('mydb', 'root', 'root', {
+const sequelize = new Sequelize('ween', 'root', 'root', {
     host:'localhost',
     dialect:'mysql',
     define:{timestamps:false}
