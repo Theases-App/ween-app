@@ -29,10 +29,12 @@ app.use(express.urlencoded({extended: true}))
 
 app.use("/token",athentification)
 app.use("/block",block)
+
 // app.use("/category",categorydetails)
 // app.use("/chat",chat)
 app.use("/event",event)
-// app.use("/favorite",favorite)
+
+app.use("/favorite",favorite)
 // app.use("/message",message)
 // app.use("/notification",notification)
 // app.use("/payment",payment)

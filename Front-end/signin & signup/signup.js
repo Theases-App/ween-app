@@ -5,9 +5,13 @@ import {useState,useEffect} from 'react';
 import { counterEvent } from 'react-native/Libraries/Performance/Systrace';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {NavigationContainer} from '@react-navigation/native';
-import IP from "../ip.json"
+import {useNavigation} from'@react-navigation/native'
+import {IP} from "../ip.json"
 export default function Signup() {
+  
 
+  const navigation=useNavigation()
+  
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
@@ -35,9 +39,7 @@ export default function Signup() {
         country:value,
         role:role}
 
-        const headers = {
-            "Content-Type": "application/json",
-          };
+      
          
     const handleSubmit = (data) => {
       
@@ -51,6 +53,7 @@ export default function Signup() {
             console.log(err)
         })
     }
+   
  
   return (
 
@@ -77,7 +80,7 @@ export default function Signup() {
         placeholderTextColor={"#111111"}
         placeholder="Age"
         onChangeText={setAge}
-        value={+age}
+        value={age}
        
       />
         <TextInput
@@ -86,6 +89,7 @@ export default function Signup() {
         placeholder="Email Adress Or Phone Number"
         onChangeText={setEmail}
         value={email}
+       
        
       />
       <TextInput
@@ -108,8 +112,7 @@ export default function Signup() {
     />
    
     <View  style={{top:90,height:200,width:150,marginLeft:80,flex:1}}>
-      <Button  onPress={()=>handleSubmit(obj
-            ,console.log('click'))}
+      <Button  onPress={()=> {navigation.navigate("signin"), handleSubmit(obj)}}
        
        style={{borderColor:"black"}}
       color="#ff5252"

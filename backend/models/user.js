@@ -3,12 +3,12 @@ const sequelize = require('../database/index');
 const Block=require("../models/block").Block
 
 
-const User = sequelize.define('user', {
+  
+  const User = sequelize.define('User', {
     iduser: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     fullname: {
       type: DataTypes.STRING(45),
@@ -37,12 +37,28 @@ const User = sequelize.define('user', {
     country: {
       type: DataTypes.STRING(45),
       allowNull: true
+    },
+    blockIdblock: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'Block',
+        key: 'idblock'
+      }
+    },
+    reservationIdreservation: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
+    sequelize,
+    modelName: 'User',
     tableName: 'user',
     timestamps: false
   });
-  // User.belongsTo(Block)
+  
+  module.exports = User;
+  
 
 
   const getOneUser = (iduser) => {

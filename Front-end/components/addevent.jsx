@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, TextInput, TouchableOpacity, StyleSheet, Text, ScrollView, Modal } from "react-native";
 import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import { IP } from "../ip.json";
 
 const Addevent = () => {
@@ -13,9 +14,19 @@ const Addevent = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [options, setOptions] = useState([]);
   const [selectedInput, setSelectedInput] = useState("");
+  const [iduser, setiduser] = useState(null); 
 
   const eventCategories = ["Sports", "Concerts", "Hotel & resto", "Clubbing", "Spectacles"];
   const countries = ["Hammamet", "Tunis", "Sousse", "Sfax", "Djerba"];
+
+  useEffect(() => {
+    
+    AsyncStorage.getItem("id")
+      .then((id) => {
+        setiduser(id); 
+      })
+      .catch((error) => console.error("Error retrieving user ID:", error));
+  }, []);
 
   const add = () => {
     const eventData = {
@@ -28,7 +39,7 @@ const Addevent = () => {
     };
 
     axios
-      .post(`http://${IP}:8080/event/add/2`, eventData)
+      .post(`http://${IP}:8080/event/add/${iduser}`, eventData) 
       .then((res) => {
         console.log("Event added successfully");
         setEventName("");
