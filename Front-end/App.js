@@ -143,7 +143,7 @@ export default function App() {
           name="Allcategory"
           component={Allcategory}
        options={{headerTitle:"Allcategory",headerTintColor:"#ff5252",headerStyle: {
-        backgroundColor: "#ececec", 
+        backgroundColor: "#111111", 
       },
       headerTitle: () => (
         <Image

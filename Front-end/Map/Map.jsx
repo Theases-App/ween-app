@@ -72,11 +72,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   map: {
-    width: "100%",
-    height: "50%",
+    width: "70%",
+    height: "40%",
     marginBottom: 400,
     borderRadius: 20,
   },
 });
-
 export default Waiting_Driver_Screen;
+
