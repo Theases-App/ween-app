@@ -14,12 +14,12 @@ const Nav = () => {
 
 
   const iconStyle = (iconName) => ({
-    color: selectedIcon === iconName ? '#ff5252' : 'white',
+    color: selectedIcon === iconName ? 'red' : 'black',
   });
     return (
       <View
       style={{
-        backgroundColor: '#111111',
+        backgroundColor: '',
         flexDirection: 'row',
         gap: 60,
         alignItems: 'center',
@@ -42,7 +42,7 @@ const Nav = () => {
 
     
 
-      <TouchableWithoutFeedback onPress={() =>{ navigation.navigate("EventCntry") , handleIconPress('star')}}>
+      <TouchableWithoutFeedback onPress={() =>{ navigation.navigate("IndexC") , handleIconPress('star')}}>
         <Icon name="star" style={ iconStyle('star')} size={30} />
       </TouchableWithoutFeedback>
 
