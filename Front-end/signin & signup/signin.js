@@ -54,7 +54,7 @@ const  author = async (id, token, role) => {
             } else {
               AsyncStorage.setItem("id",toString(id))
               if (role === "client") {
-                // navigation.navigate("/");
+                navigation.navigate("/home");
                 console.log("done")
               }
       }})
@@ -116,14 +116,13 @@ const  author = async (id, token, role) => {
                   }
     
      
-   
     <View  style={{top:5 ,height:100,width:150}}>
-      <Button  onPress={()=>handleSubmit(obj)}
-       
+      <Button  onPress={()=>{{handleSubmit(obj) ,navigation.navigate("home",{id:id})}}}
        style={{borderColor:"black"}}
       color="#ff5252"
       title="Confirm "
      />
+
      </View>
       
       </View > 

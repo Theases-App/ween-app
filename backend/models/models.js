@@ -3,8 +3,8 @@ const sequelize = require('../database/index')
 const {User} = require('./user')
 const Block = require('./block').Block
 const Authorization = require('./authorisation').Authorisation
-const Event = require('./event')
-const CategoryDetails = require('./categorydetails')
+const {Event} = require('./event')
+const CategoryDetails = require('./categorydetails').CategoryDetails
 const Favorit = require('./favorit');
 const Notifications = require('./notification');
 const Reservation = require('./reservation');
@@ -25,8 +25,8 @@ Authorization.belongsTo(User, { foreignKey: 'userIduser' });
 // User.hasMany(Event, { foreignKey: 'userIduser' });
 // Event.belongsTo(User, { foreignKey: 'userIduser' });
 
-// Event.hasMany(CategoryDetails, { foreignKey: 'eventIdevent' });
-// CategoryDetails.belongsTo(Event, { foreignKey: 'eventIdevent' });
+Event.hasMany(CategoryDetails, { foreignKey: 'eventIdevent' });
+CategoryDetails.belongsTo(Event, { foreignKey: 'eventIdevent' });
 
 // // User.belongsToMany(Event, { through: Favorit, foreignKey: 'user_iduser' });
 // Event.belongsToMany(User, { through: Favorit, foreignKey: 'event_idevent' });
