@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { IP } from '../ip.json'
+import { IP } from "../ip.json"
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import EventCntry from './EventCntry';

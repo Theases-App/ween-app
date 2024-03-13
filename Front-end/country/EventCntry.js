@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     color: '#ff5252',
       fontFamily:'sans-serif-light',
       fontSize: 40,
-      marginLeft:"33%",
+      marginLeft:"35%",
       marginBottom:"2%"
   },
   eventContainer: {

@@ -10,7 +10,7 @@
  import {IP} from "../ip.json"
 
  export default function Signin() {
- 
+  const navigation=useNavigation()
    
   const [email, setEmail] = useState("");
   const [psw, setPsw] = useState("");
@@ -116,10 +116,8 @@ const  author = async (id, token, role) => {
                   }
     
      
-   
     <View  style={{top:5 ,height:100,width:150}}>
       <Button  onPress={()=>handleSubmit(obj)}
-       
        style={{borderColor:"black"}}
       color="#ff5252"
       title="Confirm "

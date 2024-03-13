@@ -13,9 +13,11 @@ const CategoryDetails = sequelize.define('categorydetails', {
 });
 
 
+const geteventcat = (id) => {
+  return CategoryDetails.findAll({where:{eventIdevent:id}})
+}
 
 
 
 
-
-module.exports = CategoryDetails;
+module.exports = {CategoryDetails,geteventcat};
