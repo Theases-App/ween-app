@@ -12,7 +12,7 @@ export default function index() {
     <View >
    
   
-   <TouchableOpacity style={{color:"#ff0000"}} >
+   <TouchableOpacity style={{color:"white"}} >
     
       </TouchableOpacity>
       {/* <Clubbing/> */}
