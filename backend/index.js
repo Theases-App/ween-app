@@ -29,7 +29,6 @@ app.use(express.urlencoded({extended: true}))
 
 app.use("/token",athentification)
 app.use("/block",block)
-
 // app.use("/category",categorydetails)
 // app.use("/chat",chat)
 app.use("/event",event)

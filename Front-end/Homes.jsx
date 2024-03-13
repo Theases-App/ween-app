@@ -6,8 +6,13 @@ import Allcategory from './Search/Allcategory.jsx';
 import axios from 'axios';
 import { IP } from './ip.json';
 import Homepage from './homepage/homepage.js';
+
+import Eventdetails from "./postdetails/Eventdetails.jsx"
+
 import Map from './Map/Map.jsx'
+
 export default function Home() {
+
   const [date, setdate] = useState([]);
 
   useEffect(() => {
@@ -29,8 +34,13 @@ export default function Home() {
          
         </View>
         <Search />
+
+        <Homepage/>
+       {/* <Eventdetails/> */}
+=======
         {/* <Homepage/> */}
         <Map/>
+
         <Nav />
       </View>
     

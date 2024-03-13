@@ -3,9 +3,10 @@ import { View,FlatList,ViewPropTypes,Text,ScrollView,TouchableOpacity,Image,Pres
  import{useEffect,useState,useRef} from 'react';
 import axios from 'axios';
 import {IP} from "../ip.json"
-
+import { useNavigation } from '@react-navigation/native'
 
 const spectacles=()=>{
+  const Navigation = useNavigation()
     const [refresh, setRefresh] = useState(true);
     const [data,setData]=useState([])
     const spectacles=[]
@@ -50,7 +51,7 @@ return (
          <ScrollView>
 
 
-<TouchableOpacity style={{justifyContent:"space-between",padding:5}}>
+<TouchableOpacity style={{justifyContent:"space-between",padding:5}} onPress={()=>{Navigation.navigate('eventdetail', {item})}}>
 
 <View style={{backgroundColor:"black",borderColor:"black",borderRadius:20,height:270,width:420,marginTop:-5}} >  
 

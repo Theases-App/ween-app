@@ -10,6 +10,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Signin from './signin & signup/signin.js';
 import Signup from './signin & signup/signup.js';
+import Eventdetails from "./postdetails/Eventdetails.jsx"
+import Ticket from "./postdetails/ticketdetails.jsx"
+import Clubbing from "./homepage/clubing.js"
+import Concerts from './homepage/concerts.js';
+import Hotelresto from './homepage/hotelresto.js';
+import Spectacles from './homepage/spectacles.js';
+import Sports from './homepage/sports.js';
 import addevent from './components/addevent.jsx'
 import EditUser from './components/edituser.jsx';
 import EditPictureAndCountry from './components/editpictureANDcountry.jsx';
@@ -67,6 +74,72 @@ export default function App() {
           options={{ headerShown: false
           
           }
+        }   
+        />
+
+      <Stack.Screen
+        
+        name="ticketdetails"
+        component={Ticket}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      />
+        <Stack.Screen
+        
+        name="Clubbing"
+        component={Clubbing}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      />
+        <Stack.Screen
+        
+        name="Concerts"
+        component={Concerts}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      />
+      <Stack.Screen
+        
+        name="Hotelresto"
+        component={Hotelresto}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      />
+      <Stack.Screen
+        
+        name="Spectacles"
+        component={Spectacles}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      />
+      <Stack.Screen
+        
+        name="Sports"
+        component={Sports}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      />
+          options={{ headerShown: false
+          
+          }
         }
         
         /> }
@@ -100,6 +173,13 @@ export default function App() {
           component={Signup} 
 
         />
+       <Stack.Screen
+          name="eventdetail"
+          component={Eventdetails} 
+
+        />
+       
+
           
        
          </Stack.Screen> */}
@@ -128,7 +208,7 @@ export default function App() {
           name="Allcategory"
           component={Allcategory}
        options={{headerTitle:"Allcategory",headerTintColor:"#ff5252",headerStyle: {
-        backgroundColor: "#111111", 
+        backgroundColor: "#ececec", 
       },
       headerTitle: () => (
         <Image
