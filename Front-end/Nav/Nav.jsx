@@ -42,7 +42,7 @@ const Nav = () => {
 
     
 
-      <TouchableWithoutFeedback onPress={() =>{ navigation.navigate("EventCntry") , handleIconPress('star')}}>
+      <TouchableWithoutFeedback onPress={() =>{ navigation.navigate("IndexC") , handleIconPress('star')}}>
         <Icon name="star" style={ iconStyle('star')} size={30} />
       </TouchableWithoutFeedback>
 

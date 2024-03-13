@@ -37,7 +37,7 @@ const sequelize = require('../database/index');
       type: DataTypes.STRING(45),
       allowNull: true
     },
-    blockIdblock: {
+   /* blockIdblock: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
@@ -48,7 +48,7 @@ const sequelize = require('../database/index');
     reservationIdreservation: {
       type: DataTypes.INTEGER,
       allowNull: true
-    }
+    }*/
   }, {
     sequelize,
     modelName: 'User',
@@ -60,7 +60,7 @@ const sequelize = require('../database/index');
   
 
 
-  const getOneUser = (email) => {
+  /*const getOneUser = (email) => {
     return User.findOne({where: {emailphone: email}})
   }
   
@@ -91,7 +91,7 @@ const sequelize = require('../database/index');
       });
       }
     
-    module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findadmins} 
+    module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findadmins} */
 
  
 

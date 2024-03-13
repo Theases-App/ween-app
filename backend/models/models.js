@@ -1,8 +1,8 @@
-const sequelize = require('../database/index')
+//const sequelize = require('../database/index')
 
-const {User} = require('./user')
-const Block = require('./block').Block
-const Authorization = require('./authorisation').Authorisation
+//const {User} = require('./user')
+//const Block = require('./block').Block
+/*const Authorization = require('./authorisation').Authorisation
 const Event = require('./event')
 const CategoryDetails = require('./categorydetails')
 const Favorit = require('./favorit');
@@ -13,14 +13,14 @@ const Reports = require('./reports');
 const UserHasNotifications = require('./userhasnotifications');
 const ChatRoom = require('./chatroom');
 const UserHasChat = require('./userhaschat');
-const Message = require('./message');
+const Message = require('./message');*/
 
 
-User.hasOne(Block, { foreignKey: 'userIduser' });
-Block.belongsTo(User, { foreignKey: 'userIduser' });
+//User.hasOne(Block, { foreignKey: 'userIduser' });
+//Block.belongsTo(User, { foreignKey: 'userIduser' });
 
-User.hasMany(Authorization);
-Authorization.belongsTo(User, { foreignKey: 'userIduser' });
+//User.hasMany(Authorization);
+//Authorization.belongsTo(User, { foreignKey: 'userIduser' });
 
 // User.hasMany(Event, { foreignKey: 'userIduser' });
 // Event.belongsTo(User, { foreignKey: 'userIduser' });
@@ -34,22 +34,22 @@ Authorization.belongsTo(User, { foreignKey: 'userIduser' });
 // Event.hasMany(Notifications, { foreignKey: 'event_idevent' });
 // Notifications.belongsTo(Event, { foreignKey: 'event_idevent' });
 
-CategoryDetails.hasMany(Reservation, { foreignKey: 'categorydetails_idcategorydetails' });
+/*CategoryDetails.hasMany(Reservation, { foreignKey: 'categorydetails_idcategorydetails' });
 Reservation.belongsTo(CategoryDetails, { foreignKey: 'categorydetails_idcategorydetails' });
 
 Reservation.hasOne(Payment, { foreignKey: 'categorydetails_has_user_idCategoryUser' });
 Payment.belongsTo(Reservation, { foreignKey: 'categorydetails_has_user_idCategoryUser' });
 
 User.hasMany(Reports, { foreignKey: 'userIduser' });
-Reports.belongsTo(User, { foreignKey: 'userIduser' });
+Reports.belongsTo(User, { foreignKey: 'userIduser' });*/
 
-User.belongsToMany(Notifications, { through: UserHasNotifications, foreignKey: 'user_iduser' });
-Notifications.belongsToMany(User, { through: UserHasNotifications, foreignKey: 'notifications_idnotification' });
+//User.belongsToMany(Notifications, { through: UserHasNotifications, foreignKey: 'user_iduser' });
+//Notifications.belongsToMany(User, { through: UserHasNotifications, foreignKey: 'notifications_idnotification' });
 
 // Event.hasOne(ChatRoom, { foreignKey: 'event_idevent' });
 // ChatRoom.belongsTo(Event, { foreignKey: 'event_idevent' });
 
-User.belongsToMany(ChatRoom, { through: UserHasChat, foreignKey: 'user_iduser' });
+/*User.belongsToMany(ChatRoom, { through: UserHasChat, foreignKey: 'user_iduser' });
 ChatRoom.belongsToMany(User, { through: UserHasChat, foreignKey: 'chat_idchat' });
 
 User.hasMany(Message, { foreignKey: 'user_iduser' });
@@ -57,14 +57,14 @@ Message.belongsTo(User, { foreignKey: 'user_iduser' });
 
 ChatRoom.hasMany(Message, { foreignKey: 'chatRoom_idchat' });
 Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });
-
-sequelize.sync()
+*/
+/*sequelize.sync()
 .then(()=>{
     console.log("done")
 })
 .catch((err)=>{
     console.log(err)
-})
+})*/
 
 
 

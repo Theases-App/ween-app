@@ -1,6 +1,6 @@
 const {addToken, deleteToken, getToken} = require('../models/authorisation')
 
-const saveToken = (req, res) => {
+const saveToken = (req,res) => {
     const id = req.params.id
     const token = req.body.token
     addToken({token: token, userIduser: id})
@@ -23,7 +23,7 @@ const checkToken = (req, res) => {
     })
 }
 
-const destroyToken = async (req, res) => {
+const destroyToken = async (req,res) => {
     const id = req.params.id
     try{
         deleteToken(id)
