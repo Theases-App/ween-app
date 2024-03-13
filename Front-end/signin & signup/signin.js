@@ -54,7 +54,8 @@ const  author = async (id, token, role) => {
             } else {
               AsyncStorage.setItem("id",toString(id))
               if (role === "client") {
-                // navigation.navigate("/");
+                navigation.navigate("home",{id:id});
+                console.log(id,"idddd");
                 console.log("done")
               }
       }})

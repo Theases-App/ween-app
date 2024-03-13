@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import { IP } from '../ip.json';
@@ -52,9 +52,9 @@ const Wishlist = () => {
     <View style={styles.container}>
       {events.map((event, index) => (
         <View key={index} style={styles.itemContainer}>
-          <Text>{event.eventname}</Text>
-          <Text>{event.eventcategory}</Text>
-          <Image>{event.image}</Image>
+          <Text style={styles.eventName}>{event.eventname}</Text>
+          <Text style={styles.eventCategory}>{event.eventcategory}</Text>
+          <Image source={{ uri: event.image }} style={styles.image} />
         </View>
       ))}
     </View>
@@ -71,6 +71,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0', 
     padding: 10,
     marginVertical: 5,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
+  eventName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  eventCategory: {
+    fontSize: 16,
+    color: 'gray',
+    marginBottom: 5,
+  },
+  image: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
     borderRadius: 5,
   },
 });

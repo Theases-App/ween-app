@@ -36,9 +36,9 @@ export default function Home() {
         <Search />
 
         <Homepage/>
-       {/* <Eventdetails/> */}
+       { <Eventdetails/> }
 =======
-        {/* <Homepage/> */}
+        { <Homepage/> }
         <Map/>
 
         <Nav />

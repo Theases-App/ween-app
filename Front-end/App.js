@@ -39,7 +39,36 @@ export default function App() {
 
 <NavigationContainer>
       <Stack.Navigator>
-      {/* <Stack.Screen
+      { <Stack.Screen
+          name="signup"
+          component={Signup} 
+
+        /> }
+      { <Stack.Screen
+          name="signin"
+          component={Signin} 
+
+        /> }
+       
+          {/* <Stack.Screen
+        
+        name="ticketdetails"
+        component={Ticket}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      /> */}
+             {/* <Stack.Screen
+          name="IndexC"
+          component={IndexC}
+          options={{ headerShown: false
+
+          }
+        }
+        /> */}
+      <Stack.Screen
         
         name="home"
         component={Home}
@@ -48,24 +77,16 @@ export default function App() {
         }
       }
       
-      /> */}
-   
-          {/* <Stack.Screen name="Edit" component={EditUser} >
+      />
+{/*    
+          <Stack.Screen name="Edit" component={EditUser} >
          
           
        
        </Stack.Screen> */}
         
-      {/* <Stack.Screen
-          name="signin"
-          component={Signin} 
-
-        /> */}
-      {/* <Stack.Screen
-          name="signup"
-          component={Signup} 
-
-        /> */}
+     
+    
       
         {/* { <Stack.Screen
         
@@ -77,16 +98,7 @@ export default function App() {
         }   
         />
 
-      <Stack.Screen
-        
-        name="ticketdetails"
-        component={Ticket}
-        options={{ headerShown: false
-        
-        }
-      }
-      
-      />
+    
         <Stack.Screen
         
         name="Clubbing"
@@ -143,14 +155,7 @@ export default function App() {
         }
         
         /> }
-        <Stack.Screen
-          name="IndexC"
-          component={IndexC}
-          options={{ headerShown: false
-
-          }
-        }
-        />
+ 
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
@@ -197,10 +202,10 @@ export default function App() {
           
        
           </Stack.Screen> */}
-          <Stack.Screen name='Your Favorites' component={Wishlist}>
+          {/* <Stack.Screen name='Your Favorites' component={Wishlist}>
 
           </Stack.Screen>
-         
+          */}
 
 
        
