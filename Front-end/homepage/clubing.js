@@ -3,9 +3,10 @@ import { View,FlatList,ViewPropTypes,Text,ScrollView,TouchableOpacity,Image,Pres
  import{useEffect,useState,useRef} from 'react';
 import axios from 'axios';
 import {IP} from "../ip.json"
-
+import { useNavigation } from '@react-navigation/native'
 
 const clubbing=()=>{
+  const Navigation = useNavigation()
     const [refresh, setRefresh] = useState(true);
     const [data,setData]=useState([])
     const clubing=[]
@@ -50,9 +51,9 @@ return (
          <ScrollView>
 
 
-<TouchableOpacity style={{justifyContent:"space-between",padding:5}}>
+<TouchableOpacity style={{justifyContent:"space-between",padding:5}} onPress={()=>{Navigation.navigate('eventdetail', {item})}}>
 
-<View style={{backgroundColor:"black",borderColor:"black",borderRadius:20,height:270,width:420,marginTop:-5}} >  
+<View style={{backgroundColor:"#111111",borderColor:"black",borderRadius:20,height:270,width:420,marginTop:-5}} >  
 
        <Image style={{
         height:250,
@@ -63,7 +64,7 @@ return (
        
         }}source={{uri:item.image}}/>
 
-  <View style={{backgroundColor:"black",borderColor:"black",marginTop:-60,height:70,borderRadius:20}}>
+  <View style={{backgroundColor:"#111111",borderColor:"black",marginTop:-60,height:70,borderRadius:20}}>
 
       <Text style={{color:"#ff5252",
              fontFamily:"Inter-Black",
@@ -74,7 +75,7 @@ return (
        }}>{item.eventname}</Text>
 
 
-        <Text style={{color:"white",
+        <Text style={{color:"#111111",
             fontFamily:"Inter-Black",
             fontSize:20,
             marginLeft:21,
@@ -83,7 +84,7 @@ return (
          }}>{item.placename}</Text>
 
 
-  <Text style={{color:"white",
+  <Text style={{color:"#111111",
            marginLeft:310,
            marginTop:-24,
            fontFamily:"Inter-Black",
