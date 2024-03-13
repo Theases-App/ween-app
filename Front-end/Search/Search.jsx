@@ -14,7 +14,7 @@ function Search() {
     <View style={{ position: 'absolute', top:60, right: 20 }}> 
      <View >
       <TouchableOpacity onPress={()=>{navigation.navigate("Allcategory")}}>
-       <Icon name="search" style={{ color: 'black' }} size={30} />
+       <Icon name="search" style={{ color: 'white' }} size={30} />
       </TouchableOpacity>
       </View>
       </View>

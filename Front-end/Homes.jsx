@@ -7,6 +7,8 @@ import axios from 'axios';
 import { IP } from './ip.json';
 import Homepage from './homepage/homepage.js';
 import Map from './Map/Map.jsx'
+ import Addevent from './components/addevent.jsx'
+ import EditPictureAndCountry  from './components/editpictureANDcountry.jsx'
 export default function Home() {
   const [date, setdate] = useState([]);
 
@@ -23,14 +25,18 @@ export default function Home() {
 
   return (
    
-      <View style={styles.viewstyle1}>
+      <View style={styles.viewstyle1}>  
         <View style={styles.viewstyle}>
           <Image source={require("./idk/image.png")} style={styles.img} />
          
         </View>
         <Search />
         {/* <Homepage/> */}
+
         <Map/>
+        {/* <Addevent/> */}
+        {/* <EditPictureAndCountry /> */}
+
         <Nav />
       </View>
     
@@ -40,7 +46,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   viewstyle1: {
-    backgroundColor: "white",
+    backgroundColor: "#430A5D",
     flex: 1,
     justifyContent: "center",
     
