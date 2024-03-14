@@ -17,6 +17,8 @@ import Concerts from './homepage/concerts.js';
 import Hotelresto from './homepage/hotelresto.js';
 import Spectacles from './homepage/spectacles.js';
 import Sports from './homepage/sports.js';
+import Addevent from './components/addevent.jsx';
+import EditUser from './components/edituser.jsx';
 const Stack= createNativeStackNavigator()
 
 import Index from './signin & signup/index.js';
@@ -31,6 +33,16 @@ export default function App() {
 
 <NavigationContainer>
       <Stack.Navigator>
+
+      <Stack.Screen
+        
+        name="Addevent"
+        component={Addevent}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
       
         <Stack.Screen
         
@@ -42,7 +54,7 @@ export default function App() {
         }   
         />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         
         name="ticketdetails"
         component={Ticket}
@@ -51,7 +63,7 @@ export default function App() {
         }
       }
       
-      />
+      /> */}
         <Stack.Screen
         
         name="Clubbing"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import Nav from './Nav/Nav.jsx';
 import Search from './Search/Search.jsx';
 import Allcategory from './Search/Allcategory.jsx';
@@ -38,12 +38,8 @@ export default function Home() {
 
         <Homepage/>
        {/* <Eventdetails/> */}
-
-       
-
-        {/* <Map/> */}
-        {/* <Addevent/> */}
-        {/* <EditPictureAndCountry /> */}
+        {/* <Homepage/> */}
+        <Map/>
 
         <Nav />
       </View>

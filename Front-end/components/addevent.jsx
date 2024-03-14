@@ -72,7 +72,7 @@ const Addevent = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Start an Event</Text>
+      <Text style={styles.title}>New Event</Text>
       
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <TextInput
@@ -86,7 +86,7 @@ const Addevent = () => {
           style={styles.input}
           onPress={() => selectInput("eventcategory")}
         >
-          <Text>{eventcategory || "Select Event Category"}</Text>
+          <Text >{eventcategory || "Select Event Category"}</Text>
         </TouchableOpacity>
 
         <TextInput
@@ -108,7 +108,7 @@ const Addevent = () => {
           style={styles.input}
           onPress={() => selectInput("country")}
         >
-          <Text>{country || "Select Country"}</Text>
+          <Text style={{color:"#111111" }}>{country || "Select Country"}</Text>
         </TouchableOpacity>
 
         <TextInput
@@ -118,14 +118,14 @@ const Addevent = () => {
           onChangeText={(val) => setLocation(val)}
         />
 
-
 <Map/>
+     <TouchableOpacity style={styles.addButton} onPress={add}>
+        <Text style={styles.buttonText}>Add Event</Text>
+      </TouchableOpacity>
 
       </ScrollView>
       
-      <TouchableOpacity style={styles.addButton} onPress={add}>
-        <Text style={styles.buttonText}>Add Event</Text>
-      </TouchableOpacity>
+      
 
       <Modal
         animationType="slide"
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
-    backgroundColor: "#ffffff", 
+    backgroundColor: "#111111", 
     position: 'relative', 
   },
   scrollContainer: {
@@ -174,24 +174,25 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1, 
-    borderColor: "#000000", 
-    color: "#000000", 
-    padding: 8,
+    borderColor: "#ffffff", 
+    color: "#111111",
+    padding: 9,
     margin: 10,
-    width: 250,
+    width: 350,
     borderRadius: 20,
+    backgroundColor:"#ececec"
   },
   title: {
-    position: 'absolute', 
     top: 50,
-    fontSize: 20,
-    color: "#000000", 
+    fontSize: 40,
+    color: "#ececec", 
+    fontFamily:'sans-serif-light',
   },
   addButton: {
     backgroundColor: "#ff5252",
     padding: 10,
     borderRadius: 20,
-    marginBottom: 80,
+    width:"40%"
   },
   buttonText: {
     color: "#ffffff", 
@@ -205,7 +206,8 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: "#6F6C6A",
+    opacity:0.95,
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
@@ -219,6 +221,7 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   optionItem: {
+    color:"#ececec",
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#CCCCCC",
@@ -229,7 +232,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   cancelButtonText: {
-    color: "#000000",
+    color: "#ececec",
   }
 });
 
