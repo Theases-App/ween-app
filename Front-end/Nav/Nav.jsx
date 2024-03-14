@@ -14,7 +14,7 @@ const Nav = () => {
 
 
   const iconStyle = (iconName) => ({
-    color: selectedIcon === iconName ? '#D68910' : 'white',
+    color: selectedIcon === iconName ? 'red' : 'white',
   });
     return (
       <View

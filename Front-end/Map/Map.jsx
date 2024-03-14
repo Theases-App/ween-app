@@ -51,14 +51,17 @@ const Waiting_Driver_Screen = () => {
         <MapView style={styles.map} initialRegion={initialRegion}>
           {currentLocation && (
             <Marker
-              coordinate={{
-                latitude: currentLocation.latitude,
-                longitude: currentLocation.longitude,
-              }}
+              coordinate={[ item.map,
+                item.map2]
+                
+              }
               title="your location
               "
             />
           )}
+
+
+          
         </MapView>
       )}
     </View>
