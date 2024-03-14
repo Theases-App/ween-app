@@ -7,12 +7,10 @@ import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Button from 'react-native-button'
 import { useNavigation } from '@react-navigation/native'
-import Map from '../Map/Map.jsx'
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 // const windowWidth = Dimensions.get("window").width;
-// const windowHeight = Dimensions.get("window").height;
-
+// const windowHeight = Dimensions.get("window").heigh
 
 
 

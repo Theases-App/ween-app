@@ -34,7 +34,7 @@ const Nav = () => {
     >
      
 
-      <TouchableWithoutFeedback onPress={() => handleIconPress('heart')}>
+      <TouchableWithoutFeedback onPress={() =>{navigation.navigate("Addevent"), handleIconPress('heart')}}>
         <Icon name="heart" style={iconStyle('heart')} size={30} />
       </TouchableWithoutFeedback>
 

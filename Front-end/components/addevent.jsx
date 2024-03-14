@@ -1,9 +1,16 @@
-import React, { useState } from "react";
-import { View, TextInput, TouchableOpacity, StyleSheet, Text, ScrollView, Modal } from "react-native";
+import React, { useState ,useEffect} from "react";
+import { View, TextInput, TouchableOpacity, StyleSheet,Dimensions, Text, ScrollView, Modal } from "react-native";
 import axios from "axios";
 import { IP } from "../ip.json";
-import Map from '../Map/Map.jsx'
+import * as Location from "expo-location";
+import MapView, { Marker } from "react-native-maps";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 const Addevent = () => {
+
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [initialRegion, setInitialRegion] = useState(null);
+
   const [eventname, setEventName] = useState("");
   const [eventcategory, setEventCategory] = useState("");
   const [image, setImage] = useState("");
@@ -13,11 +20,42 @@ const Addevent = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [options, setOptions] = useState([]);
   const [selectedInput, setSelectedInput] = useState("");
-
-  const eventCategories = ["Sports", "Concerts", "Hotel & resto", "Clubbing", "Spectacles"];
+  const [lant,setLant]=useState(0)
+  const [long,setLong]=useState(0)
+  const eventCategories = ["sports", "concerts", "hotel & resto", "clubbing", "spectacles"];
   const countries = ["Hammamet", "Tunis", "Sousse", "Sfax", "Djerba"];
 
-  const add = () => {
+  useEffect(() => {
+    const getLocation = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.log("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setCurrentLocation(location.coords);
+     
+
+      setInitialRegion({
+        latitude:setLant(location.coords.latitude),
+        longitude: setLong(location.coords.longitude),
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
+      });
+
+      
+
+      console.log("Latitude:", location.coords.latitude);
+      console.log("longitude:", location.coords.longitude);
+    
+      
+    };
+    console.log(lant,"hetha set lant")
+    console.log(long,"hetha set");
+    getLocation();
+  }, []);
+  const add = (id) => {
     const eventData = {
       eventname: eventname,
       eventcategory: eventcategory,
@@ -25,10 +63,12 @@ const Addevent = () => {
       price: price,
       country: country,
       location: location,
+      map:lant,
+      map2:long
     };
 
     axios
-      .post(`http://${IP}:8080/event/add/2`, eventData)
+      .post(`http://${IP}:8080/event/add/${id}`, eventData)
       .then((res) => {
         console.log("Event added successfully");
         setEventName("");
@@ -66,15 +106,18 @@ const Addevent = () => {
     setModalVisible(false);
   };
 
+
   const cancelSelection = () => {
     setModalVisible(false);
   };
 
   return (
     <View style={styles.container}>
+      
       <Text style={styles.title}>New Event</Text>
       
       <ScrollView contentContainerStyle={styles.scrollContainer}>
+      
         <TextInput
           style={styles.input}
           placeholder="Event name"
@@ -118,15 +161,34 @@ const Addevent = () => {
           onChangeText={(val) => setLocation(val)}
         />
 
-<Map/>
+
+
+
+      {initialRegion && (
+        <MapView style={styles.map} initialRegion={initialRegion}>
+          {currentLocation && (
+            <Marker
+              coordinate={{
+                latitude: currentLocation.latitude,
+                longitude: currentLocation.longitude,
+              }}
+              title="your location
+              "
+            />
+          )}
+        </MapView>
+      )}
+   
+
+
+
+<View style={{marginTop:"90%"}}>
      <TouchableOpacity style={styles.addButton} onPress={add}>
         <Text style={styles.buttonText}>Add Event</Text>
       </TouchableOpacity>
 
+</View>
       </ScrollView>
-      
-      
-
       <Modal
         animationType="slide"
         transparent={true}
@@ -154,6 +216,7 @@ const Addevent = () => {
         </View>
       </Modal>
     </View>
+
   );
 };
 
@@ -162,7 +225,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
+   
     backgroundColor: "#111111", 
     position: 'relative', 
   },
@@ -170,7 +234,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 100, 
+    paddingTop: 200, 
   },
   input: {
     borderWidth: 1, 
@@ -191,8 +255,10 @@ const styles = StyleSheet.create({
   addButton: {
     backgroundColor: "#ff5252",
     padding: 10,
+    marginTop:-300,
     borderRadius: 20,
     width:"40%"
+    
   },
   buttonText: {
     color: "#ffffff", 
@@ -233,7 +299,23 @@ const styles = StyleSheet.create({
   },
   cancelButtonText: {
     color: "#ececec",
-  }
+  },
+  con: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  
+    borderColor:"red",
+    marginTop:200
+  },
+  
+  map: {
+    width: "100%",
+    height: "40%",
+    marginBottom: 0 ,
+    borderRadius: 20,
+    
+  },
 });
 
 export default Addevent;

@@ -34,16 +34,6 @@ export default function App() {
 <NavigationContainer>
       <Stack.Navigator>
 
-      <Stack.Screen
-        
-        name="Addevent"
-        component={Addevent}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
-      
         <Stack.Screen
         
           name="home"
@@ -53,6 +43,14 @@ export default function App() {
           }
         }   
         />
+        
+       <Stack.Screen
+        
+        name="Addevent"
+        component={Addevent}
+        options={{ headerShown: false}}   
+      />
+     
 
       {/* <Stack.Screen
         

@@ -81,7 +81,6 @@ const homepage = () => {
 
 
 
-
                                                 <TouchableOpacity style={{ justifyContent: "space-between", padding: 5 }}  onPress={()=>{Navigation.navigate('eventdetail', {item})}} >
 
                                                       <View style={{ backgroundColor: "#ececec", borderColor: "black", borderRadius: 20, height: 270, width: 420, marginTop: -5 }} >
