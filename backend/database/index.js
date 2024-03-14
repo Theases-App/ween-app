@@ -20,13 +20,13 @@ sequelize.authenticate()
     console.log(err,'no connection');
 })
 
-/*sequelize.sync()
-.then(()=>{
+ sequelize.sync()
+ .then(()=>{
     console.log("done")
-})
+ })
 .catch((err)=>{
-    console.log(err)
+     console.log(err)
 })
 
-*/
+
 module.exports = sequelize

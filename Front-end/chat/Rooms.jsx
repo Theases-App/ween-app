@@ -1,53 +1,38 @@
 import axios from "axios"
 import React,{useState, useEffect } from "react"
-import {StyleSheet,View,Text, TouchableOpacity} from "react-native"
+import {View,Text, TouchableOpacity} from "react-native"
 import { useNavigation } from "@react-navigation/native"
-import {IP} from "../ip.json"
+import {IP} from '../ip.json'
+import UsersOfRoom from "./UsersOfRoom.jsx"
 
-export default function Rooms(){
+export default function Rooms() {
     const [rooms,setRooms]=useState([])
+    const [show,setShow]=useState(0)
     const navigation=useNavigation()
     const UserIduser=1
-    console.log(IP)
     useEffect(()=>{
         axios.get(`http://${IP}:8080/chat/rooms/${UserIduser}`)
         .then((res)=>{
             setRooms(res.data);
+            console.log(res.data);
         })
         .catch((err)=>{
             console.log(err)
         })
     },[])
-    console.log(rooms,"rooms");
-  
 
-
-
-    return(
+    const handleShow=(ids)=>{
+        ids==show?setShow(0):setShow(ids)
+    }
+    return (
         <View>
-        {console.log(rooms,"r")}
-        {rooms.map((el,i)=>(
-            <TouchableOpacity onPress={()=>{navigation.navigate("Chat",{chatRoomId:el.id})}} key={i}>
-        <Text style={styles.text}>{el.event.eventname}</Text>
-         </TouchableOpacity>
-    ))}
+            {rooms?.map((el,i)=>(
+                <TouchableOpacity onPress={()=>{navigation.navigate("Chat",{idRooms:el.id})}} key={i}>
+                    <Text>Event Title :{el.event.eventname}</Text>
+                    <TouchableOpacity onPress={()=>{handleShow(el.id)}} key={i}><Text>see Users</Text></TouchableOpacity>  
+                    {(show==el.id)&&<UsersOfRoom roomId={el.eventIdevent}/>}
+                </TouchableOpacity>           
+             ))}
         </View>
-            
-
-
-    
     )
 }
-
-const styles = StyleSheet.create({
-   
-  
-    text: {
-      fontSize: 12,
-      paddingTop:100,
-      paddingLeft:100,
-      fontWeight: 'bold',
-      color:"black"
-    }
-  
-  })
