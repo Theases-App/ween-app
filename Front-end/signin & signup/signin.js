@@ -117,7 +117,7 @@ const  author = async (id, token, role) => {
     
      
     <View  style={{top:5 ,height:100,width:150}}>
-      <Button  onPress={()=>{{handleSubmit(obj) ,navigation.navigate("home",{id:id})}}}
+      <Button  onPress={()=>{{handleSubmit(obj) ,navigation.navigate("home")}}}
        style={{borderColor:"black"}}
       color="#ff5252"
       title="Confirm "
