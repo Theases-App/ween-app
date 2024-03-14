@@ -9,7 +9,8 @@ import { useNavigation } from '@react-navigation/native'
 
 const Postdetails=({route})=>{
   
-const item =route.params.item
+const item = route.params.item
+
 const Navigation = useNavigation()
 
   const [selectedIcon, setSelectedIcon] = useState('');
@@ -115,7 +116,7 @@ return (
 </View>
 
 <View style={{backgroundColor:"#ececec",borderColor:"#ececec",marginTop:0,height:490,borderRadius:5,width:420}}>
- <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>* {item.description}</Text>
+ <Text style={{marginTop:10,fontSize:20,marginLeft:20,marginRight:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>* {item.description}</Text>
 
 
 
@@ -134,7 +135,7 @@ return (
 <View style={{marginTop:22,marginLeft:10,color:"black"}}>
 <Icon name="phone" style={{color:'black'}} size={20} />
 </View>
-<Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ "20 048 441"}</Text>
+<Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ item.phonenumber}</Text>
 
 
 

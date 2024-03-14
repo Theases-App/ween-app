@@ -41,7 +41,7 @@ const sequelize = require('../database/index');
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'Block',
+        model: 'block',
         key: 'idblock'
       }
     },

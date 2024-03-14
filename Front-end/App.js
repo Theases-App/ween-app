@@ -17,6 +17,8 @@ import Concerts from './homepage/concerts.js';
 import Hotelresto from './homepage/hotelresto.js';
 import Spectacles from './homepage/spectacles.js';
 import Sports from './homepage/sports.js';
+import Noticket from './postdetails/Notickets.jsx';
+import Pay from './postdetails/Pay.jsx';
 const Stack= createNativeStackNavigator()
 
 import Index from './signin & signup/index.js';
@@ -56,10 +58,7 @@ export default function App() {
         
         name="Clubbing"
         component={Clubbing}
-        options={{ headerShown: false
-        
-        }
-      }
+        options={{ headerShown:false}}
       
       />
         <Stack.Screen
@@ -92,7 +91,8 @@ export default function App() {
       }
       
       />
-      <Stack.Screen
+
+       <Stack.Screen
         
         name="Sports"
         component={Sports}
@@ -103,8 +103,8 @@ export default function App() {
       
       />
         <Stack.Screen
-          name="IndexC"
-          component={IndexC}
+          name="pay"
+          component={Pay}
           options={{ headerShown: false
 
           }
@@ -125,6 +125,7 @@ export default function App() {
         <Stack.Screen
           name="signin"
           component={Signin} 
+          
 
         />
         <Stack.Screen
@@ -135,10 +136,19 @@ export default function App() {
        <Stack.Screen
           name="eventdetail"
           component={Eventdetails} 
-
+          options={{ headerShown: false
+        
+          }
+        }
         />
-       
-
+        <Stack.Screen
+          name="noticket"
+          component={Noticket} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
         <Stack.Screen
           name="Allcategory"
           component={Allcategory}

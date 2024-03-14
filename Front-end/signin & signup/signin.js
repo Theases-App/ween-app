@@ -8,28 +8,30 @@
  import { useNavigation } from '@react-navigation/native';
  import AsyncStorage from '@react-native-async-storage/async-storage';
  import {IP} from "../ip.json"
+ import { useContext } from 'react';
+ import Usecontext from "../UseContext.js"
+import Idcontext from '../UseContext.js';
 
  export default function Signin() {
+
   const navigation=useNavigation()
-   
+
   const [email, setEmail] = useState("");
   const [psw, setPsw] = useState("");
   const [wrong, setWrong] = useState(true);
   const [refresh, setRefresh] = useState(true);
-
- 
-  // const navigation = useNavigation();
+  const [myid,setMyid]=useState('')
 
 const obj={emailphone:email,password:psw}
 
   const handleSubmit = async (data) => {
     if (data.emailphone === "ween@rbk.tn" && data.password === "12345678") {
-      // navigation.navigate("/admin");
+      navigation.navigate("/admin");
       console.log("welcome to admin dashboard")
     } else {
       await axios.post(`http://${IP}:8080/user/signin`, data)
         .then((result) => {
-         console.log(result.data)
+         console.log(result.data.iduser)
           author(result.data.iduser, result.data.token, result.data.role);
           console.log("entered")
         })
@@ -39,25 +41,26 @@ const obj={emailphone:email,password:psw}
         });
     }
   };
-
+  
 const  author = async (id, token, role) => {
-    const data = { token: token };
+    const data = { token: token, user_Iduser:id }
     await axios.post(`http://${IP}:8080/token/add/${id}`, data)
       .then(() => {
+        setMyid(id)
         axios.get(`http://${IP}:8080/block/check/${id}`)
-          .then(async(result) => {
+          .then(async (result) => {
             console.log(result);
             if (result.data) {
               alert(
                 "you are blocked by the admin, please contact with him on tel: 20 048 441"
               );
-            } else {
-              AsyncStorage.setItem("id",toString(id))
-              if (role === "client") {
-                // navigation.navigate("/");
+            }  if (role === "client") {
+              console.log("test");
+                await AsyncStorage.setItem("id",JSON.stringify(id))
+                navigation.navigate("home")
                 console.log("done")
               }
-      }})
+      })
           .catch((err) => {
             console.log(err);
           });
@@ -68,6 +71,7 @@ const  author = async (id, token, role) => {
   } 
  
   return (
+
 
    
     <View style={{justifyContent:'center',alignItems:"center"}}>
@@ -114,8 +118,7 @@ const  author = async (id, token, role) => {
                   />
                   )
                   }
-    
-     
+
     <View  style={{top:5 ,height:100,width:150}}>
       <Button  onPress={()=>handleSubmit(obj)}
        style={{borderColor:"black"}}
@@ -158,6 +161,10 @@ const  author = async (id, token, role) => {
       
      </View>
      </ScrollView>
+     <>
+     <Idcontext.Provider value={myid}>
+    </Idcontext.Provider>
+    </>
      </View>
   );
 
