@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
-import EventCntry from './country/EventCntry.js';
-import IndexC from './country/IndexC.js';
+import EventCntry from './country/EventCntry.jsx';
+import IndexC from './country/IndexC.jsx';
 import Nav from './Nav/Nav.jsx';
 import Search from './Search/Search.jsx';
 import Home from './Homes.jsx';
@@ -17,6 +17,8 @@ import Concerts from './homepage/concerts.js';
 import Hotelresto from './homepage/hotelresto.js';
 import Spectacles from './homepage/spectacles.js';
 import Sports from './homepage/sports.js';
+import Addevent from './components/addevent.jsx';
+import EditUser from './components/edituser.jsx';
 const Stack= createNativeStackNavigator()
 
 import Index from './signin & signup/index.js';
@@ -31,6 +33,16 @@ export default function App() {
 
 <NavigationContainer>
       <Stack.Navigator>
+
+      <Stack.Screen
+        
+        name="Addevent"
+        component={Addevent}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
       
         <Stack.Screen
         
@@ -143,7 +155,7 @@ export default function App() {
           name="Allcategory"
           component={Allcategory}
        options={{headerTitle:"Allcategory",headerTintColor:"#ff5252",headerStyle: {
-        backgroundColor: "#ececec", 
+        backgroundColor: "#111111", 
       },
       headerTitle: () => (
         <Image

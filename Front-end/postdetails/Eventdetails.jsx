@@ -1,13 +1,60 @@
-import { View,FlatList,ViewPropTypes,Text,ScrollView,TouchableOpacity,Image,Pressable,TouchableWithoutFeedback} from 'react-native';
- import React from 'react'; 
+import { View,FlatList,ViewPropTypes,Text,ScrollView,StyleSheet,TouchableOpacity,Image,Pressable,TouchableWithoutFeedback} from 'react-native';
+
  import{useEffect,useState,useRef} from 'react';
 import axios from 'axios';
+
 import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Button from 'react-native-button'
 import { useNavigation } from '@react-navigation/native'
+import Map from '../Map/Map.jsx'
+import * as Location from "expo-location";
+import MapView, { Marker } from "react-native-maps";
+// const windowWidth = Dimensions.get("window").width;
+// const windowHeight = Dimensions.get("window").height;
+
+
+
+
 
 const Postdetails=({route})=>{
+   const [currentLocation, setCurrentLocation] = useState(null);
+   const [initialRegion, setInitialRegion] = useState(null);
+ 
+   useEffect(() => {
+     const getLocation = async () => {
+       let { status } = await Location.requestForegroundPermissionsAsync();
+       if (status !== "granted") {
+         console.log("Permission to access location was denied");
+         return;
+       }
+ 
+       let location = await Location.getCurrentPositionAsync({});
+       setCurrentLocation(location.coords);
+ 
+       setInitialRegion({
+         latitude: location.coords.latitude,
+         longitude: location.coords.longitude,
+         latitudeDelta: 0.005,
+         longitudeDelta: 0.005,
+       });
+ 
+       
+       console.log("Latitude:", location.coords.latitude);
+       console.log("longitude:", location.coords.longitude);
+ 
+       
+     };
+ 
+     getLocation();
+   }, []);
+
+
+
+
+
+
+
   
 const item =route.params.item
 const Navigation = useNavigation()
@@ -115,14 +162,33 @@ return (
 </View>
 
 <View style={{backgroundColor:"#ececec",borderColor:"#ececec",marginTop:0,height:490,borderRadius:5,width:420}}>
- <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>* {item.description}</Text>
+ <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>*{item.description}</Text>
+
+
+
+
+<View style={styles.container}>
+       {initialRegion && (
+         <MapView style={styles.map} initialRegion={initialRegion}>
+           {currentLocation && (
+             <Marker
+               coordinate={{
+                 latitude: currentLocation.latitude,
+                 longitude: currentLocation.longitude,
+               }}
+               title="your location
+               "
+             />
+           )}
+         </MapView>
+       )}
+     </View>
 
 
 
 
 
 
-{/* map */}
 
 
 
@@ -164,6 +230,21 @@ return (
 
     
 }
+const styles = StyleSheet.create({
+   container: {
+     flex: 1,
+     alignItems: "center",
+     justifyContent: "center",
+    paddingTop:250
+   },
+   map: {
+     width: "70%",
+     height: "100%",
+     paddingBottom:200,
+     marginBottom: 400,
+     borderRadius: 20,
+   },
+ });
 
 export default Postdetails;
 

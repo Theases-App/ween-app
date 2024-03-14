@@ -14,12 +14,12 @@ const Nav = () => {
 
 
   const iconStyle = (iconName) => ({
-    color: selectedIcon === iconName ? 'red' : 'black',
+    color: selectedIcon === iconName ? '#D68910' : 'white',
   });
     return (
       <View
       style={{
-        backgroundColor: '',
+        // backgroundColor: 'white',
         flexDirection: 'row',
         gap: 60,
         alignItems: 'center',
