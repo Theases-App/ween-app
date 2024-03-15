@@ -41,7 +41,7 @@ const sequelize = require('../database/index');
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'Block',
+        model: 'block',
         key: 'idblock'
       }
     },
@@ -60,13 +60,16 @@ const sequelize = require('../database/index');
   
 
 
-  /*const getOneUser = (email) => {
-    return User.findOne({where: {emailphone: email}})
+
+  const getOneUser = (iduser) => {
+    return User.findOne({where: {emailphone: iduser}})
+
   }
   
   const addUser = (data) => {
     return User.create(data)
   }
+  
   
   const editUser = (id, data) => {
     return User.update(data, {where: {iduser: id}})
@@ -90,8 +93,12 @@ const sequelize = require('../database/index');
         }
       });
       }
+      const deleteUser=(id)=>{
+        return User.destroy({where :{iduser:id}})
+      }
     
-    module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findadmins} */
+
+    module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findadmins,deleteUser} 
 
  
 

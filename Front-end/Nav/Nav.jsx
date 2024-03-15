@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {  TouchableWithoutFeedback,StyleSheet, View } from 'react-native';
 import {useNavigation} from'@react-navigation/native'
@@ -14,12 +13,12 @@ const Nav = () => {
 
 
   const iconStyle = (iconName) => ({
-    color: selectedIcon === iconName ? '#ff5252' : 'white',
+    color: selectedIcon === iconName ? 'red' : 'white',
   });
     return (
       <View
       style={{
-        backgroundColor: '#111111',
+        // backgroundColor: 'white',
         flexDirection: 'row',
         gap: 60,
         alignItems: 'center',
@@ -34,7 +33,7 @@ const Nav = () => {
     >
      
 
-      <TouchableWithoutFeedback onPress={() => handleIconPress('heart')}>
+      <TouchableWithoutFeedback onPress={() =>{navigation.navigate("Addevent"), handleIconPress('heart')}}>
         <Icon name="heart" style={iconStyle('heart')} size={30} />
       </TouchableWithoutFeedback>
 
@@ -54,7 +53,7 @@ const Nav = () => {
         <Icon name="bell" style={iconStyle('bell')} size={30} />
       </TouchableWithoutFeedback>
 
-      <TouchableWithoutFeedback onPress={() =>navigation.navigate("signup")  }>
+      <TouchableWithoutFeedback onPress={() =>navigation.navigate("signin")  }>
         <Icon name="user" style={iconStyle('user')} size={30} />
       </TouchableWithoutFeedback>
     </View>

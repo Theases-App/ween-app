@@ -3,7 +3,7 @@ const {addToken, deleteToken, getToken} = require('../models/authorisation')
 const saveToken = (req,res) => {
     const id = req.params.id
     const token = req.body.token
-    addToken({token: token, userIduser: id})
+    addToken({token: token, user_Iduser: id})
     .then((result)=>{
         res.status(201).json(result)
     })

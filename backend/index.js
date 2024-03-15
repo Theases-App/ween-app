@@ -29,21 +29,24 @@ app.use(express.urlencoded({extended: true}))
 // app.use(express.static(__dirname + '../../index.html'))
 
 app.use("/token",athentification)
-//app.use("/block",block)
-// app.use("/category",categorydetails)
-app.use("/chat",chat)
+
+
+app.use("/block",block)
+app.use("/cat",categorydetails)
+ app.use("/chat",chat)
+
 app.use("/event",event)
 // app.use("/favorite",favorite)
 app.use("/message",message)
 // app.use("/notification",notification)
 // app.use("/payment",payment)
 // app.use("/reports",reports)
-// app.use("/reservation",reservation)
+app.use("/res",reservation)
 // app.use("/userchat",userhaschat)
 app.use("/user",user)
 
-
-
+const publish_key ="pk_test_51OrECAD53RceJq3rNa41nZVlQzaCQA0iaYKyKPCFaqVnWa1VTzj8ngQBu8aSJ6lesLBRBa5JuMyiOa8gLbFnjmRt00fxMvKTp3"
+const secret_key="pk_test_51OrECAD53RceJq3rNa41nZVlQzaCQA0iaYKyKPCFaqVnWa1VTzj8ngQBu8aSJ6lesLBRBa5JuMyiOa8gLbFnjmRt00fxMvKTp3"
 
 app.listen(PORT, ()=>{
     console.log(`Server listening at http://localhost:${PORT}`)

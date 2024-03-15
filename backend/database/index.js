@@ -4,7 +4,9 @@ require('dotenv').config()
 
 
 
+
 const sequelize = new Sequelize('ween', 'root', 'choclata', {
+
     host:'localhost',
     dialect:'mysql',
     define:{timestamps:false}

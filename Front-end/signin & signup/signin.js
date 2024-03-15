@@ -8,28 +8,29 @@
  import { useNavigation } from '@react-navigation/native';
  import AsyncStorage from '@react-native-async-storage/async-storage';
  import {IP} from "../ip.json"
+ import { useContext } from 'react';
+ import Usecontext from "../UseContext.js"
+import Idcontext from '../UseContext.js';
 
  export default function Signin() {
+
   const navigation=useNavigation()
-   
+
   const [email, setEmail] = useState("");
   const [psw, setPsw] = useState("");
   const [wrong, setWrong] = useState(true);
   const [refresh, setRefresh] = useState(true);
-
- 
-  // const navigation = useNavigation();
+  const [myid,setMyid]=useState('')
 
 const obj={emailphone:email,password:psw}
 
   const handleSubmit = async (data) => {
     if (data.emailphone === "ween@rbk.tn" && data.password === "12345678") {
-      // navigation.navigate("/admin");
+      navigation.navigate("/admin");
       console.log("welcome to admin dashboard")
     } else {
       await axios.post(`http://${IP}:8080/user/signin`, data)
         .then((result) => {
-         console.log(result.data)
           author(result.data.iduser, result.data.token, result.data.role);
           console.log("entered")
         })
@@ -39,25 +40,23 @@ const obj={emailphone:email,password:psw}
         });
     }
   };
-
+  
 const  author = async (id, token, role) => {
-    const data = { token: token };
+    const data = { token: token, user_Iduser:id }
     await axios.post(`http://${IP}:8080/token/add/${id}`, data)
       .then(() => {
         axios.get(`http://${IP}:8080/block/check/${id}`)
-          .then(async(result) => {
-            console.log(result);
+          .then(async (result) => {
             if (result.data) {
               alert(
                 "you are blocked by the admin, please contact with him on tel: 20 048 441"
               );
-            } else {
-              AsyncStorage.setItem("id",toString(id))
-              if (role === "client") {
-                // navigation.navigate("/");
+            }  if (role === "client") {
+                await AsyncStorage.setItem("id",JSON.stringify(id))
+                navigation.navigate("home")
                 console.log("done")
               }
-      }})
+      })
           .catch((err) => {
             console.log(err);
           });
@@ -68,6 +67,7 @@ const  author = async (id, token, role) => {
   } 
  
   return (
+
 
    
     <View style={{justifyContent:'center',alignItems:"center"}}>
@@ -114,21 +114,23 @@ const  author = async (id, token, role) => {
                   />
                   )
                   }
+
+    <View  style={{top:5 ,height:40,width:120,backgroundColor:'#ff5252',
+    borderRadius:20
+    ,marginBottom:40}}>
+      <Text  onPress={()=>handleSubmit(obj)}
+       style={{borderColor:"black",color:'white',
+       marginTop:7,marginLeft:20,fontSize:20
+      }}
     
-     
-   
-    <View  style={{top:5 ,height:100,width:150}}>
-      <Button  onPress={()=>handleSubmit(obj)}
-       
-       style={{borderColor:"black"}}
-      color="#ff5252"
-      title="Confirm "
-     />
+     > Confirm </Text>
      </View>
       
       </View > 
-      <View style={{justifyContent:'center',alignItems:"center",position:"absolute",top:260,left:130}}> 
-       <Text style={{color:"#ececec",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:15}}> Or </Text>
+      <View style={{justifyContent:'center',alignItems:"center",
+      position:"absolute",top:260,left:138}}> 
+       <Text style={{color:"red",fontFamily:"sans-serif-light",
+       fontWeight: 'bold',fontSize:15}}> Or </Text>
        </View>
 
        <View  style={{width:280,justifyContent:'space-between',gap:10,left:10}}>
@@ -154,12 +156,18 @@ const  author = async (id, token, role) => {
   type='instagram'
 />
 <View style={{top:20,gap:20,left:60,flex:1,height:100}}> 
-       <Text style={{color:"#ececec",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12,left:12}}> I don't Have An Account </Text>
-       <Text style={{color:"#ececec",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12}}> Oups ! I forget My Password </Text>
+<TouchableOpacity onPress={()=>{navigation.navigate('signup')}}>
+       <Text style={{color:"black",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12,left:12}}> I don't Have An Account </Text>
+      </TouchableOpacity>
+       <Text style={{color:"black",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12}}> Oups ! I forget My Password </Text>
        </View>
       
      </View>
      </ScrollView>
+     <>
+     <Idcontext.Provider value={myid}>
+    </Idcontext.Provider>
+    </>
      </View>
   );
 

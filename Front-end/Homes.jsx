@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import Nav from './Nav/Nav.jsx';
 import Search from './Search/Search.jsx';
 import Allcategory from './Search/Allcategory.jsx';
 import axios from 'axios';
 import { IP } from './ip.json';
 import Homepage from './homepage/homepage.js';
+import Eventdetails from "./postdetails/Eventdetails.jsx"
+ import Addevent from './components/addevent.jsx'
+ import EditPictureAndCountry  from './components/editpictureANDcountry.jsx'
 export default function Home() {
+
   const [date, setdate] = useState([]);
 
   useEffect(() => {
@@ -22,24 +26,19 @@ export default function Home() {
 
   return (
    
-      <View style={styles.viewstyle1}>
+      <View style={styles.viewstyle1}>  
         <View style={styles.viewstyle}>
           <Image source={require("./idk/image.png")} style={styles.img} />
-          <View style={styles.circleContainer}>
-            {date.map((event) => (
-              <View key={event.idevent} style={styles.eventContainer}>  
-              <View style={{backgroundColor:"white"}}> 
-             <Text style={{color:"white"}}>{event.date.slice(5,10)}</Text>
-             </View>
-                <View style={styles.circle}>
-                  <Text style={{color:"white"}}>{event.date.length}</Text>                
-                </View>
-              </View>
-            ))}
-          </View>
+         
         </View>
         <Search />
+        {/* <Addevent/> */}
         <Homepage/>
+       {/* <Eventdetails/> */}
+
+  
+
+
         <Nav />
       </View>
     
@@ -52,7 +51,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#111111",
     flex: 1,
     justifyContent: "center",
-    
   },
   viewstyle: {
     flex: 1,
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
   },
   circleContainer: {
     flexDirection: 'row', 
-    justifyContent: 'center', // Align circles in the center horizontally
+    justifyContent: 'center',
     marginTop:250
   },
   circle: {
