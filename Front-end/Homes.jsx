@@ -10,7 +10,8 @@ import Homepage from './homepage/homepage.js';
 import Eventdetails from "./postdetails/Eventdetails.jsx"
 
 import Map from './Map/Map.jsx'
-
+ import Addevent from './components/addevent.jsx'
+ import EditPictureAndCountry  from './components/editpictureANDcountry.jsx'
 export default function Home() {
 
   const [date, setdate] = useState([]);
@@ -28,7 +29,7 @@ export default function Home() {
 
   return (
    
-      <View style={styles.viewstyle1}>
+      <View style={styles.viewstyle1}>  
         <View style={styles.viewstyle}>
           <Image source={require("./idk/image.png")} style={styles.img} />
          
@@ -36,9 +37,9 @@ export default function Home() {
         <Search />
 
         <Homepage/>
-       { <Eventdetails/> }
-=======
-        { <Homepage/> }
+       <Eventdetails/>
+
+       
         <Map/>
 
         <Nav />
@@ -50,10 +51,9 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   viewstyle1: {
-    backgroundColor: "white",
+    backgroundColor: "#111111",
     flex: 1,
     justifyContent: "center",
-    
   },
   viewstyle: {
     flex: 1,

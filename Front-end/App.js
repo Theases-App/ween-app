@@ -39,6 +39,9 @@ export default function App() {
 
 <NavigationContainer>
       <Stack.Navigator>
+
+
+
       { <Stack.Screen
           name="signup"
           component={Signup} 
@@ -49,8 +52,11 @@ export default function App() {
           component={Signin} 
 
         /> }
+              <Stack.Screen name='Your Favorites' component={Wishlist}>
+
+</Stack.Screen>
        
-          {/* <Stack.Screen
+          <Stack.Screen
         
         name="ticketdetails"
         component={Ticket}
@@ -59,15 +65,15 @@ export default function App() {
         }
       }
       
-      /> */}
-             {/* <Stack.Screen
+      />
+             <Stack.Screen
           name="IndexC"
           component={IndexC}
           options={{ headerShown: false
 
           }
         }
-        /> */}
+        />
       <Stack.Screen
         
         name="home"
@@ -78,28 +84,7 @@ export default function App() {
       }
       
       />
-{/*    
-          <Stack.Screen name="Edit" component={EditUser} >
-         
-          
-       
-       </Stack.Screen> */}
-        
-     
-    
-      
-        {/* { <Stack.Screen
-        
-          name="home"
-          component={Home}
-          options={{ headerShown: false
-          
-          }
-        }   
-        />
-
-    
-        <Stack.Screen
+           <Stack.Screen
         
         name="Clubbing"
         component={Clubbing}
@@ -109,7 +94,7 @@ export default function App() {
       }
       
       />
-        <Stack.Screen
+           <Stack.Screen
         
         name="Concerts"
         component={Concerts}
@@ -119,7 +104,7 @@ export default function App() {
       }
       
       />
-      <Stack.Screen
+         <Stack.Screen
         
         name="Hotelresto"
         component={Hotelresto}
@@ -129,7 +114,7 @@ export default function App() {
       }
       
       />
-      <Stack.Screen
+         <Stack.Screen
         
         name="Spectacles"
         component={Spectacles}
@@ -149,45 +134,32 @@ export default function App() {
       }
       
       />
-          options={{ headerShown: false
-          
-          }
-        }
-        
-        /> }
- 
-        <Stack.Screen
+         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
 
         />
-
-     
-        <Stack.Screen
+           <Stack.Screen
           name="search"
           component={Search} 
 
         />
-        <Stack.Screen
-          name="signin"
-          component={Signin} 
-
-        />
-        <Stack.Screen
-          name="signup"
-          component={Signup} 
-
-        />
-       <Stack.Screen
+          <Stack.Screen
           name="eventdetail"
           component={Eventdetails} 
 
         />
-       
-
+{/*    
+          <Stack.Screen name="Edit" component={EditUser} >
+         
           
        
-         </Stack.Screen> */}
+       </Stack.Screen> */}
+        
+     
+    
+      
+       
         {/* <Stack.Screen name="Edit" component={EditUser} >
          
           
@@ -202,10 +174,7 @@ export default function App() {
           
        
           </Stack.Screen> */}
-          {/* <Stack.Screen name='Your Favorites' component={Wishlist}>
-
-          </Stack.Screen>
-          */}
+        
 
 
        
@@ -213,7 +182,7 @@ export default function App() {
           name="Allcategory"
           component={Allcategory}
        options={{headerTitle:"Allcategory",headerTintColor:"#ff5252",headerStyle: {
-        backgroundColor: "#ececec", 
+        backgroundColor: "#111111", 
       },
       headerTitle: () => (
         <Image

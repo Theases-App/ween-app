@@ -52,10 +52,9 @@ const  author = async (id, token, role) => {
                 "you are blocked by the admin, please contact with him on tel: 20 048 441"
               );
             } else {
-              AsyncStorage.setItem("id",toString(id))
+              await AsyncStorage.setItem("id",toString(id))
               if (role === "client") {
-                navigation.navigate("home",{id:id});
-                console.log(id,"idddd");
+                navigation.navigate("home");
                 console.log("done")
               }
       }})
@@ -118,11 +117,12 @@ const  author = async (id, token, role) => {
     
      
     <View  style={{top:5 ,height:100,width:150}}>
-      <Button  onPress={()=>handleSubmit(obj)}
+      <Button  onPress={()=>{{handleSubmit(obj) ,navigation.navigate("home")}}}
        style={{borderColor:"black"}}
       color="#ff5252"
       title="Confirm "
      />
+
      </View>
       
       </View > 

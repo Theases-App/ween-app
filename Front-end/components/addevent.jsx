@@ -3,7 +3,7 @@ import { View, TextInput, TouchableOpacity, StyleSheet, Text, ScrollView, Modal 
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import { IP } from "../ip.json";
-
+import Map from '../Map/Map.jsx'
 const Addevent = () => {
   const [eventname, setEventName] = useState("");
   const [eventcategory, setEventCategory] = useState("");
@@ -128,6 +128,10 @@ const Addevent = () => {
           placeholderTextColor="#999999"
           onChangeText={(val) => setLocation(val)}
         />
+
+
+<Map/>
+
       </ScrollView>
       
       <TouchableOpacity style={styles.addButton} onPress={add}>

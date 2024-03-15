@@ -1,23 +1,17 @@
-
 const Favorit = require("../models/favorit");
+const {Event}=require("../models/event");
+const {User} = require("../models/user");
 
-// const getfavs = async (req, res) => {
-//   try {
-//     const userId = req.params.userId; 
-//     const favorites = await getUserFavs(iduser);
-//     res.send(favorites);
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).send("Error retrieving favorites");
-//   }
-// }
 exports.getFavorits = async (req, res) => {
   try {
-    const userId = req.params.userId; // Assuming the user ID is passed as a route parameter
+    const userId = req.params.userId; 
 
-    // Retrieve favorits for the specified user ID
-    const favorits = await Favorit.findAll({
-      where: { user_iduser: userId } // Filter by user_iduser
+    const favorits = await Event.findAll({
+      include:{
+        model:User,
+         where: { iduser: userId } 
+      }
+      
     });
 
     res.status(200).json(favorits);
@@ -26,10 +20,8 @@ exports.getFavorits = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 exports.createFavorit = (req, res) => {
- 
-
-
   Favorit.create({
     user_iduser: req.body.user_iduser,
     event_idevent: req.body.event_idevent
@@ -42,6 +34,33 @@ exports.createFavorit = (req, res) => {
     console.error('Error creating favorit entry:', error);
     res.status(500).json({ error: 'Internal server error' });
   });
-
 };
 
+exports.deleteFavoritByEventId = async (req, res) => {
+  try {
+    const eventId = req.params.idevent;
+
+  
+    const favorits = await Favorit.findAll({
+      where: {
+        event_idevent:eventId
+      }
+    });
+
+    if (favorits.length === 0) {
+      return res.status(404).json({ error: 'No favorit entries found for the event' });
+    }
+
+    
+    await Favorit.destroy({
+      where: {
+        event_idevent: eventId
+      }
+    });
+
+    res.status(200).json({ message: 'Favorit entries deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting favorit entries:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};

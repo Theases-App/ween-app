@@ -10,15 +10,15 @@ const Favorit = sequelize.define('favorit', {
   },
   user_iduser:{
     type: DataTypes.INTEGER,
-    allowNull: false // Assuming user_iduser cannot be null
+    allowNull: false 
   },
   event_idevent:{
     type: DataTypes.INTEGER,
-    allowNull: false // Assuming event_idevent cannot be null
+    allowNull: false 
   }
 }, {
-  tableName: 'favorit' // Specify the table name explicitly
+  tableName: 'favorit' 
 });
-Favorit.belongsTo(User.User, { foreignKey: 'user_iduser' }); // Favorit belongs to User
+Favorit.belongsTo(User.User, { foreignKey: 'user_iduser' }); 
 Favorit.belongsTo(Event.Event, { foreignKey: 'event_idevent' });
 module.exports = Favorit;
