@@ -14,8 +14,8 @@ import MapView, { Marker } from "react-native-maps";
 // const windowHeight = Dimensions.get("window").height;
 
 
-
-
+// const theme = useColorScheme();
+// const isDarkTheme = theme === 'dark';
 
 const Postdetails=({route})=>{
    const [currentLocation, setCurrentLocation] = useState(null);
@@ -143,7 +143,8 @@ return (
 </View>
 
 
-<Text style={{color:"white",
+<Text style={{
+     color:"white",
      marginLeft:310,
      marginTop:-19,
      fontFamily:"Inter-Black",
@@ -164,7 +165,8 @@ return (
         <Icon name="calendar" style={iconStyle('calendar')} size={25} />
 </View>
 
-<Text style={{color:"white",
+<Text style={{
+     color:"white",
      marginLeft:70,
      marginTop:-24,
      fontFamily:"Inter-Black",
@@ -228,16 +230,6 @@ return (
        )}
      </View>
 
-
-
-
-
-
-
-
-
-
-
 <View>
 
 
@@ -286,6 +278,12 @@ const styles = StyleSheet.create({
      marginBottom: 400,
      borderRadius: 20,
    },
+   textD:{
+    color:"black"
+   },
+   textL:{
+  color:"white"
+   }
  });
 
 export default Postdetails;
