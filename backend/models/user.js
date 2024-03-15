@@ -61,7 +61,7 @@ const sequelize = require('../database/index');
 
 
   const getOneUser = (iduser) => {
-    return User.findOne({where: {iduser: iduser}})
+    return User.findOne({where: {emailphone: iduser}})
   }
   
   const addUser = (data) => {
