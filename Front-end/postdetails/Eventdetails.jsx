@@ -6,16 +6,47 @@ import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Button from 'react-native-button'
 import { useNavigation } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Postdetails=({route})=>{
   
-const item = route.params.item
+const item = route.params.item 
 
-const Navigation = useNavigation()
-
+  const Navigation = useNavigation()
+  const [chat,setChat]=useState(true)
   const [selectedIcon, setSelectedIcon] = useState('');
+  const [chating,setChating]=useState("")
+  const [text,setText]=useState("Buy a Ticket")
 
- 
+   useEffect(async()=>{
+   const x= await AsyncStorage.getItem("id")
+   axios.get(`http://${IP}:8080/res/getall/${x}/${item.idevent}`)
+     .then((res) => {
+       setChating(res.data)
+       if(res.data[0]){
+        setText("Join Chat Room")
+       }
+       else {
+        setText("Buy a Ticket")
+       }
+     }).catch((err) => {
+       console.log(err)
+     })
+   },[])
+
+   console.log(text);
+
+  
+   const chatting= async()=>{
+       if (text==="Join Chat Room"){
+        Navigation.navigate("pay")
+        }
+        else if (text==="Buy a Ticket"){
+         Navigation.navigate("ticketdetails",{item})
+    
+      }
+    }
+   
 const handleIconPress = (iconName) => {
    setSelectedIcon(iconName)
  }
@@ -104,8 +135,20 @@ return (
 }}>{item.location}</Text>
 
 <View>
-   <TouchableOpacity onPress={()=>{Navigation.navigate('ticketdetails', {item})}}>
-<Button style={{marginTop:20,fontFamily:"Inter-Black",backgroundColor:"#111111",color:"#ff5252",width:300,height:32,marginLeft:65,fontSize:20,borderColor:"#ff5252",borderRadius:10}} >Buy A Ticket</Button>
+   <TouchableOpacity onPress={()=>{chatting()}}>
+
+
+    <Button style={{marginTop:20,
+  fontFamily:"Inter-Black",
+  backgroundColor:"#111111",color:"#ff5252",
+  width:300,height:32,
+  marginLeft:70,fontSize:20,
+  borderColor:"#ff5252",
+  borderRadius:10
+  }} > {text} </Button> 
+  
+ 
+
 <View style={{marginTop:-27,marginLeft:120}}>
 <Icon name="check" style={iconStyle('check')} size={20} />
 </View>
@@ -152,11 +195,9 @@ return (
 <Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ "See on Instagram"}</Text>
 </View>
 
-
-
 </View>
 
-</ScrollView>
+</ScrollView> 
 
 
    </View>

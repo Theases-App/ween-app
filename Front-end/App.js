@@ -19,6 +19,7 @@ import Spectacles from './homepage/spectacles.js';
 import Sports from './homepage/sports.js';
 import Noticket from './postdetails/Notickets.jsx';
 import Pay from './postdetails/Pay.jsx';
+
 const Stack= createNativeStackNavigator()
 
 import Index from './signin & signup/index.js';
@@ -110,6 +111,8 @@ export default function App() {
           }
         }
         />
+         
+       
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
@@ -163,13 +166,6 @@ export default function App() {
 
       ),
     }
-   
-
-    // <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
-     
-   
-  //  <TouchableOpacity style={{color:"#ff0000"}} >
-    
 
       
       }

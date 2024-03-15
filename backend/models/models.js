@@ -37,6 +37,8 @@ Event.belongsToMany(User, { through: Favorit, foreignKey: 'event_idevent' });
 Event.hasMany(Notifications, { foreignKey: 'event_idevent' });
 Notifications.belongsTo(Event, { foreignKey: 'event_idevent' });
 
+Event.hasMany(Reservation,{foreignKey:"idevent"})
+
 CategoryDetails.hasMany(Reservation, { foreignKey: 'categorydetails_idcategorydetails' });
 Reservation.belongsTo(CategoryDetails, { foreignKey: 'categorydetails_idcategorydetails' });
 
@@ -57,6 +59,7 @@ ChatRoom.belongsToMany(User, { through: UserHasChat, foreignKey: 'chat_idchat' }
 
 User.hasMany(Message, { foreignKey: 'user_iduser' });
 Message.belongsTo(User, { foreignKey: 'user_iduser' });
+
 
 ChatRoom.hasMany(Message, { foreignKey: 'chatRoom_idchat' });
 Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });

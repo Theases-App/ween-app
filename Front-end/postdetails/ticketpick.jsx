@@ -10,25 +10,30 @@ import { useContext } from 'react';
 import Idcontext from "../UseContext"
 import { useNavigation } from '@react-navigation/native'   
 
-    const ticketpick=({e})=>{
+    const ticketpick=({e,setTicket})=>{
     
        const [focus, setFocus] = useState('white')
-       const [ticket, setTicket] = useState('')
+       const [refresh,setRefresh]=useState(true)
     return (
               <View>
 
               <TouchableOpacity
                 onPress={() => {
                   setTicket(e)
-                  AsyncStorage.getItem('id').then((value) => {
-                    console.log(value, "id")
-                    setFocus("red")
+                  AsyncStorage.getItem('id')
+                  .then((value) => {
+                    console.log(e.idcategorydetails);
+                    console.log(value,"id");
+                    setFocus("#ff5252")
+                  }).catch((error)=>{
+                    console.log(error);
                   })
                 }}>
 
                 <View
                   
                   style={{
+
                     backgroundColor: focus,
                     marginTop: 20,
                     borderColor: "red",

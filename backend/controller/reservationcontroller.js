@@ -1,4 +1,4 @@
-const {getreservations,addreservation,Reservation}=require("../models/reservation")
+const {getreservations,addreservation,Reservation,getreservation}=require("../models/reservation")
 
 const getallres=async(req,res)=>{
     await getreservations()
@@ -8,15 +8,23 @@ const getallres=async(req,res)=>{
       res.json(err)
     })
 }
-
+const getoneres=async(req,res)=>{
+  const {userid,idevent} =req.params
+  await getreservation(userid,idevent)
+  .then((result)=>{
+  res.json(result)
+  }).catch((err)=>{
+    res.json(err)
+  })
+}
 
 const doreservation=async (req,res)=>{
   try{   
      const id=req.params.userid
-    const id2=req.params.categorydetails_idcategorydetails
-
+     const id2=req.params.categorydetails_idcategorydetails
+     const id3=req.params.idevent
    
-  const add= await Reservation.create({userid:id,categorydetails_idcategorydetails:id2})
+  const add= await Reservation.create({userid:id,categorydetails_idcategorydetails:id2,idevent:id3})
     
 
     res.send(add)
@@ -28,4 +36,4 @@ catch(err){
 }
 
 
-module.exports={doreservation,getallres}
+module.exports={doreservation,getallres,getoneres}

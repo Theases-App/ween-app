@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, where } = require('sequelize');
 const sequelize = require('../database/index');
 
 
@@ -19,16 +19,25 @@ const Reservation = sequelize.define('reservation', {
     type: DataTypes.INTEGER,
     foreignKey:true,
     allowNull:false
+  },
+      idevent:{
+      type: DataTypes.INTEGER,
+      foreignKey:true,
+      allowNull:false
+    }
   }
 
-});
+);
 
 
 const getreservations=(id)=>{
   return Reservation.findAll(id)
 }
+const getreservation=(userid,idevent)=>{
+  console.log(userid,idevent);
+  return Reservation.findAll({where :{userid:userid, idevent:idevent}})
+  
+}
 
 
-
-
-module.exports = {Reservation,getreservations};
+module.exports = {Reservation,getreservations,getreservation};

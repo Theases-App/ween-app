@@ -11,12 +11,15 @@ import Idcontext from "../UseContext"
 import { useNavigation } from '@react-navigation/native'
 import Ticketpick from "./ticketpick"
 const Ticket = ({ route }) => {
+
   const [myid, setMyid] = useState('')
-  const idcontext = useContext(Idcontext)
+ 
   const [res, setRes] = useState('')
   const Navigation = useNavigation()
-  const item = route.params.item
-  const [focus, setFocus] = useState('white')
+
+  const item = route.params.item 
+
+  const [chat,setChat]=useState(true)
 
   retrieveData = async () => {
     try {
@@ -35,7 +38,7 @@ const Ticket = ({ route }) => {
 
   const [ticket, setTicket] = useState('')
   const [data, setData] = useState([])
-
+ const [chating,setChating]=useState("")
   const cat = ticket.idcategorydetails
 
   useEffect(() => {
@@ -46,34 +49,39 @@ const Ticket = ({ route }) => {
     })
   })
 
-
+  
   const reservation = async () => {
     axios.get(`http://${IP}:8080/res/getall`)
       .then((res) => {
         setRes(res.data.length)
+        setChating(res.data)
       }).catch((err) => {
         console.log(err)
       })
-    if (JSON.parse(res) > JSON.parse(item.numberpeople)) {
+    if ( res > JSON.parse(item.numberpeople)) {
       Navigation.navigate("noticket")
     }
     else {
       const x = await AsyncStorage.getItem('id')
-      axios.post(`http://${IP}:8080/res/add/${x}/${cat}`).then((res) => {
+      axios.post(`http://${IP}:8080/res/add/${x}/${cat}/${item.idevent}`)
+       .then((res) => {
+        console.log(x);
         console.log("done inserting")
         Navigation.navigate("pay")
       }).catch((err) => {
+        console.log(cat);
         console.log(err)
       })
     }
   }
   const [selectedIcon, setSelectedIcon] = useState('');
 
-
+  
   const handleIconPress = (iconName) => {
     setSelectedIcon(iconName)
   }
 
+ 
 
   const iconStyle = (iconName) => ({
     color: selectedIcon === iconName ? '#ff5252' : 'white',
@@ -182,8 +190,9 @@ const Ticket = ({ route }) => {
             return (
 
             <View>
-       <Ticketpick e={e}/>
+       <Ticketpick e={e} setTicket={setTicket}/>
             </View>
+
             )
           })}
         </ScrollView>
