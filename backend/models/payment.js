@@ -14,7 +14,7 @@ const Payment = sequelize.define('payment', {
   payment: DataTypes.STRING(225),
 });
 
-Payment.belongsTo(Reservation, { foreignKey: 'categorydetails_has_user_idCategoryUser' });
+
 
 
 

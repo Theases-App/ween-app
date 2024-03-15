@@ -37,7 +37,7 @@ app.use("/event",event)
 // app.use("/notification",notification)
 // app.use("/payment",payment)
 // app.use("/reports",reports)
-// app.use("/reservation",reservation)
+app.use("/res",reservation)
 // app.use("/userchat",userhaschat)
 app.use("/user",user)
 

@@ -27,7 +27,7 @@ return (
 
 
 
-<View style={{marginTop:80}}>
+<View style={{marginTop:80,backgroundColor:"#111111",flex:1}}>
 
 <View>
   
@@ -64,7 +64,7 @@ return (
        
         }}source={{uri:item.image}}/>
 
-  <View style={{backgroundColor:"#111111",borderColor:"black",marginTop:-60,height:70,borderRadius:20}}>
+  <View style={{backgroundColor:"#ececec",borderColor:"black",marginTop:-60,height:70,borderRadius:20}}>
 
       <Text style={{color:"#ff5252",
              fontFamily:"Inter-Black",
