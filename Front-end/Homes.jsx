@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
-import { StripeProvider } from '@stripe/stripe-react-native';
 import Nav from './Nav/Nav.jsx';
 import Search from './Search/Search.jsx';
 import Allcategory from './Search/Allcategory.jsx';
 import axios from 'axios';
 import { IP } from './ip.json';
 import Homepage from './homepage/homepage.js';
-import StripeApp from './payment/Stripe.jsx';
 import Eventdetails from "./postdetails/Eventdetails.jsx"
-
  import Addevent from './components/addevent.jsx'
  import EditPictureAndCountry  from './components/editpictureANDcountry.jsx'
 export default function Home() {
@@ -38,9 +35,7 @@ export default function Home() {
         {/* <Addevent/> */}
         <Homepage/>
        {/* <Eventdetails/> */}
-{/* <StripeProvider publishableKey='pk_test_51OrECAD53RceJq3rNa41nZVlQzaCQA0iaYKyKPCFaqVnWa1VTzj8ngQBu8aSJ6lesLBRBa5JuMyiOa8gLbFnjmRt00fxMvKTp3'>
-       <StripeApp/>
-       </StripeProvider> */}
+
   
 
 

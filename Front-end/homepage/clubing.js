@@ -26,8 +26,8 @@ const clubbing=()=>{
 return (
 
 
-
-<View style={{marginTop:80,backgroundColor:"#111111",flex:1}}>
+<View style={{backgroundColor:"#111111",flex:1}}>
+<View style={{marginTop:80}}>
 
 <View>
   
@@ -112,7 +112,7 @@ return (
 </ScrollView>
 
 </View>
-
+</View>
 )
 
 }

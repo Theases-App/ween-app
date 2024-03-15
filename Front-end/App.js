@@ -92,10 +92,7 @@ export default function App() {
         
         name="Spectacles"
         component={Spectacles}
-        options={{ headerShown: false
-        
-        }
-      }
+        options={{ headerShown: false }}
       
       />
 

@@ -51,7 +51,7 @@ const homepage = () => {
       })
 
       data.map((e) => {
-            if (e.eventcategory === "Hotel & resto" && e.adminmessage == 1) {
+            if (e.eventcategory === "hotel & resto" && e.adminmessage == 1) {
                   hotelresto.push(e)
             }
       })
@@ -59,10 +59,10 @@ const homepage = () => {
       return (
             <View style={{ marginTop: 190 }} >
 
-                  <ScrollView style={{ marginBottom: 50 }}>
+        <ScrollView style={{ marginBottom: 50 }}>
 
                         <View style={{ justifyContent: "center", gap: 35 }}>
-                        <View>
+                      <View>
                               <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:200}}>
                         
 

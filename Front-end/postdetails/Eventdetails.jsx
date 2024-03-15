@@ -13,10 +13,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 // const windowWidth = Dimensions.get("window").width;
-// const windowHeight = Dimensions.get("window").heigh
+// const windowHeight = Dimensions.get("window").height;
 
 
-
+// const theme = useColorScheme();
+// const isDarkTheme = theme === 'dark';
 
 const Postdetails=({route})=>{
    const [currentLocation, setCurrentLocation] = useState(null);
@@ -24,7 +25,7 @@ const Postdetails=({route})=>{
  
  
 
-   useEffect(() => {
+   useEffect(async() => {
      const getLocation = async () => {
        let { status } = await Location.requestForegroundPermissionsAsync();
        if (status !== "granted") {
@@ -147,7 +148,8 @@ return (
 </View>
 
 
-<Text style={{color:"white",
+<Text style={{
+     color:"white",
      marginLeft:310,
      marginTop:-19,
      fontFamily:"Inter-Black",
@@ -168,7 +170,8 @@ return (
         <Icon name="calendar" style={iconStyle('calendar')} size={25} />
 </View>
 
-<Text style={{color:"white",
+<Text style={{
+     color:"white",
      marginLeft:70,
      marginTop:-24,
      fontFamily:"Inter-Black",
@@ -243,12 +246,10 @@ return (
        )}
      </View>
 
+<View>
 
 
-<View style={{marginBottom:"70%"}}>
-
-
-<View style={{marginLeft:10,color:"black"}}>
+<View style={{marginTop:22,marginLeft:10,color:"black"}}>
 <Icon name="phone" style={{color:'black'}} size={20} />
 </View>
 <Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ item.phonenumber}</Text>
@@ -292,10 +293,14 @@ const styles = StyleSheet.create({
      height: 250,
     
      marginBottom: 400,
-   //   borderRadius: 20,
+     borderRadius: 20,
    },
-   
-
+   textD:{
+    color:"black"
+   },
+   textL:{
+  color:"white"
+   }
  });
 
 export default Postdetails;
