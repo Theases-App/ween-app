@@ -53,7 +53,7 @@ const Nav = () => {
         <Icon name="bell" style={iconStyle('bell')} size={30} />
       </TouchableWithoutFeedback>
 
-      <TouchableWithoutFeedback onPress={() =>navigation.navigate("signup")  }>
+      <TouchableWithoutFeedback onPress={() =>navigation.navigate("signin")  }>
         <Icon name="user" style={iconStyle('user')} size={30} />
       </TouchableWithoutFeedback>
     </View>

@@ -45,16 +45,13 @@ const  author = async (id, token, role) => {
     const data = { token: token, user_Iduser:id }
     await axios.post(`http://${IP}:8080/token/add/${id}`, data)
       .then(() => {
-        setMyid(id)
         axios.get(`http://${IP}:8080/block/check/${id}`)
           .then(async (result) => {
-            console.log(result);
             if (result.data) {
               alert(
                 "you are blocked by the admin, please contact with him on tel: 20 048 441"
               );
             }  if (role === "client") {
-              console.log("test");
                 await AsyncStorage.setItem("id",JSON.stringify(id))
                 navigation.navigate("home")
                 console.log("done")
