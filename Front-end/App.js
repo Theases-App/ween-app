@@ -35,15 +35,12 @@ export default function App() {
       <Stack.Navigator>
 
         <Stack.Screen
-        
           name="home"
           component={Home}
           options={{ headerShown: false
-          
           }
         }   
         />
-        
        <Stack.Screen
         
         name="Addevent"

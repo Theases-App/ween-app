@@ -18,8 +18,7 @@ import MapView, { Marker } from "react-native-maps";
 const Postdetails=({route})=>{
    const [currentLocation, setCurrentLocation] = useState(null);
    const [initialRegion, setInitialRegion] = useState(null);
- const [lat,setLat]=useState("")
- const [lon,setLon]=useState("")
+ 
  const item =route.params.item
 
    useEffect(() => {
