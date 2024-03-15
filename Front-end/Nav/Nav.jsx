@@ -13,7 +13,7 @@ const Nav = () => {
 
 
   const iconStyle = (iconName) => ({
-    color: selectedIcon === iconName ? '#D68910' : 'white',
+    color: selectedIcon === iconName ? 'red' : 'white',
   });
     return (
       <View
@@ -33,7 +33,7 @@ const Nav = () => {
     >
      
 
-      <TouchableWithoutFeedback onPress={() => handleIconPress('heart')}>
+      <TouchableWithoutFeedback onPress={() =>{navigation.navigate("Addevent"), handleIconPress('heart')}}>
         <Icon name="heart" style={iconStyle('heart')} size={30} />
       </TouchableWithoutFeedback>
 

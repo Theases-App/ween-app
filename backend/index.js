@@ -41,8 +41,8 @@ app.use("/res",reservation)
 // app.use("/userchat",userhaschat)
 app.use("/user",user)
 
-
-
+const publish_key ="pk_test_51OrECAD53RceJq3rNa41nZVlQzaCQA0iaYKyKPCFaqVnWa1VTzj8ngQBu8aSJ6lesLBRBa5JuMyiOa8gLbFnjmRt00fxMvKTp3"
+const secret_key="pk_test_51OrECAD53RceJq3rNa41nZVlQzaCQA0iaYKyKPCFaqVnWa1VTzj8ngQBu8aSJ6lesLBRBa5JuMyiOa8gLbFnjmRt00fxMvKTp3"
 
 app.listen(PORT, ()=>{
     console.log(`Server listening at http://localhost:${PORT}`)

@@ -13,13 +13,20 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@react-native-async-storage/async-storage": "^1.22.3",
     "@react-native-community/geolocation": "^3.2.0",
+<<<<<<< HEAD
+=======
     "@react-native-vector-icons/ionicons": "^7.2.2-alpha.3",
+>>>>>>> 48a816a3cf0f2187109d614099c5ef01f3bc3888
     "@react-navigation/bottom-tabs": "^6.5.16",
     "@react-navigation/native": "^6.1.14",
     "@react-navigation/native-stack": "^6.9.22",
     "@react-navigation/stack": "^6.3.25",
     "@rneui/base": "^4.0.0-rc.7",
     "@rneui/themed": "^4.0.0-rc.8",
+<<<<<<< HEAD
+    "@stripe/stripe-react-native": "^0.37.0",
+=======
+>>>>>>> 48a816a3cf0f2187109d614099c5ef01f3bc3888
     "axios": "^1.6.7",
     "expo": "~50.0.8",
     "expo-location": "^16.5.5",

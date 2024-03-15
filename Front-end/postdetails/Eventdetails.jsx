@@ -7,12 +7,13 @@ import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { useNavigation } from '@react-navigation/native'
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 // const windowWidth = Dimensions.get("window").width;
-// const windowHeight = Dimensions.get("window").height;
-
+// const windowHeight = Dimensions.get("window").heigh
 
 
 
@@ -21,6 +22,8 @@ const Postdetails=({route})=>{
    const [currentLocation, setCurrentLocation] = useState(null);
    const [initialRegion, setInitialRegion] = useState(null);
  
+ 
+
    useEffect(() => {
      const getLocation = async () => {
        let { status } = await Location.requestForegroundPermissionsAsync();
@@ -33,8 +36,8 @@ const Postdetails=({route})=>{
        setCurrentLocation(location.coords);
  
        setInitialRegion({
-         latitude: location.coords.latitude,
-         longitude: location.coords.longitude,
+         latitude:item.map ,
+         longitude: item.map2,
          latitudeDelta: 0.005,
          longitudeDelta: 0.005,
        });
@@ -42,8 +45,7 @@ const Postdetails=({route})=>{
        
        console.log("Latitude:", location.coords.latitude);
        console.log("longitude:", location.coords.longitude);
- 
-       
+       console.log( "this is the lat",item.map)
      };
  
      getLocation();
@@ -56,7 +58,10 @@ const Postdetails=({route})=>{
 
 
   
+
+
 const item = route.params.item 
+
 
   const Navigation = useNavigation()
   const [chat,setChat]=useState(true)
@@ -108,7 +113,6 @@ return (
 <View style={{marginTop:120}}>
 <Text style={{position:"absolute",marginTop:-60,marginLeft:140,color:"white",fontFamily:"Inter-Black",fontSize:23}}>  {item.eventname}</Text>
 </View>
-
 <ScrollView>
 
    <View style={{marginBottom:300}}>
@@ -125,7 +129,7 @@ return (
        marginLeft:20,
        marginTop:8
 
- }}>{item.eventname}</Text>
+ }}>{item.eventname}{console.log("this is the item",item)}</Text>
 
 
   <Text style={{color:"white",
@@ -205,43 +209,46 @@ return (
 </View>
 
 <View style={{backgroundColor:"#ececec",borderColor:"#ececec",marginTop:0,height:490,borderRadius:5,width:420}}>
+
+ <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>{item.description}</Text>
+
  <Text style={{marginTop:10,fontSize:20,marginLeft:20,marginRight:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>* {item.description}</Text>
  <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>*{item.description}</Text>
 
 
 
 
-<View style={styles.container}>
+
+
+ <View style={styles.container}>
        {initialRegion && (
          <MapView style={styles.map} initialRegion={initialRegion}>
            {currentLocation && (
              <Marker
+            
                coordinate={{
-                 latitude: currentLocation.latitude,
-                 longitude: currentLocation.longitude,
+                  latitude:currentLocation.latitude ,
+                longitude: currentLocation.longitude,
                }}
-               title="your location
-               "
+               title="your location"
+               
              />
            )}
+
+           <Marker    coordinate={{latitude: item.map,
+            longitude: item.map2}}/>
+
+           
          </MapView>
        )}
      </View>
 
 
 
+<View style={{marginBottom:"70%"}}>
 
 
-
-
-
-
-
-
-<View>
-
-
-<View style={{marginTop:22,marginLeft:10,color:"black"}}>
+<View style={{marginLeft:10,color:"black"}}>
 <Icon name="phone" style={{color:'black'}} size={20} />
 </View>
 <Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ item.phonenumber}</Text>
@@ -277,15 +284,18 @@ const styles = StyleSheet.create({
      flex: 1,
      alignItems: "center",
      justifyContent: "center",
-    paddingTop:250
+    paddingTop:200,
+    marginTop:"30%",
    },
    map: {
-     width: "70%",
-     height: "100%",
-     paddingBottom:200,
+     width: "100%",
+     height: 250,
+    
      marginBottom: 400,
-     borderRadius: 20,
+   //   borderRadius: 20,
    },
+   
+
  });
 
 export default Postdetails;

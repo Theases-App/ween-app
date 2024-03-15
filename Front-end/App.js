@@ -35,36 +35,21 @@ export default function App() {
 
 <NavigationContainer>
       <Stack.Navigator>
-        
-      <Stack.Screen
-        
-        name="home"
-        component={Home}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
+
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{ headerShown: false
+          }
+        }   
+        />
        <Stack.Screen
-        
-        name="IndexC"
-        component={IndexC}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
-      <Stack.Screen
         
         name="Addevent"
         component={Addevent}
-        options={{ headerShown: false
-        
-        }
-      }   
+        options={{ headerShown: false}}   
       />
-      
-       
+     
 
        <Stack.Screen
         
