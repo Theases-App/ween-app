@@ -39,7 +39,7 @@ export default function Home() {
         <Homepage/>
        {/* <Eventdetails/> */}
         {/* <Homepage/> */}
-        <Map/>
+        {/* <Map/> */}
 
         <Nav />
       </View>

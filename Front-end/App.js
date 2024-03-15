@@ -19,10 +19,12 @@ import Spectacles from './homepage/spectacles.js';
 import Sports from './homepage/sports.js';
 import Addevent from './components/addevent.jsx';
 import EditUser from './components/edituser.jsx';
+import Noticket from './postdetails/Notickets.jsx';
+import Pay from './postdetails/Pay.jsx';
+
 const Stack= createNativeStackNavigator()
 
-import Index from './signin & signup/index.js';
-import Homepage from "./homepage/index.js"
+
 
 
 export default function App() {
@@ -33,7 +35,25 @@ export default function App() {
 
 <NavigationContainer>
       <Stack.Navigator>
-
+        
+      <Stack.Screen
+        
+        name="home"
+        component={Home}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+       <Stack.Screen
+        
+        name="IndexC"
+        component={IndexC}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
       <Stack.Screen
         
         name="Addevent"
@@ -44,17 +64,9 @@ export default function App() {
       }   
       />
       
-        <Stack.Screen
-        
-          name="home"
-          component={Home}
-          options={{ headerShown: false
-          
-          }
-        }   
-        />
+       
 
-      {/* <Stack.Screen
+       <Stack.Screen
         
         name="ticketdetails"
         component={Ticket}
@@ -63,15 +75,12 @@ export default function App() {
         }
       }
       
-      /> */}
+      /> 
         <Stack.Screen
         
         name="Clubbing"
         component={Clubbing}
-        options={{ headerShown: false
-        
-        }
-      }
+        options={{ headerShown:false}}
       
       />
         <Stack.Screen
@@ -104,7 +113,8 @@ export default function App() {
       }
       
       />
-      <Stack.Screen
+
+       <Stack.Screen
         
         name="Sports"
         component={Sports}
@@ -115,13 +125,15 @@ export default function App() {
       
       />
         <Stack.Screen
-          name="IndexC"
-          component={IndexC}
+          name="pay"
+          component={Pay}
           options={{ headerShown: false
 
           }
         }
         />
+         
+       
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
@@ -137,6 +149,7 @@ export default function App() {
         <Stack.Screen
           name="signin"
           component={Signin} 
+          
 
         />
         <Stack.Screen
@@ -147,10 +160,19 @@ export default function App() {
        <Stack.Screen
           name="eventdetail"
           component={Eventdetails} 
-
+          options={{ headerShown: false
+        
+          }
+        }
         />
-       
-
+        <Stack.Screen
+          name="noticket"
+          component={Noticket} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
         <Stack.Screen
           name="Allcategory"
           component={Allcategory}
@@ -165,17 +187,11 @@ export default function App() {
 
       ),
     }
-   
-
-    // <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
-     
-   
-  //  <TouchableOpacity style={{color:"#ff0000"}} >
-    
 
       
       }
         />
+        
       </Stack.Navigator>
 
 

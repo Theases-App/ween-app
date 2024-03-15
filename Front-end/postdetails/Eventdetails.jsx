@@ -2,12 +2,12 @@ import { View,FlatList,ViewPropTypes,Text,ScrollView,StyleSheet,TouchableOpacity
 
  import{useEffect,useState,useRef} from 'react';
 import axios from 'axios';
-
+import Button from 'react-native-button';
 import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Button from 'react-native-button'
+
 import { useNavigation } from '@react-navigation/native'
-import Map from '../Map/Map.jsx'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 // const windowWidth = Dimensions.get("window").width;
@@ -56,12 +56,43 @@ const Postdetails=({route})=>{
 
 
   
-const item =route.params.item
-const Navigation = useNavigation()
+const item = route.params.item 
 
+  const Navigation = useNavigation()
+  const [chat,setChat]=useState(true)
   const [selectedIcon, setSelectedIcon] = useState('');
+  const [chating,setChating]=useState("")
+  const [text,setText]=useState("Buy a Ticket")
 
- 
+   useEffect(async()=>{
+   const x= await AsyncStorage.getItem("id")
+   axios.get(`http://${IP}:8080/res/getall/${x}/${item.idevent}`)
+     .then((res) => {
+       setChating(res.data)
+       if(res.data[0]){
+        setText("Join Chat Room")
+       }
+       else {
+        setText("Buy a Ticket")
+       }
+     }).catch((err) => {
+       console.log(err)
+     })
+   },[])
+
+   console.log(text);
+
+  
+   const chatting= async()=>{
+       if (text==="Join Chat Room"){
+        Navigation.navigate("pay")
+        }
+        else if (text==="Buy a Ticket"){
+         Navigation.navigate("ticketdetails",{item})
+    
+      }
+    }
+   
 const handleIconPress = (iconName) => {
    setSelectedIcon(iconName)
  }
@@ -150,8 +181,20 @@ return (
 }}>{item.location}</Text>
 
 <View>
-   <TouchableOpacity onPress={()=>{Navigation.navigate('ticketdetails', {item})}}>
-<Button style={{marginTop:20,fontFamily:"Inter-Black",backgroundColor:"#111111",color:"#ff5252",width:300,height:32,marginLeft:65,fontSize:20,borderColor:"#ff5252",borderRadius:10}} >Buy A Ticket</Button>
+   <TouchableOpacity onPress={()=>{chatting()}}>
+
+
+    <Button style={{marginTop:20,
+  fontFamily:"Inter-Black",
+  backgroundColor:"#111111",color:"#ff5252",
+  width:300,height:32,
+  marginLeft:70,fontSize:20,
+  borderColor:"#ff5252",
+  borderRadius:10
+  }} > {text} </Button> 
+  
+ 
+
 <View style={{marginTop:-27,marginLeft:120}}>
 <Icon name="check" style={iconStyle('check')} size={20} />
 </View>
@@ -162,6 +205,7 @@ return (
 </View>
 
 <View style={{backgroundColor:"#ececec",borderColor:"#ececec",marginTop:0,height:490,borderRadius:5,width:420}}>
+ <Text style={{marginTop:10,fontSize:20,marginLeft:20,marginRight:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>* {item.description}</Text>
  <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>*{item.description}</Text>
 
 
@@ -200,7 +244,7 @@ return (
 <View style={{marginTop:22,marginLeft:10,color:"black"}}>
 <Icon name="phone" style={{color:'black'}} size={20} />
 </View>
-<Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ "20 048 441"}</Text>
+<Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ item.phonenumber}</Text>
 
 
 
@@ -217,11 +261,9 @@ return (
 <Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ "See on Instagram"}</Text>
 </View>
 
-
-
 </View>
 
-</ScrollView>
+</ScrollView> 
 
 
    </View>

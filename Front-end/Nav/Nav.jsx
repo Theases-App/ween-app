@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {  TouchableWithoutFeedback,StyleSheet, View } from 'react-native';
 import {useNavigation} from'@react-navigation/native'
