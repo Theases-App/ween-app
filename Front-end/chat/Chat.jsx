@@ -11,8 +11,8 @@ export default function Chat({ route }) {
     const [text, setText] = useState("");
     const [refresh, setRefresh] = useState(false);
     // const roomsId = route.params.idRooms;
-    const roomsId = 1;
-    const userId = 1;
+    //const roomsId = 1;
+    //const userId = 1;
 
     useEffect(() => {
         axios.get(`http://${IP}:8080/message/msg/${roomsId}`)
@@ -44,16 +44,16 @@ export default function Chat({ route }) {
     };
 
     useEffect(() => {
-        socket.connect();
+        socket.connect()
         socket.on('recive', (message) => {
-            setConv([...conv, message]);
-            setRefresh(!refresh);
+            setConv([...conv, message])
+            setRefresh(!refresh)
         });
 
-        return () => {
-            socket.disconnect();
-        };
-    }, [refresh]);
+        return ()=>{
+            socket.disconnect()
+        }
+    }, [refresh])
 
     return (
         <View style={styles.container}>

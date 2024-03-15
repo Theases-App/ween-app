@@ -21,9 +21,7 @@ export default function UsersOfRoom({roomId}) {
         <View>
             <Text>Users</Text>
             {users?.map((el,i)=>(
-                
-                    <Text>{el.User.fullname}</Text>
-                           
+                    <Text>{el.User.fullname}</Text>        
              ))}
         </View>
     )

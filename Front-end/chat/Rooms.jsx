@@ -9,7 +9,7 @@ export default function Rooms() {
     const [rooms,setRooms]=useState([])
     const [show,setShow]=useState(0)
     const navigation=useNavigation()
-    const UserIduser=1
+    //const UserIduser=1
     useEffect(()=>{
         axios.get(`http://${IP}:8080/chat/rooms/${UserIduser}`)
         .then((res)=>{
