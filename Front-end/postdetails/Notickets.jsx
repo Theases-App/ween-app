@@ -4,7 +4,6 @@ import { View,FlatList,ViewPropTypes,Text,ScrollView,TouchableOpacity,Image,Pres
 import axios from 'axios';
 import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Button from 'react-native-button'
 import { useNavigation } from '@react-navigation/native'
 
 const Noticket=()=>{
@@ -16,7 +15,7 @@ const Noticket=()=>{
       ,height:80,width:300,
       marginLeft:70
       }}>
-        <Text style={{color:"#ff5252",fontSize:30}}>Sorry No More Tickets </Text>
+        <Text style={{color:"#ff5252",fontSize:30}}> Sorry No More Tickets </Text>
         <Text style={{color:"#ff5252",fontSize:30,marginLeft:28}}> We are Sold Out </Text>
       </View>
       <View style={{color:"white",

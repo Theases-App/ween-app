@@ -4,7 +4,6 @@ import { View,FlatList,ViewPropTypes,Text,ScrollView,TouchableOpacity,Image,Pres
 import axios from 'axios';
 import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Button from 'react-native-button'
 import { useNavigation } from '@react-navigation/native'
 
 const Pay=()=>{
