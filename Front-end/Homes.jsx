@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import Nav from './Nav/Nav.jsx';
 import Search from './Search/Search.jsx';
 import Allcategory from './Search/Allcategory.jsx';
@@ -9,7 +9,7 @@ import Homepage from './homepage/homepage.js';
 
 import Eventdetails from "./postdetails/Eventdetails.jsx"
 
-import Map from './Map/Map.jsx'
+
  import Addevent from './components/addevent.jsx'
  import EditPictureAndCountry  from './components/editpictureANDcountry.jsx'
 export default function Home() {
@@ -37,10 +37,9 @@ export default function Home() {
         <Search />
 
         <Homepage/>
-       <Eventdetails/>
+       {/* <Eventdetails/> */}
 
-       
-        <Map/>
+     
 
         <Nav />
       </View>

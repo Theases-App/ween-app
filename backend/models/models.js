@@ -5,10 +5,10 @@ const Block = require('./block').Block
 const Authorization = require('./authorisation').Authorisation
 const {Event} = require('./event')
 const CategoryDetails = require('./categorydetails').CategoryDetails
-const Favorit = require('./favorit');
+const Favorit = require('./favorit')
 const Notifications = require('./notification');
-const Reservation = require('./reservation');
-const Payment = require('./payment');
+const Reservation = require('./reservation').Reservation
+const Payment = require('./payment')
 const Reports = require('./reports');
 const UserHasNotifications = require('./userhasnotifications');
 const ChatRoom = require('./chatroom');
@@ -19,20 +19,22 @@ const Message = require('./message');
 // User.hasOne(Block);
 // Block.belongsTo(User);
 
-User.hasMany(Authorization);
-Authorization.belongsTo(User);
+// User.hasMany(Authorization);
+// Authorization.belongsTo(User, { foreignKey: 'userIduser' });
 
-// User.hasMany(Event, { foreignKey: 'userIduser' });
-// Event.belongsTo(User, { foreignKey: 'userIduser' });
+User.hasMany(Reservation ,{foreignKey:"userid"})
+Reservation.belongsTo(User,{foreignKey:"userid"})
 
 Event.hasMany(CategoryDetails, { foreignKey: 'eventIdevent' });
 CategoryDetails.belongsTo(Event, { foreignKey: 'eventIdevent' });
 
- User.belongsToMany(Event, { through: Favorit, foreignKey: 'user_iduser' });
+User.belongsToMany(Event, { through: Favorit, foreignKey: 'user_iduser' });
 Event.belongsToMany(User, { through: Favorit, foreignKey: 'event_idevent' });
 
-// Event.hasMany(Notifications, { foreignKey: 'event_idevent' });
-// Notifications.belongsTo(Event, { foreignKey: 'event_idevent' });
+Event.hasMany(Notifications, { foreignKey: 'event_idevent' });
+Notifications.belongsTo(Event, { foreignKey: 'event_idevent' });
+
+Event.hasMany(Reservation,{foreignKey:"idevent"})
 
 CategoryDetails.hasMany(Reservation, { foreignKey: 'categorydetails_idcategorydetails' });
 Reservation.belongsTo(CategoryDetails, { foreignKey: 'categorydetails_idcategorydetails' });
@@ -46,8 +48,8 @@ Reports.belongsTo(User, { foreignKey: 'userIduser' });
 User.belongsToMany(Notifications, { through: UserHasNotifications, foreignKey: 'user_iduser' });
 Notifications.belongsToMany(User, { through: UserHasNotifications, foreignKey: 'idnotification' });
 
-// Event.hasOne(ChatRoom, { foreignKey: 'event_idevent' });
-// ChatRoom.belongsTo(Event, { foreignKey: 'event_idevent' });
+Event.hasOne(ChatRoom, { foreignKey: 'event_idevent' });
+ChatRoom.belongsTo(Event, { foreignKey: 'event_idevent' });
 
 User.belongsToMany(ChatRoom, { through: UserHasChat, foreignKey: 'user_iduser' });
 ChatRoom.belongsToMany(User, { through: UserHasChat, foreignKey: 'chat_idchat' });
@@ -55,11 +57,12 @@ ChatRoom.belongsToMany(User, { through: UserHasChat, foreignKey: 'chat_idchat' }
 User.hasMany(Message, { foreignKey: 'user_iduser' });
 Message.belongsTo(User, { foreignKey: 'user_iduser' });
 
+
 ChatRoom.hasMany(Message, { foreignKey: 'chatRoom_idchat' });
 Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });
 
 
-// sequelize.sync({alter:true})
+// sequelize.sync()
 // .then(()=>{
 //     console.log("done")
 // })

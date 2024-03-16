@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {  TouchableWithoutFeedback,StyleSheet, View } from 'react-native';
 import {useNavigation} from'@react-navigation/native'
@@ -29,7 +28,8 @@ const Nav = () => {
         height: 100,
         paddingTop: 20,
         paddingLeft: 15,
-        marginTop:-60
+        marginTop:-60,
+        marginLeft:-200
       }}
     >
      

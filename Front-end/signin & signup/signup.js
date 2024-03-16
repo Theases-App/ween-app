@@ -46,7 +46,7 @@ export default function Signup() {
         axios.post(`http://${IP}:8080/user/signup`,data)
         .then((res)=>{
         console.log("done",res.data)
-          //    / navigate('/signin')
+          navigation.navigate('signin')
        }
         )
         .catch((err)=>{
@@ -111,13 +111,17 @@ export default function Signup() {
       placeholder='Select your Country'
     />
    
-    <View  style={{top:90,height:200,width:150,marginLeft:80,flex:1}}>
-      <Button  onPress={()=> {navigation.navigate("signin"), handleSubmit(obj)}}
-       
-       style={{borderColor:"black"}}
-      color="#ff5252"
-      title="Confirm "
-     />
+   <View  style={{top:5 ,height:44,width:120,backgroundColor:'#ff5252',
+    borderRadius:20,marginTop:60,marginLeft:90
+   }}>
+    <TouchableOpacity onPress={()=>handleSubmit(obj)}>
+      <Text  
+       style={{borderColor:"black",color:'white',
+       marginTop:7,marginLeft:20,fontSize:20
+      }}
+    
+     > Confirm </Text>
+     </TouchableOpacity>
      </View>
      </ScrollView>
     

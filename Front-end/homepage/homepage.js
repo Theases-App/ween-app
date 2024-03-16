@@ -150,16 +150,16 @@ const homepage = () => {
 
 
                               <View>
-                                    <TouchableOpacity onPress={()=>{Navigation.navigate("Hotelresto")}}>
-                                    <Text  style={{
-                                          fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252", marginLeft: 310,
-                                          marginBottom: -32,
+                              <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:150}}>
+                        
 
-                                    }}> Show All</Text>
-                                         </TouchableOpacity>
-
-
-                                    <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Hotel & Resto </Text>
+                        <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Hotel & Resto </Text>
+                        <Pressable   onPress={()=>{Navigation.navigate("Hotelresto")}}>
+                  <Text style={{
+                              fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252"
+                             
+                        }} > Show All</Text></Pressable> 
+                        </View>
 
                                     <Text style={{ fontFamily: "Inter-Black", fontSize: 14, color: "#ececec", marginTop: -10, marginLeft: 45 }}> _________________________________________ </Text>
 
@@ -236,15 +236,16 @@ const homepage = () => {
 
 
                               <View>
-                                    <Text onPress={() => { }} style={{
-                                          fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252", marginLeft: 310,
-                                          marginBottom: -32,
+                              <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:220}}>
+                        
 
-                                    }}> Show All</Text>
-
-
-
-                                    <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Sports </Text>
+                        <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Sports </Text>
+                        <Pressable   onPress={()=>{Navigation.navigate("Sports")}}>
+                  <Text style={{
+                              fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252"
+                             
+                        }} > Show All</Text></Pressable> 
+                        </View>
 
                                     <Text style={{ fontFamily: "Inter-Black", fontSize: 14, color: "#ececec", marginTop: -10, marginLeft: 45 }}> _________________________________________ </Text>
 
@@ -318,15 +319,16 @@ const homepage = () => {
 
 
                               <View>
-                                    <Text onPress={() => { }} style={{
-                                          fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252", marginLeft: 310,
-                                          marginBottom: -32,
+                              <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:198}}>
+                        
 
-                                    }}> Show All</Text>
-
-
-
-                                    <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Concerts </Text>
+                        <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Concerts </Text>
+                        <Pressable   onPress={()=>{Navigation.navigate("Concerts")}}>
+                  <Text style={{
+                              fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252"
+                             
+                        }} > Show All</Text></Pressable> 
+                        </View>
 
                                     <Text style={{ fontFamily: "Inter-Black", fontSize: 14, color: "#ececec", marginTop: -10, marginLeft: 45 }}> _________________________________________ </Text>
 
@@ -403,15 +405,16 @@ const homepage = () => {
 
 
                               <View>
-                                    <Text onPress={() => { }} style={{
-                                          fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252", marginLeft: 310,
-                                          marginBottom: -32,
+                              <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:175}}>
+                        
 
-                                    }}> Show All</Text>
-
-
-
-                                    <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Spectacles </Text>
+                        <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Spectacles </Text>
+                        <Pressable   onPress={()=>{Navigation.navigate("Spectacles")}}>
+                  <Text style={{
+                              fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252"
+                             
+                        }} > Show All</Text></Pressable> 
+                        </View>
 
                                     <Text style={{ fontFamily: "Inter-Black", fontSize: 14, color: "#ececec", marginTop: -10, marginLeft: 45 }}> _________________________________________ </Text>
 
