@@ -60,7 +60,7 @@ const signIn = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const id = req.params.iduser
+    const id = req.params.id
     const {fullname, emailphone, password, role ,image ,age,country} = req.body
     try{
         const Hashed = await bcrypt.hash(password, 10)
@@ -76,60 +76,12 @@ const updateUser = async (req, res) => {
         res.status(201).json('data updated')
     }
     catch(err){
-        res.status(500).json("err")
+        res.status(500).json(err)
     }
-}
-const editprofile=async(req,res)=>{
-    const id = req.params.iduser
-    const {fullname,password, age} = req.body
-    try{
-    
-        editUser(id, {
-            fullname:fullname,
-    
-            password: password,
-            age:age,
-           
-        })
-        res.status(201).json('data updated')
-    }
-    catch(err){
-        res.status(500).json("err")
-    }
-
-
-}
-const updateuserimage=async(req,res)=>{
-    const id = req.params.iduser
-    const {image} = req.body
-    try{
-        editUser(id,{
-            image:image
-        })
-        res.json('data updated')
-    }
-    catch(err){
-        res.json("err")
-    }
-
-}
-const updateusercountry=async(req,res)=>{
-    const id = req.params.iduser
-    const {country} = req.body
-    try{
-        editUser(id,{
-            country:country
-        })
-        res.json('data updated')
-    }
-    catch(err){
-        res.json("err")
-    }
-
 }
 
 const destroyUser = async (req, res) => {
-    const id = req.params.iduser
+    const id = req.params.id
     try{
         deleteUser(id)
         res.status(204).send('user deleted successfully')
@@ -168,17 +120,6 @@ const getadmins = async (req,res) =>{
     catch(err){
 console.log(err);
     }
-
-}
-const getOne = async (req, res) => {
-    const id = req.params.iduser
-    try {
-        const user = await getOneUser(id)
-        res.send(user)
-        console.log(user,"test")
-    } catch (error) {
-        console.log(error);
-    }
 }
 
-module.exports = {signUp, signIn, updateUser, destroyUser, getusers, getClients, getadmins,getOne,updateuserimage,updateusercountry,editprofile}
+module.exports = {signUp, signIn, updateUser, destroyUser, getusers, getClients, getadmins}

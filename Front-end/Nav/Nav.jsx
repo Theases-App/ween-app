@@ -29,7 +29,7 @@ const Nav = () => {
         paddingTop: 20,
         paddingLeft: 15,
         marginTop:-60,
-        marginLeft:-200
+        marginLeft:-100
       }}
     >
      

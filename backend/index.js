@@ -2,8 +2,7 @@ const express = require("express")
 const  db=require("./database/index.js")
 const cors = require('cors')
 
-require ("./database/relations.js")
-
+require("./models/models.js")
 const athentification=require("./router/authentificationroute")
 const block=require("./router/blockroute")
 const categorydetails=require("./router/categorydetailsroute")
@@ -29,8 +28,6 @@ app.use(express.urlencoded({extended: true}))
 // app.use(express.static(__dirname + '../../index.html'))
 
 app.use("/token",athentification)
-
-
 app.use("/block",block)
 app.use("/cat",categorydetails)
 // app.use("/chat",chat)
@@ -45,42 +42,9 @@ app.use("/res",reservation)
 // app.use("/userchat",userhaschat)
 app.use("/user",user)
 
-const publish_key ="pk_test_51OrECAD53RceJq3rNa41nZVlQzaCQA0iaYKyKPCFaqVnWa1VTzj8ngQBu8aSJ6lesLBRBa5JuMyiOa8gLbFnjmRt00fxMvKTp3"
-const secret_key="pk_test_51OrECAD53RceJq3rNa41nZVlQzaCQA0iaYKyKPCFaqVnWa1VTzj8ngQBu8aSJ6lesLBRBa5JuMyiOa8gLbFnjmRt00fxMvKTp3"
+
+
 
 app.listen(PORT, ()=>{
     console.log(`Server listening at http://localhost:${PORT}`)
 })
-
-//// Chat Part 
-const { Server } = require("socket.io");
-const { createServer } = require("http")
-
-
-const ChatServer = createServer(app);
-const io = new Server(ChatServer, {
-  cors:{
-    origin:"http://localhost:3000",
-    methods:["GET","POST"]
-  },
-  });
-
-
-  io.on("connection", (socket) => {
-    console.log(`Socket Connected: ${socket.id}`);
-  
-    socket.on('send', (message) => {
-      console.log('Received message:', message);
-      io.emit('recive', message);
-    });
-  
-    socket.on('disconnect', () => {
-      console.log(`User disconnected: ${socket.id}`);
-    });
-  });
-
-
-ChatServer.listen(3001,()=>{
-    console.log("Socket.io is running on port 3001");
-  }
-  )

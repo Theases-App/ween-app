@@ -25,10 +25,6 @@ import Wishlist from './components/wishlist.jsx';
 
 const Stack= createNativeStackNavigator()
 
-import Index from './signin & signup/index.js';
-import Homepage from "./homepage/index.js"
-
-
 export default function App() {
   
   return (
@@ -36,100 +32,68 @@ export default function App() {
 
 
 <NavigationContainer>
+
       <Stack.Navigator>
-        
-      <Stack.Screen
-        
-        name="home"
-        component={Home}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
-       <Stack.Screen
-        
-        name="IndexC"
-        component={IndexC}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
-      <Stack.Screen
+      {/* <Stack.Screen
+          name="signup"
+          component={Signup} 
+
+        /> */}
+          {/* <Stack.Screen
+          name="signin"
+          component={Signin} 
+          
+
+        /> */}
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{ headerShown: false
+          }
+        }   
+        />
+       {/* <Stack.Screen
         
         name="Addevent"
         component={Addevent}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
-         <Stack.Screen
-        
-        name="your favorite"
-        component={Wishlist}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
-      
-       
+        options={{ headerShown: false}}  /> */}
+     
 
-      <Stack.Screen
+      {/* <Stack.Screen
         
         name="ticketdetails"
         component={Ticket}
         options={{ headerShown: false
         
         }
-      }
-      
-      />
-             <Stack.Screen
-          name="IndexC"
-          component={IndexC}
-          options={{ headerShown: false
-
-          }
-        }
-        />
-    
+      } />  */}
+      <Stack.Screen name='your favorite' component={Wishlist}></Stack.Screen>
         <Stack.Screen
         
         name="Clubbing"
         component={Clubbing}
-        options={{ headerShown:false}}
-      
-      />
-           <Stack.Screen
+        options={{ headerShown:false}}  />
+        <Stack.Screen
         
         name="Concerts"
         component={Concerts}
         options={{ headerShown: false
         
         }
-      }
-      
-      />
-         <Stack.Screen
+      }/>
+      <Stack.Screen
         
         name="Hotelresto"
         component={Hotelresto}
         options={{ headerShown: false
         
         }
-      }
-      
-      />
-         <Stack.Screen
+        }/>
+      <Stack.Screen
         
         name="Spectacles"
         component={Spectacles}
-        options={{ headerShown: false }}
-      
-      />
+        options={{ headerShown: false }}/>
 
        <Stack.Screen
         
@@ -159,17 +123,8 @@ export default function App() {
           component={Search} 
 
         />
-        <Stack.Screen
-          name="signin"
-          component={Signin} 
-          
-
-        />
-        <Stack.Screen
-          name="signup"
-          component={Signup} 
-
-        />
+      
+     
           <Stack.Screen
           name="eventdetail"
           component={Eventdetails} 
@@ -196,8 +151,7 @@ export default function App() {
     }
 
       
-      }
-        />
+      } />
         
       </Stack.Navigator>
 
