@@ -1,4 +1,4 @@
-const express = require('express')
+/*const express = require('express')
 const router =express.Router()
 const controller = require('../controller/blockcontroller')
 
@@ -10,4 +10,4 @@ router.get('/getblocked',controller.getallblocked)
 
 router.delete('/delblock/:id',controller.deleteFromblock)
 
-module.exports = router
+module.exports = router*/

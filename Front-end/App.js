@@ -6,7 +6,7 @@ import Nav from './Nav/Nav.jsx';
 import Search from './Search/Search.jsx';
 import Home from './Homes.jsx';
 import Allcategory from './Search/Allcategory.jsx';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer,useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Signin from './signin & signup/signin.js';
 import Signup from './signin & signup/signup.js';
@@ -21,6 +21,8 @@ import Addevent from './components/addevent.jsx';
 import EditUser from './components/edituser.jsx';
 import Noticket from './postdetails/Notickets.jsx';
 import Pay from './postdetails/Pay.jsx';
+import Rooms from "./chat/Rooms.jsx";
+import Chat from "./chat/Chat.jsx";
 
 const Stack= createNativeStackNavigator()
 
@@ -116,13 +118,18 @@ export default function App() {
         />
         <Stack.Screen
           name="signin"
-          component={Signin} 
+          component={Signin}   />
+            
+    <Stack.Screen
+        name="Chat"
+        component={Chat}
+         />
           
-
-        />
-        <Stack.Screen
-          name="signup"
-          component={Signup} 
+      <Stack.Screen
+        name="Rooms"
+        component={Rooms}
+         
+          
 
         />
        <Stack.Screen
@@ -167,23 +174,41 @@ export default function App() {
 
 
 
-   
-
-  
-     
-      
-     
+  //     </TouchableOpacity>
     
-     
-  )
-
-      // </TouchableOpacity>
     
-  
-
-    //  </View>
-     
-  ;
-
+ 
+  //    </View>
+  );
 }
 
+const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  box: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'skyblue',
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  }
+
+})
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor:"red",
+    width:2, // Change the width as needed
+    height: 3, // Change the height as needed
+  },
+});
