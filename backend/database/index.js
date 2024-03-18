@@ -1,5 +1,4 @@
-
-const { Sequelize } =require('sequelize')
+const { Sequelize, DataTypes } = require("sequelize");
 require('dotenv').config()
 
 
@@ -25,6 +24,14 @@ sequelize.authenticate()
 })
 .catch(err=>{
     console.log(err,'no connection');
+})
+
+ sequelize.sync()
+ .then(()=>{
+    console.log("done")
+ })
+.catch((err)=>{
+     console.log(err)
 })
 
 

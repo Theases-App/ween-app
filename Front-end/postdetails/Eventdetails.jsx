@@ -7,15 +7,17 @@ import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { useNavigation } from '@react-navigation/native'
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 // const windowWidth = Dimensions.get("window").width;
 // const windowHeight = Dimensions.get("window").height;
 
 
-
-
+// const theme = useColorScheme();
+// const isDarkTheme = theme === 'dark';
 
 const Postdetails=({route})=>{
    const [currentLocation, setCurrentLocation] = useState(null);
@@ -23,7 +25,9 @@ const Postdetails=({route})=>{
    const[user_iduser,setuser_iduser]=useState(0)
    const[event_idevent,setevent_idevent]=useState(0)
  
-   useEffect(() => {
+ 
+
+   useEffect(async() => {
      const getLocation = async () => {
        let { status } = await Location.requestForegroundPermissionsAsync();
        if (status !== "granted") {
@@ -35,8 +39,8 @@ const Postdetails=({route})=>{
        setCurrentLocation(location.coords);
  
        setInitialRegion({
-         latitude: location.coords.latitude,
-         longitude: location.coords.longitude,
+         latitude:item.map ,
+         longitude: item.map2,
          latitudeDelta: 0.005,
          longitudeDelta: 0.005,
        });
@@ -44,8 +48,7 @@ const Postdetails=({route})=>{
        
        console.log("Latitude:", location.coords.latitude);
        console.log("longitude:", location.coords.longitude);
- 
-       
+       console.log( "this is the lat",item.map)
      };
  
      getLocation();
@@ -70,7 +73,10 @@ const Postdetails=({route})=>{
 
 
   
+
+
 const item = route.params.item 
+
 
   const Navigation = useNavigation()
   const [chat,setChat]=useState(true)
@@ -123,7 +129,6 @@ return (
 <View style={{marginTop:120}}>
 <Text style={{position:"absolute",marginTop:-60,marginLeft:140,color:"white",fontFamily:"Inter-Black",fontSize:23}}>  {item.eventname}</Text>
 </View>
-
 <ScrollView>
 
    <View style={{marginBottom:300}}>
@@ -140,7 +145,7 @@ return (
        marginLeft:20,
        marginTop:8
 
- }}>{item.eventname}</Text>
+ }}>{item.eventname}{console.log("this is the item",item)}</Text>
 
 
   <Text style={{color:"white",
@@ -158,7 +163,8 @@ return (
 </View>
 
 
-<Text style={{color:"white",
+<Text style={{
+     color:"white",
      marginLeft:310,
      marginTop:-19,
      fontFamily:"Inter-Black",
@@ -179,7 +185,8 @@ return (
         <Icon name="calendar" style={iconStyle('calendar')} size={25} />
 </View>
 
-<Text style={{color:"white",
+<Text style={{
+     color:"white",
      marginLeft:70,
      marginTop:-24,
      fontFamily:"Inter-Black",
@@ -220,38 +227,39 @@ return (
 </View>
 
 <View style={{backgroundColor:"#ececec",borderColor:"#ececec",marginTop:0,height:490,borderRadius:5,width:420}}>
+
+ <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>{item.description}</Text>
+
  <Text style={{marginTop:10,fontSize:20,marginLeft:20,marginRight:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>* {item.description}</Text>
  <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>*{item.description}</Text>
 
 
 
 
-<View style={styles.container}>
+
+
+ <View style={styles.container}>
        {initialRegion && (
          <MapView style={styles.map} initialRegion={initialRegion}>
            {currentLocation && (
              <Marker
+            
                coordinate={{
-                 latitude: currentLocation.latitude,
-                 longitude: currentLocation.longitude,
+                  latitude:currentLocation.latitude ,
+                longitude: currentLocation.longitude,
                }}
-               title="your location
-               "
+               title="your location"
+               
              />
            )}
+
+           <Marker    coordinate={{latitude: item.map,
+            longitude: item.map2}}/>
+
+           
          </MapView>
        )}
      </View>
-
-
-
-
-
-
-
-
-
-
 
 <View>
 
@@ -292,15 +300,22 @@ const styles = StyleSheet.create({
      flex: 1,
      alignItems: "center",
      justifyContent: "center",
-    paddingTop:250
+    paddingTop:200,
+    marginTop:"30%",
    },
    map: {
-     width: "70%",
-     height: "100%",
-     paddingBottom:200,
+     width: "100%",
+     height: 250,
+    
      marginBottom: 400,
      borderRadius: 20,
    },
+   textD:{
+    color:"black"
+   },
+   textL:{
+  color:"white"
+   }
  });
 
 export default Postdetails;

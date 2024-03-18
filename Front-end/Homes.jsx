@@ -6,10 +6,9 @@ import Allcategory from './Search/Allcategory.jsx';
 import axios from 'axios';
 import { IP } from './ip.json';
 import Homepage from './homepage/homepage.js';
-
 import Eventdetails from "./postdetails/Eventdetails.jsx"
 
-
+import Map from './Map/Map.jsx'
  import Addevent from './components/addevent.jsx'
  import EditPictureAndCountry  from './components/editpictureANDcountry.jsx'
 export default function Home() {
@@ -35,11 +34,11 @@ export default function Home() {
          
         </View>
         <Search />
-
+        {/* <Addevent/> */}
         <Homepage/>
        {/* <Eventdetails/> */}
-
-     
+        {/* <Homepage/> */}
+        {/* <Map/> */}
 
         <Nav />
       </View>

@@ -13,7 +13,7 @@ const Nav = () => {
 
 
   const iconStyle = (iconName) => ({
-    color: selectedIcon === iconName ? '#D68910' : 'white',
+    color: selectedIcon === iconName ? 'red' : 'white',
   });
     return (
       <View
@@ -34,7 +34,7 @@ const Nav = () => {
     >
      
 
-      <TouchableWithoutFeedback onPress={() => handleIconPress('heart')}>
+      <TouchableWithoutFeedback onPress={() =>{navigation.navigate("your favorite"), handleIconPress('heart')}}>
         <Icon name="heart" style={iconStyle('heart')} size={30} />
       </TouchableWithoutFeedback>
 
@@ -54,7 +54,7 @@ const Nav = () => {
         <Icon name="bell" style={iconStyle('bell')} size={30} />
       </TouchableWithoutFeedback>
 
-      <TouchableWithoutFeedback onPress={() =>navigation.navigate("signup")  }>
+      <TouchableWithoutFeedback onPress={() =>navigation.navigate("signin")  }>
         <Icon name="user" style={iconStyle('user')} size={30} />
       </TouchableWithoutFeedback>
     </View>
