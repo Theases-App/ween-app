@@ -24,9 +24,6 @@ import Pay from './postdetails/Pay.jsx';
 
 const Stack= createNativeStackNavigator()
 
-
-
-
 export default function App() {
   
   return (
@@ -34,8 +31,8 @@ export default function App() {
 
 
 <NavigationContainer>
-      <Stack.Navigator>
 
+      <Stack.Navigator>
         <Stack.Screen
           name="home"
           component={Home}
@@ -47,8 +44,7 @@ export default function App() {
         
         name="Addevent"
         component={Addevent}
-        options={{ headerShown: false}}   
-      />
+        options={{ headerShown: false}}  />
      
 
        <Stack.Screen
@@ -58,16 +54,12 @@ export default function App() {
         options={{ headerShown: false
         
         }
-      }
-      
-      /> 
+      } /> 
         <Stack.Screen
         
         name="Clubbing"
         component={Clubbing}
-        options={{ headerShown:false}}
-      
-      />
+        options={{ headerShown:false}}  />
         <Stack.Screen
         
         name="Concerts"
@@ -75,9 +67,7 @@ export default function App() {
         options={{ headerShown: false
         
         }
-      }
-      
-      />
+      }/>
       <Stack.Screen
         
         name="Hotelresto"
@@ -85,16 +75,12 @@ export default function App() {
         options={{ headerShown: false
         
         }
-      }
-      
-      />
+        }/>
       <Stack.Screen
         
         name="Spectacles"
         component={Spectacles}
-        options={{ headerShown: false }}
-      
-      />
+        options={{ headerShown: false }}/>
 
        <Stack.Screen
         
@@ -171,8 +157,7 @@ export default function App() {
     }
 
       
-      }
-        />
+      } />
         
       </Stack.Navigator>
 

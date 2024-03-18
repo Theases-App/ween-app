@@ -1,6 +1,5 @@
 import { View,FlatList,ViewPropTypes,Text,ScrollView,StyleSheet,TouchableOpacity,Image,Pressable,TouchableWithoutFeedback} from 'react-native';
-
- import{useEffect,useState,useRef} from 'react';
+import{useEffect,useState,useRef} from 'react';
 import axios from 'axios';
 import Button from 'react-native-button';
 import {IP} from "../ip.json"
@@ -14,18 +13,36 @@ import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 // const windowWidth = Dimensions.get("window").width;
 // const windowHeight = Dimensions.get("window").height;
-
-
+  
 // const theme = useColorScheme();
 // const isDarkTheme = theme === 'dark';
+
 
 const Postdetails=({route})=>{
    const [currentLocation, setCurrentLocation] = useState(null);
    const [initialRegion, setInitialRegion] = useState(null);
  
- 
+   const item = route.params.item 
+   useEffect(()=>{
+    const test=async()=>{
+      const x= await AsyncStorage.getItem("id")
+      axios.get(`http://${IP}:8080/res/getall/${x}/${item.idevent}`)
+        .then((res) => {
+          setChating(res.data)
+          if(res.data[0]){
+           setText("Join Chat Room")
+          }
+          else {
+           setText("Buy a Ticket")
+          }
+        }).catch((err) => {
+          console.log(err)
+        })
+    }
+       test()
+      },[])
 
-   useEffect(async() => {
+   useEffect(() => {
      const getLocation = async () => {
        let { status } = await Location.requestForegroundPermissionsAsync();
        if (status !== "granted") {
@@ -53,43 +70,20 @@ const Postdetails=({route})=>{
    }, []);
 
 
-
-
-
-
-
-  
-
-
-const item = route.params.item 
-
-
   const Navigation = useNavigation()
-  const [chat,setChat]=useState(true)
+  const [chat,setChat]=useState("")
   const [selectedIcon, setSelectedIcon] = useState('');
   const [chating,setChating]=useState("")
   const [text,setText]=useState("Buy a Ticket")
 
-   useEffect(async()=>{
-   const x= await AsyncStorage.getItem("id")
-   axios.get(`http://${IP}:8080/res/getall/${x}/${item.idevent}`)
-     .then((res) => {
-       setChating(res.data)
-       if(res.data[0]){
-        setText("Join Chat Room")
-       }
-       else {
-        setText("Buy a Ticket")
-       }
-     }).catch((err) => {
-       console.log(err)
-     })
-   },[])
-
-   console.log(text);
+// const id=async()=>{
+//   const x= await AsyncStorage.getItem("id")
+//   console.log(x);
+//   setChat(x)
+// }
 
   
-   const chatting= async()=>{
+   const chatting=()=>{
        if (text==="Join Chat Room"){
         Navigation.navigate("pay")
         }
@@ -213,15 +207,7 @@ return (
 
 <View style={{backgroundColor:"#ececec",borderColor:"#ececec",marginTop:0,height:490,borderRadius:5,width:420}}>
 
- <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>{item.description}</Text>
-
  <Text style={{marginTop:10,fontSize:20,marginLeft:20,marginRight:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>* {item.description}</Text>
- <Text style={{marginTop:10,fontSize:20,marginLeft:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>*{item.description}</Text>
-
-
-
-
-
 
  <View style={styles.container}>
        {initialRegion && (
@@ -249,7 +235,7 @@ return (
 <View>
 
 
-<View style={{marginTop:22,marginLeft:10,color:"black"}}>
+<View style={{marginTop:-16,marginLeft:10,color:"black"}}>
 <Icon name="phone" style={{color:'black'}} size={20} />
 </View>
 <Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ item.phonenumber}</Text>

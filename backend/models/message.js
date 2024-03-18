@@ -22,7 +22,7 @@ const Message = sequelize.define('message', {
   }
 }, {
   tableName: 'message',
-  timestamps: false // If you don't have timestamp columns
+  timestamps: false 
 });
 
 module.exports = Message;
