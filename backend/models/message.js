@@ -1,9 +1,8 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
-//const User=require("./user.js")
+
 
 const Message = sequelize.define('message', {
-
   idmessage: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -23,17 +22,7 @@ const Message = sequelize.define('message', {
   }
 }, {
   tableName: 'message',
-  timestamps: false 
-
-  content:{
-    type: DataTypes.TEXT("long"),
-    allowNull:false,
-}
-
+  timestamps: false // If you don't have timestamp columns
 });
-
-//relation between Messages and users
-/*User.hasMany(Message)
-Message.belongsTo(User)*/
 
 module.exports = Message;
