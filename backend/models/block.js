@@ -1,4 +1,4 @@
-/*const { DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
 
 const Block = sequelize.define('block', {
@@ -29,4 +29,3 @@ const removefromblock=(id)=>{
 }
 
 module.exports = {Block,addToblock,getBlocked,getOneBlocked,removefromblock};
-*/
