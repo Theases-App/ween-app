@@ -21,8 +21,7 @@ import MapView, { Marker } from "react-native-maps";
 const Postdetails=({route})=>{
    const [currentLocation, setCurrentLocation] = useState(null);
    const [initialRegion, setInitialRegion] = useState(null);
-   const[user_iduser,setuser_iduser]=useState(0)
-   const[event_idevent,setevent_idevent]=useState(0)
+
  
    const item = route.params.item 
    useEffect(()=>{
@@ -70,18 +69,26 @@ const Postdetails=({route})=>{
  
      getLocation();
    }, []);
-   const addtofavorite=()=>{
-    const obj={
-      user_iduser:user_iduser,
-      event_idevent:event_idevent
-    }
-    axios.post(`http://${IP}:8080/favorite/addfavorit`,obj).then((res)=>{
-      console.log("liked");
-    })
-    .catch((error)=>{
+   const addtofavorite = async () => {
+    try {
+      const userId = await AsyncStorage.getItem("id");
+      const obj = {
+        user_iduser: userId,
+        event_idevent: item.idevent
+      };
+  
+      axios.post(`http://${IP}:8080/favorite/addfavorit`,obj)
+        .then((res) => {
+          console.log("Liked");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
       console.log(error);
-    })
-   }
+    }
+  };
+  
 
 
   const Navigation = useNavigation()
