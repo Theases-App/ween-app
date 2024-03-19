@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from "react";
-import { View, TextInput, TouchableOpacity, StyleSheet,Dimensions, Text, ScrollView, Modal } from "react-native";
+import { View, TextInput, TouchableOpacity, StyleSheet,Dimensions, Text, ScrollView, Modal ,Alert} from "react-native";
 import axios from "axios";
 import { IP } from "../ip.json";
 import * as Location from "expo-location";
@@ -10,7 +10,7 @@ const Addevent = () => {
 
   const [currentLocation, setCurrentLocation] = useState(null);
   const [initialRegion, setInitialRegion] = useState(null);
-
+  const [selectedCoordinates, setSelectedCoordinates] = useState(null);
   const [eventname, setEventName] = useState("");
   const [eventcategory, setEventCategory] = useState("");
   const [image, setImage] = useState("");
@@ -32,27 +32,21 @@ const Addevent = () => {
         console.log("Permission to access location was denied");
         return;
       }
-
+  
       let location = await Location.getCurrentPositionAsync({});
       setCurrentLocation(location.coords);
-     
-
+  
       setInitialRegion({
-        latitude:setLant(location.coords.latitude),
-        longitude: setLong(location.coords.longitude),
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
         latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       });
-
-      
-
+  
       console.log("Latitude:", location.coords.latitude);
-      console.log("longitude:", location.coords.longitude);
-    
-      
+      console.log("Longitude:", location.coords.longitude);
     };
-    console.log(lant,"hetha set lant")
-    console.log(long,"hetha set");
+  
     getLocation();
   }, []);
   const add = (id) => {
@@ -63,8 +57,8 @@ const Addevent = () => {
       price: price,
       country: country,
       location: location,
-      map:lant,
-      map2:long
+      map:selectedCoordinates.latitude,
+      map2:selectedCoordinates.longitude
     };
 
     axios
@@ -76,7 +70,7 @@ const Addevent = () => {
         setImage("");
         setPrice(0);
         setCountry("");
-        setLocation("");
+        setSelectedCoordinates("")
       })
       .catch((error) => {
         console.error("Error adding event:", error);
@@ -85,6 +79,17 @@ const Addevent = () => {
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
+  };
+
+  const handleMapPress = (event) => {
+    const { coordinate } = event.nativeEvent;
+    setSelectedCoordinates(coordinate);
+    Alert.alert(
+      "Location Selected",
+      `Latitude: ${coordinate.latitude}, Longitude: ${coordinate.longitude}`,
+      [{ text: "OK" }]
+    );
+    console.log(coordinate.latitude,"ahwaaaq",coordinate.longitude)
   };
 
   const selectInput = (input) => {
@@ -165,18 +170,32 @@ const Addevent = () => {
 
 
       {initialRegion && (
-        <MapView style={styles.map} initialRegion={initialRegion}>
-          {currentLocation && (
-            <Marker
-              coordinate={{
-                latitude: currentLocation.latitude,
-                longitude: currentLocation.longitude,
-              }}
-              title="your location
-              "
-            />
-          )}
-        </MapView>
+         <MapView
+         style={styles.map}
+         initialRegion={initialRegion}
+         onPress={handleMapPress}
+       >
+         {currentLocation && (
+           <Marker
+             coordinate={{
+               latitude: currentLocation.latitude,
+               longitude: currentLocation.longitude,
+             }}
+             title="Your location"
+           />
+         )}
+         {selectedCoordinates && (
+           <Marker
+             coordinate={{
+               latitude: selectedCoordinates.latitude,
+               longitude: selectedCoordinates.longitude,
+             }}
+             title="Selected Location"
+             pinColor="red"
+           />
+         )}
+       </MapView>
+
       )}
    
 

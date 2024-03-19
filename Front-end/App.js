@@ -110,7 +110,14 @@ export default function App() {
 
         />
 
-     
+         <Stack.Screen
+          name="IndexC"
+          component={IndexC} 
+          options={{ headerShown: false
+
+          }
+        }
+        />
         <Stack.Screen
           name="search"
           component={Search} 
@@ -119,6 +126,10 @@ export default function App() {
         <Stack.Screen
           name="signin"
           component={Signin}   />
+
+            <Stack.Screen
+          name="signup"
+          component={Signup}   />
             
     <Stack.Screen
         name="Chat"
@@ -148,6 +159,7 @@ export default function App() {
           }
         }
         />
+
         <Stack.Screen
           name="Allcategory"
           component={Allcategory}
