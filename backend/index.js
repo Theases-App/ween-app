@@ -14,7 +14,7 @@ const notification=require("./router/notificationroute")
 const payment=require("./router/paymentroute")
 const reports=require("./router/reportsroute")
 const reservation=require("./router/reservationroute")
-const userhaschat=require("./router/userhaschatroute")
+//const userhaschat=require("./router/userhaschatroute")
 const user=require("./router/userroute")
 
 const PORT = 8080

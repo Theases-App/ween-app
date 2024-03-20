@@ -6,7 +6,7 @@
   }
   
   .user-table {
-    max-width: 800px; /* Adjust the max-width as needed */
+    max-width: 1000px; /* Adjust the max-width as needed */
     width: 100%;
     border-collapse: collapse;
   }
@@ -18,7 +18,8 @@
   }
   
   .user-table th {
-    background-color: #f2f2f2;
+    background-color: #111111;
+    color: white;
   }
   
   .user-image {

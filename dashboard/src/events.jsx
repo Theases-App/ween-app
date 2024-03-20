@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const AllEvents = () => {
@@ -79,6 +79,91 @@ const AllEvents = () => {
           </div>
         </div>
       </div>
+    </div>
+  );
+};
+
+export default AllEvents;
+*/
+
+
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+const AllEvents = () => {
+  const [allEvents, setEvents] = useState([]);
+  const [refresh, setRefresh] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/event/getall`)
+      .then((res) => {
+        setEvents(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [refresh]);
+
+  const handleDelete = (eventId) => {
+    axios
+      .delete(`http://localhost:8080/event/delete/${eventId}`)
+      .then((res) => {
+        setEvents((prevEvents) =>
+          prevEvents.filter((event) => event.id !== eventId)
+        );
+        setRefresh(!refresh);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const Accept = (eventId) => {
+    axios
+      .put(`http://localhost:8080/event/update/${eventId}`, { adminmessage: 1 })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
+
+  return (
+    <div className="container">
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Event name</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allEvents.map((event) => (
+            <tr key={event.id} className="event-item">
+              <td>
+                <img
+                  loading="lazy"
+                  src={event.image}
+                  alt={event.eventname}
+                  className="user-image"
+                />
+              </td>
+              <td>{event.eventname}</td>
+              <td>{event.date}</td>
+              <td>
+                <button
+                  onClick={() => handleDelete(event.idevent)}
+                  className="block-button"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => Accept(event.idevent)}
+                  className="block-button"
+                >
+                  Accept
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

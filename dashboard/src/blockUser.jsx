@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Block = () => {
     const[data,setData]=useState([])
     const[refresh,setRefresh]=useState(false)
-
 
     useEffect(() => {
         axios.get(`http://localhost:8080/user/getallusers`)
@@ -69,19 +68,91 @@ const Block = () => {
         </div>
       );
 }
+export default Block;
+*/
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 
+const Block = () => {
+  const [data, setData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/user/getallusers`)
+      .then((res) => {
+        console.log('data', res.data)
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [refresh]);
 
+  const BlockUser = async (id) => {
+    try {
+      await axios.put(`http://localhost:8080/user/block/${id}`, {
+        blockIdblock: null,
+      });
+      setRefresh(!refresh);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-
-
-
-
-
-
-
-
-
+  return (
+    <div className="container">
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.filter((e) => e.blockIdblock !== null).map((e) => (
+            <tr key={e.id}>
+              <td>
+                <img
+                  loading="lazy"
+                  src={e.image}
+                  className="user-image"
+                />
+              </td>
+              <td>{e.fullname}</td>
+              <td>{e.emailphone}</td>
+              <td>
+                <button
+                  onClick={() => BlockUser(e.iduser)}
+                  className="block-button"
+                >
+                  Unblock
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default Block;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
