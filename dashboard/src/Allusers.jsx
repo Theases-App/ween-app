@@ -123,7 +123,7 @@ const AllUsers = () => {
         <tbody>
           {allUsers.filter(user => user.blockIdblock === null).map(user => (
             <tr key={user.id}>
-              <td><img src={user.image} alt={user.fullname} className="user-image" /></td>
+              <td><img src={user.image} className="user-image" /></td>
               <td>{user.fullname}</td>
               <td>{user.emailphone}</td>
               <td>

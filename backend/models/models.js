@@ -11,8 +11,8 @@ const Reservation = require('./reservation').Reservation
 const Payment = require('./payment')
 const Reports = require('./reports');
 const UserHasNotifications = require('./userhasnotifications');
-const ChatRoom = require('./chatroom');
-const UserHasChat = require('./userhaschat');
+const chatRoom = require('./chatroom');
+//const UserHasChat = require('./userhaschat');
 const Message = require('./message');
 
 
@@ -51,7 +51,7 @@ Reports.belongsTo(User, { foreignKey: 'userIduser' });
 User.belongsToMany(Notifications, { through: UserHasNotifications, foreignKey: 'user_iduser' });
 Notifications.belongsToMany(User, { through: UserHasNotifications, foreignKey: 'idnotification' });
 
-Event.hasOne(ChatRoom, { foreignKey: 'event_idevent' });
+/*Event.hasOne(ChatRoom, { foreignKey: 'event_idevent' });
 ChatRoom.belongsTo(Event, { foreignKey: 'event_idevent' });
 
 User.belongsToMany(ChatRoom, { through: UserHasChat, foreignKey: 'user_iduser' });
@@ -62,7 +62,24 @@ Message.belongsTo(User, { foreignKey: 'user_iduser' });
 
 
 ChatRoom.hasMany(Message, { foreignKey: 'chatRoom_idchat' });
-Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });
+Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });*/
+
+
+//<-----------------------------  chat relations  ----------------------------->//
+//relation between chatRoom and Users
+User.hasMany(chatRoom)
+chatRoom.belongsTo(User)
+//relation between chatRoom and Event
+Event.hasMany(chatRoom)
+chatRoom.belongsTo(Event)
+//relation between chatRoom and messages
+chatRoom.hasMany(Message)
+Message.belongsTo(chatRoom)
+//relation between Messages and users
+User.hasMany(Message)
+Message.belongsTo(User)
+
+
 
 sequelize.sync()
 .then(()=>{
