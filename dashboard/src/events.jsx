@@ -3,28 +3,31 @@ import axios from "axios";
 
 const AllEvents = () => {
   const [allEvents, setEvents] = useState([]);
-
+  const [refresh,setRefresh]=useState([]);
   useEffect(() => {
     axios.get(`http://localhost:8080/event/getall`)
       .then(res => {
         setEvents(res.data)
       })
       .catch(err => console.log(err))
-  },[])
-
+      
+  },[refresh])
+  
   const handleDelete = (eventId) => {
     axios.delete(`http://localhost:8080/event/delete/${eventId}`)
       .then(res => {
         setEvents(prevEvents => prevEvents.filter(event => event.id !== eventId))
+        setRefresh(!refresh)
       })
       .catch(err => console.log(err))
   }
 
  const Accept = (eventId) => {
-    axios.put(`http://localhost:8080/event/update/${eventId}`)
-      
-        //onclick admin message from 0 to 1
-     
+  
+    axios.put(`http://localhost:8080/event/update/${eventId}`,{"adminmessage":1})
+    .then(response => console.log(response))
+    .catch(err => console.log(err))
+  
   };
 
 
@@ -51,20 +54,19 @@ const AllEvents = () => {
                       <img
                         loading="lazy"
                         src={e.image}
-                        alt={e.name}
+                        alt={e.eventname}
                       />
                     </span>
-                    <span>{e.name}</span>
-                    <span>{e.createdAt.slice(0, 10)}</span>
+                    <span>{e.eventname}</span>
                     <span>
                       <button
-                        onClick={() => handleDelete(e.id)}
+                        onClick={() => handleDelete(e.idevent)}
                         className="delete-button"
                       >
                         Delete
                       </button>
                       <button
-                        onClick={() => Accept(e.id)}
+                        onClick={() => Accept(e.idevent)}
                         className="delete-button"
                       >
                         Accept

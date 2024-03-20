@@ -4,6 +4,7 @@ import Side from "./side.jsx";
 import Charts from "./charts.jsx";
 import AllUsers from './Allusers.jsx';
 import AllEvents from './events.jsx';
+import BlockUser from "./blockUser.jsx";
 
 function All() {
   const [nav,setNav]=useState(0)
@@ -27,6 +28,10 @@ function All() {
       <div className="order-2 ml-10">
        <AllUsers />
       </div>}
+      {nav==3&&
+        <div className="order-2 ml-10">
+         <BlockUser />
+        </div>}
     </div>
   );
 }

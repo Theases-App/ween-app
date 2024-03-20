@@ -40,6 +40,16 @@ function Side({setNav}) {
          
         </li>
 
+
+        <li className="sidebar-list"  onClick={()=>{
+          setNav(3)
+        }}>
+        
+          <BsPeople className="icon"/>Blocked User
+       
+      </li>
+
+
         <li className="sidebar-list">
           <a href="#">
             <BsCardText className="icon" />Reports

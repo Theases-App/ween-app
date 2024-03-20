@@ -10,7 +10,7 @@ import
  import './home.css'
 
 function Home() {
- // const [data,setData]=useState([])
+ //const [data,setData]=useState([])
   const [usersNumber,SetUsersNumber]=useState(0)
   const [eventsNumber,SetEventsNumber]=useState(0)
   useEffect(()=>{
@@ -70,10 +70,9 @@ function Home() {
         },
       ];
      
-/*
 
 
-const [events, setEvents] = useState([])
+/*const [events, setEvents] = useState([])
 
 useEffect(() => {
   axios.get(`http://localhost:8080/event`)
@@ -90,8 +89,8 @@ useEffect(() => {
     .catch(error=>{
       console.error('can not fetch events:',error)
     })
-},[])*/
-
+},[])
+*/
   return (
     <main className='main-container'>
         <div className='main-title'>

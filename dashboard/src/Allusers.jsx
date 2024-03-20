@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const AllUsers = () => {
   const [refresh, setRefresh] = useState(false);
-  const [allUsers, setSelecteduser] = useState([]);
+  const [allUsers, setSelecteduser] = useState([])
 
   useEffect(() => {
     axios.get(`http://localhost:8080/user/getallusers`)
@@ -13,14 +13,23 @@ const AllUsers = () => {
       }).catch(err => console.log(err))
   }, [refresh]);
 
-  const handleDeleteUser = async (id) => {
+  const BlockUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/user/delete/${id}`)
+      // First, make the POST request to add the block
+      const res = await axios.post(`http://localhost:8080/block/addblock`, {"userIduser": id});
+  
+      // Update the state to trigger a refresh
       setRefresh(!refresh);
+  
+      // Then, make the PUT request to update the user's block status
+      await axios.put(`http://localhost:8080/user/block/${id}`, {"blockIdblock": res.data.idblock});
+  
+      console.log('User blocked successfully');
     } catch (err) {
-      console.log(err);
+      console.error('Error blocking user:', err);
     }
   };
+  
  
 
   return (
@@ -41,7 +50,7 @@ const AllUsers = () => {
               </div>
 
               <div >
-                {allUsers.map((e) => (
+                {allUsers.filter(e=>e.blockIdblock===null).map((e) => (
                   <div key={e.id} className="header">
                     <span>
                       <img
@@ -49,15 +58,15 @@ const AllUsers = () => {
                         src={e.image}
                       />
                     </span>
-                    <span>{e.name}</span>
-                    <span>{e.email}</span>
+                    <span>{e.fullname}</span>
+                    <span>{e.emailphone}</span>
               
                     <span>
                       <button
-                        onClick={() => handleDeleteUser(e.id)}
+                        onClick={() => BlockUser(e.iduser)}
                         className="delete-button"
                       >
-                        Delete
+                        Block
                       </button>
                     
                     </span>
@@ -72,4 +81,61 @@ const AllUsers = () => {
   );
 };
 
+export default AllUsers;*/
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./Allusers.css"
+const AllUsers = () => {
+  const [refresh, setRefresh] = useState(false);
+  const [allUsers, setSelectedUser] = useState([]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/user/getallusers`)
+      .then(res => {
+        console.log('data', res.data);
+        setSelectedUser(res.data);
+      })
+      .catch(err => console.log(err));
+  }, [refresh]);
+
+  const blockUser = async (id) => {
+    try {
+      const res = await axios.post(`http://localhost:8080/block/addblock`, {"userIduser": id});
+      setRefresh(!refresh);
+      await axios.put(`http://localhost:8080/user/block/${id}`, {"blockIdblock": res.data.idblock});
+      console.log('User blocked successfully');
+    } catch (err) {
+      console.error('Error blocking user:', err);
+    }
+  };
+
+  return (
+    <div className="container">
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allUsers.filter(user => user.blockIdblock === null).map(user => (
+            <tr key={user.id}>
+              <td><img src={user.image} alt={user.fullname} className="user-image" /></td>
+              <td>{user.fullname}</td>
+              <td>{user.emailphone}</td>
+              <td>
+                <button onClick={() => blockUser(user.iduser)} className="block-button">Block</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
 export default AllUsers;
+

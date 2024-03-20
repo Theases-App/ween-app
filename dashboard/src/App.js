@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dash from "./PartieAdmin/charts.jsx"
-import Charts from "./PartieAdmin/side.jsx"
-import Header from "./PartieAdmin/header.jsx"
-import Home from "./PartieAdmin/home.jsx"
-import All from "./PartieAdmin/all.jsx"
-import AllUsers from './PartieAdmin/Allusers.jsx';
-import AllEvents from './PartieAdmin/events.jsx';
+import Dash from "./charts.jsx"
+import Charts from "./side.jsx"
+import Header from "./header.jsx"
+import Home from "./home.jsx"
+import All from "./all.jsx"
+import AllUsers from './Allusers.jsx';
+import AllEvents from './events.jsx';
 
 
 
