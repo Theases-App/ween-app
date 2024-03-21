@@ -1,3 +1,4 @@
+
 // import React, { useState } from "react";
 // import { View, TextInput, TouchableOpacity, StyleSheet, Text, ScrollView, Modal } from "react-native";
 // import axios from "axios";
@@ -89,9 +90,90 @@
 //       });
 //   };
 
+import React, { useState ,useEffect} from "react";
+import { View, TextInput, TouchableOpacity, StyleSheet,Dimensions, Text, ScrollView, Modal ,Alert} from "react-native";
+import axios from "axios";
+import { IP } from "../ip.json";
+import * as Location from "expo-location";
+import MapView, { Marker } from "react-native-maps";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+const Addevent = () => {
+
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [initialRegion, setInitialRegion] = useState(null);
+  const [selectedCoordinates, setSelectedCoordinates] = useState(null);
+  const [eventname, setEventName] = useState("");
+  const [eventcategory, setEventCategory] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState(0);
+  const [country, setCountry] = useState("");
+  const [location, setLocation] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [options, setOptions] = useState([]);
+  const [selectedInput, setSelectedInput] = useState("");
+  const [lant,setLant]=useState(0)
+  const [long,setLong]=useState(0)
+  const eventCategories = ["sports", "concerts", "hotel & resto", "clubbing", "spectacles"];
+  const countries = ["Hammamet", "Tunis", "Sousse", "Sfax", "Djerba"];
+
+  useEffect(() => {
+    const getLocation = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.log("Permission to access location was denied");
+        return;
+      }
+  
+      let location = await Location.getCurrentPositionAsync({});
+      setCurrentLocation(location.coords);
+  
+      setInitialRegion({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
+      });
+  
+      console.log("Latitude:", location.coords.latitude);
+      console.log("Longitude:", location.coords.longitude);
+    };
+  
+    getLocation();
+  }, []);
+  const add = (id) => {
+    const eventData = {
+      eventname: eventname,
+      eventcategory: eventcategory,
+      image: image,
+      price: price,
+      country: country,
+      location: location,
+      map:selectedCoordinates.latitude,
+      map2:selectedCoordinates.longitude
+    };
+
+    axios
+      .post(`http://${IP}:8080/event/add/${id}`, eventData)
+      .then((res) => {
+        console.log("Event added successfully");
+        setEventName("");
+        setEventCategory("");
+        setImage("");
+        setPrice(0);
+        setCountry("");
+        setSelectedCoordinates("")
+      })
+      .catch((error) => {
+        console.error("Error adding event:", error);
+      });
+  };
+
+
 //   const toggleModal = () => {
 //     setModalVisible(!modalVisible);
 //   };
+
 
 //   const selectInput = (input) => {
 //     setSelectedInput(input);
@@ -102,6 +184,28 @@
 //     }
 //     setModalVisible(true);
 //   };
+
+  const handleMapPress = (event) => {
+    const { coordinate } = event.nativeEvent;
+    setSelectedCoordinates(coordinate);
+    Alert.alert(
+      "Location Selected",
+      `Latitude: ${coordinate.latitude}, Longitude: ${coordinate.longitude}`,
+      [{ text: "OK" }]
+    );
+    console.log(coordinate.latitude,"ahwaaaq",coordinate.longitude)
+  };
+
+  const selectInput = (input) => {
+    setSelectedInput(input);
+    if (input === "eventcategory") {
+      setOptions(eventCategories);
+    } else if (input === "country") {
+      setOptions(countries);
+    }
+    setModalVisible(true);
+  };
+
 
 //   const selectItem = (item) => {
 //     if (selectedInput === "eventcategory") {
@@ -145,6 +249,7 @@
 //           onChangeText={(val) => setImage(val)}
 //         />
 
+
 //         <TextInput
 //           keyboardType="numeric"
 //           style={styles.input}
@@ -152,6 +257,46 @@
 //           placeholderTextColor="#999999"
 //           onChangeText={(val) => setPrice(val)}
 //         />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Location"
+          placeholderTextColor="#999999"
+          onChangeText={(val) => setLocation(val)}
+        />
+
+
+
+
+      {initialRegion && (
+         <MapView
+         style={styles.map}
+         initialRegion={initialRegion}
+         onPress={handleMapPress}
+       >
+         {currentLocation && (
+           <Marker
+             coordinate={{
+               latitude: currentLocation.latitude,
+               longitude: currentLocation.longitude,
+             }}
+             title="Your location"
+           />
+         )}
+         {selectedCoordinates && (
+           <Marker
+             coordinate={{
+               latitude: selectedCoordinates.latitude,
+               longitude: selectedCoordinates.longitude,
+             }}
+             title="Selected Location"
+             pinColor="red"
+           />
+         )}
+       </MapView>
+
+      )}
+   
 
 //         <TouchableOpacity
 //           style={styles.input}
@@ -303,4 +448,8 @@
 //   },
 // });
 
-// export default Addevent;
+
+
+
+export default Addevent;
+

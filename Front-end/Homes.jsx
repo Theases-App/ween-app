@@ -11,6 +11,7 @@ import Eventdetails from "./postdetails/Eventdetails.jsx"
 // import Map from './Map/Map.jsx'
  import Addevent from './components/addevent.jsx'
  import EditPictureAndCountry  from './components/editpictureANDcountry.jsx'
+ import Date from './Nav/Date.jsx';
 export default function Home() {
 
   const [date, setdate] = useState([]);
@@ -34,6 +35,7 @@ export default function Home() {
          
         </View>
         <Search />
+        <Date/>
         {/* <Addevent/> */}
         <Homepage/>
        {/* <Eventdetails/> */}
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     top: 10,
     height: 100,
     width: 100,
-    marginTop:15
+    marginTop:180
   },
   circleContainer: {
     flexDirection: 'row', 

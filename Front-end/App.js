@@ -127,15 +127,67 @@ export default function App() {
           component={EventCntry} 
 
         />
+
            <Stack.Screen
+
+
+         <Stack.Screen
+          name="IndexC"
+          component={IndexC} 
+          options={{ headerShown: false
+
+          }
+        }
+        />
+        <Stack.Screen
+
           name="search"
           component={Search} 
 
         />
+
       
      
         
        
+
+        <Stack.Screen
+          name="signin"
+          component={Signin}   />
+
+            <Stack.Screen
+          name="signup"
+          component={Signup}   />
+            
+    <Stack.Screen
+        name="Chat"
+        component={Chat}
+         />
+          
+      <Stack.Screen
+        name="Rooms"
+        component={Rooms}
+         
+          
+
+        />
+       <Stack.Screen
+          name="eventdetail"
+          component={Eventdetails} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
+        <Stack.Screen
+          name="noticket"
+          component={Noticket} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
+
 
         <Stack.Screen
           name="Allcategory"

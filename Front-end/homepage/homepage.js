@@ -57,7 +57,7 @@ const homepage = () => {
       })
 
       return (
-            <View style={{ marginTop: 190 }} >
+            <View style={{ marginTop: 0 }} >
 
         <ScrollView style={{ marginBottom: 50 }}>
 
