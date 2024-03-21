@@ -117,7 +117,7 @@ export default function Signup() {
     <TouchableOpacity onPress={()=>handleSubmit(obj)}>
       <Text  
        style={{borderColor:"black",color:'white',
-       marginTop:7,marginLeft:20,fontSize:20
+       marginTop:8,marginLeft:18,fontSize:20
       }}
     
      > Confirm </Text>
@@ -148,21 +148,21 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderRadius: 8,
         paddingHorizontal: 8,
-        borderColor:"white"
+        borderColor:"black"
       },
     input: {
     
-    backgroundColor:"#ececec",
+      backgroundColor:"#ececec",
       width: 300,
-      height: 40,
+      height: 50,
       marginVertical: 10,
       padding: 10,
-      borderColor: 'white',
+      borderColor: '#111111',
       borderWidth: 1.5,
       borderRadius: 5,
       color:"black",
       fontFamily:"sans-serif-light",
-      marginBottom:35
+      marginBottom:30
     },
     button: {
      paddingBottom:200,

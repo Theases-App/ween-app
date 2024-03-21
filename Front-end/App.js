@@ -23,7 +23,8 @@ import Noticket from './postdetails/Notickets.jsx';
 import Pay from './postdetails/Pay.jsx';
 import Rooms from "./chat/Rooms.jsx";
 import Chat from "./chat/Chat.jsx";
-
+import Date from "./Nav/Date.jsx"
+import Dates from "./Nav/Dates.jsx"
 const Stack= createNativeStackNavigator()
 
 export default function App() {
@@ -48,7 +49,13 @@ export default function App() {
         component={Addevent}
         options={{ headerShown: false}}  />
      
+     <Stack.Screen
+        
+        name="dates"
+        component={Dates}
+        options={{ headerShown: false}}  />
 
+     
        <Stack.Screen
         
         name="ticketdetails"
@@ -107,7 +114,7 @@ export default function App() {
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
-
+         options={{ headerShown: false }}
         />
 
          <Stack.Screen
@@ -121,15 +128,15 @@ export default function App() {
         <Stack.Screen
           name="search"
           component={Search} 
-
+        
         />
         <Stack.Screen
           name="signin"
-          component={Signin}   />
+          component={Signin}  options={{ headerShown: false }}  />
 
             <Stack.Screen
           name="signup"
-          component={Signup}   />
+          component={Signup}  options={{ headerShown: false }}  />
             
     <Stack.Screen
         name="Chat"
@@ -159,7 +166,14 @@ export default function App() {
           }
         }
         />
-
+ <Stack.Screen
+          name="date"
+          component={Date} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
         <Stack.Screen
           name="Allcategory"
           component={Allcategory}

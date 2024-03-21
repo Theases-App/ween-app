@@ -11,12 +11,12 @@ const Noticket=()=>{
     return (
       <View style={{backgroundColor:"#111111",flex:1}}>
       <View style={{
-      marginTop:350
-      ,height:80,width:300,
+      marginTop:350,
+      height:80,width:300,
       marginLeft:70
       }}>
-        <Text style={{color:"#ff5252",fontSize:30}}> Sorry No More Tickets </Text>
-        <Text style={{color:"#ff5252",fontSize:30,marginLeft:28}}> We are Sold Out </Text>
+        <Text style={{color:"#ff5252",fontSize:28}}> Sorry No More Tickets </Text>
+        <Text style={{color:"#ff5252",fontSize:28,marginLeft:28}}> We are Sold Out </Text>
       </View>
       <View style={{color:"white",
       backgroundColor:"#ff5252",width:150,height:50,

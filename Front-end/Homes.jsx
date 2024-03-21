@@ -33,14 +33,10 @@ export default function Home() {
          
         </View>
         <Search />
-        <Date/>
+      {/* <Date/> */}
         {/* <Addevent/> */}
         <Homepage/>
        {/* <Eventdetails/> */}
-
-  
-
-
         <Nav />
       </View>
     
@@ -50,7 +46,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   viewstyle1: {
-    backgroundColor: "#111111",
+    backgroundColor: "#2E2D29",
     flex: 1,
     justifyContent: "center",
   },
@@ -65,7 +61,7 @@ const styles = StyleSheet.create({
     top: 10,
     height: 100,
     width: 100,
-    marginTop:180
+    marginTop:20
   },
   circleContainer: {
     flexDirection: 'row', 
