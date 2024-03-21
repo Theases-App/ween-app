@@ -22,7 +22,8 @@ import EditUser from './components/edituser.jsx';
 import Noticket from './postdetails/Notickets.jsx';
 import Pay from './postdetails/Pay.jsx';
 import Wishlist from './components/wishlist.jsx';
-
+import Chat from './chat/Chat.jsx';
+import Rooms from './chat/Rooms.jsx';
 const Stack= createNativeStackNavigator()
 
 export default function App() {
@@ -128,6 +129,16 @@ export default function App() {
 
         />
            <Stack.Screen
+
+        
+          name="IndexC"
+          component={IndexC} 
+          options={{ headerShown: false
+
+          }
+        }
+        />
+        <Stack.Screen
           name="search"
           component={Search} 
 
@@ -136,6 +147,37 @@ export default function App() {
      
         
        
+
+     
+            
+    <Stack.Screen
+        name="Chat"
+        component={Chat}
+         />
+          
+      <Stack.Screen
+        name="Rooms"
+        component={Rooms}
+         
+          
+
+        />
+       {/* <Stack.Screen
+          name="eventdetail"
+          component={Eventdetails} 
+          options={{ headerShown: false
+        
+          }
+        }
+        /> */}
+        <Stack.Screen
+          name="noticket"
+          component={Noticket} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
 
         <Stack.Screen
           name="Allcategory"
