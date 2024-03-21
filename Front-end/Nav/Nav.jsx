@@ -28,12 +28,13 @@ const Nav = () => {
         height: 100,
         paddingTop: 20,
         paddingLeft: 15,
-        marginTop:-60
+        marginTop:-60,
+        marginLeft:-0
       }}
     >
      
 
-      <TouchableWithoutFeedback onPress={() =>{navigation.navigate("Addevent"), handleIconPress('heart')}}>
+      <TouchableWithoutFeedback onPress={() =>{navigation.navigate("your favorite"), handleIconPress('heart')}}>
         <Icon name="heart" style={iconStyle('heart')} size={30} />
       </TouchableWithoutFeedback>
 

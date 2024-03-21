@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
+// const Block=require("../models/block").Block
 
 
   
@@ -72,9 +73,9 @@ const sequelize = require('../database/index');
     return User.update(data, {where: {iduser: id}})
   }
   
-  const getAll = () => {
-    return User.findAll({include:Block})
-  }
+  // const getAll = () => {
+  //   return User.findAll({include:Block})
+  // }
 
   const findClients = () => {
     return User.findAll({
@@ -91,7 +92,7 @@ const sequelize = require('../database/index');
       });
       }
     
-    module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findadmins} 
+    module.exports = {User, getOneUser, addUser, editUser, findClients, findadmins} 
 
  
 

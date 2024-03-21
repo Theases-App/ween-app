@@ -21,8 +21,7 @@ import Addevent from './components/addevent.jsx';
 import EditUser from './components/edituser.jsx';
 import Noticket from './postdetails/Notickets.jsx';
 import Pay from './postdetails/Pay.jsx';
-import Rooms from "./chat/Rooms.jsx";
-import Chat from "./chat/Chat.jsx";
+import Wishlist from './components/wishlist.jsx';
 
 const Stack= createNativeStackNavigator()
 
@@ -35,6 +34,29 @@ export default function App() {
 <NavigationContainer>
 
       <Stack.Navigator>
+   
+      <Stack.Screen
+          name="signup"
+          component={Signup} 
+
+        />
+          <Stack.Screen
+          name="signin"
+          component={Signin} 
+          
+
+        />
+            <Stack.Screen
+          name="eventdetail"
+          component={Eventdetails} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
+           <Stack.Screen name='your favorite' component={Wishlist}></Stack.Screen>
+       
+        
         <Stack.Screen
           name="home"
           component={Home}
@@ -42,21 +64,19 @@ export default function App() {
           }
         }   
         />
-       <Stack.Screen
         
-        name="Addevent"
-        component={Addevent}
-        options={{ headerShown: false}}  />
+
      
 
-       <Stack.Screen
+      {/* <Stack.Screen
         
         name="ticketdetails"
         component={Ticket}
         options={{ headerShown: false
         
         }
-      } /> 
+      } />  */}
+   
         <Stack.Screen
         
         name="Clubbing"
@@ -94,21 +114,22 @@ export default function App() {
       }
       
       />
-        <Stack.Screen
-          name="pay"
-          component={Pay}
+        {/* <Stack.Screen
+          name="IndexC"
+          component={IndexC}
           options={{ headerShown: false
 
           }
         }
-        />
-         
-       
+        /> */}
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
 
         />
+
+           <Stack.Screen
+
 
          <Stack.Screen
           name="IndexC"
@@ -119,10 +140,17 @@ export default function App() {
         }
         />
         <Stack.Screen
+
           name="search"
           component={Search} 
 
         />
+
+      
+     
+        
+       
+
         <Stack.Screen
           name="signin"
           component={Signin}   />
@@ -159,6 +187,7 @@ export default function App() {
           }
         }
         />
+
 
         <Stack.Screen
           name="Allcategory"
