@@ -4,6 +4,6 @@ const controller = require('../controller/favoritcontroller')
 
 
 router.post("/addfavorit",controller.createFavorit)
-router.get('/:userId', controller.getFavorites);
+router.get('/:user_iduser', controller.getFavorites);
 router.delete('/:idevent',controller.deleteFavoritByEventId)
 module.exports=router

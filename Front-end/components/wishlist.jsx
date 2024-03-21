@@ -91,7 +91,10 @@ const[eventid,setEventId]=useState(0)
   };
 
   return (
+  
     <ScrollView style={styles.scrollView}>
+      <Text style={{color:"#ff5252",marginTop:70,marginLeft:170,fontSize:30}}>Favorit</Text>
+      <View style={{marginTop:10}}>
       <View style={styles.container}>
         {favs.map((event, index) => (
           
@@ -107,7 +110,9 @@ const[eventid,setEventId]=useState(0)
           </View>
         ))}
       </View>
+      </View>
     </ScrollView>
+  
   );
 };
 
@@ -117,6 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#111111', 
   },
   container: {
+    marginTop:20,
     flex: 1,
     padding: 20,
   },

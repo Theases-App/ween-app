@@ -4,9 +4,9 @@ const {User} = require("../models/user");
 
 exports.getFavorites = async (req, res) => {
   try {
-    const userId = req.params.userId; 
+    const userId = req.params.user_iduser; 
     const favorites = await Favorit.findAll({
-      where: { iduser: userId } ,
+      where: { user_iduser: userId } ,
       include: {
         model: Event
       }
@@ -21,7 +21,7 @@ exports.getFavorites = async (req, res) => {
 
 exports.createFavorit = (req, res) => {
   Favorit.create({
-    iduser: req.body.iduser,
+    user_iduser: req.body.user_iduser,
     event_idevent: req.body.event_idevent
   })
   .then((favorit) => {

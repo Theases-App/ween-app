@@ -97,12 +97,12 @@ const Ticket = ({ route }) => {
 
 
       <View style={{ marginBottom: 300 }}>
-        <Image style={{ marginLeft: 0, height: 280, width: 420, borderRadius: 10 }} source={{ uri: item.image }} />
+        <Image style={{ marginLeft: 0, height: 280, width: 430, borderRadius: 10 }} source={{ uri: item.image }} />
       </View>
 
 
 
-      <View style={{ backgroundColor: "black", borderColor: "black", marginTop: -340, height: 120, borderRadius: 5, width: 420 }}>
+      <View style={{ backgroundColor: "black", borderColor: "black", marginTop: -340, height: 120, borderRadius: 5, width: 430 }}>
 
         <Text style={{
           color: "#ff5252",
@@ -118,9 +118,7 @@ const Ticket = ({ route }) => {
           color: "white",
           fontFamily: "Inter-Black",
           fontSize: 20,
-          marginLeft: 21,
-
-
+          marginLeft: 21
         }}>{item.placename}</Text>
 
         <View style={{ marginTop: -40, marginLeft: 200 }}>
@@ -133,7 +131,7 @@ const Ticket = ({ route }) => {
         <Text style={{
           color: "white",
           marginLeft: 310,
-          marginTop: -19,
+          marginTop: -17,
           fontFamily: "Inter-Black",
           fontSize: 17,
 
@@ -143,7 +141,7 @@ const Ticket = ({ route }) => {
         <Text style={{
           color: "#ff5252",
           marginLeft: 280,
-          marginTop: -44,
+          marginTop: -40,
           fontFamily: "Inter-Black",
           fontSize: 16,
 
@@ -174,11 +172,11 @@ const Ticket = ({ route }) => {
 
       </View>
 
-      <View style={{ backgroundColor: "#111111", borderColor: "#ececec", marginTop: 0, height: 420, borderRadius: 5, width: 420 }}>
-        <Text style={{ marginTop: 10, fontSize: 20, marginLeft: 20, justifyContent: "center", alignContent: "center", alignItems: "center" }}>{ }</Text>
+      <View style={{ backgroundColor: "#111111", borderColor: "#ececec", marginTop: 0, height: 420, borderRadius: 5, width: 430 }}>
+        <Text style={{ marginTop: 20, fontSize: 20, marginLeft: 20, justifyContent: "center", alignContent: "center", alignItems: "center" }}>{ }</Text>
 
         <Text style={{ color: "#ff5252", fontFamily: "Inter-Black", fontSize: 20, marginLeft: 160, marginTop: -30 }}>  Tickets : </Text>
-        <Text style={{ color: "white", fontSize: 10, marginLeft: 100, marginTop: -10 }}>_____________________________________________</Text>
+        <Text style={{ color: "white", fontSize: 10, marginLeft: 100, marginTop: -10 }}>_____________________________________</Text>
 
       </View>
 
@@ -204,10 +202,11 @@ const Ticket = ({ route }) => {
           width: 200,
           marginTop: 20,
           marginLeft: 110,
-          height: 30,
+          height: 45,
           borderRadius: 20
         }}>
-          <Text style={{ color: "white", fontFamily: "Inter-Black", fontSize: 20, marginLeft: 15 }}> Confirm Purchase</Text>
+          <Text style={{ color: "white", fontFamily: "Inter-Black",marginTop:10,
+           fontSize: 20, marginLeft: 15 }}> Confirm Purchase</Text>
         </View>
       </TouchableOpacity>
 
