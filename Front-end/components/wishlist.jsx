@@ -10,7 +10,7 @@ const Wishlist = () => {
   const [events, setEvents] = useState([]);
 
   const [id, setId] = useState(null);
-
+const[eventid,setEventId]=useState(0)
   useEffect(() => {
     const fetchIdFromStorage = async () => {
       try {
@@ -28,11 +28,14 @@ const Wishlist = () => {
     if (id !== null) {
       fetchFavorites();
     }
+    console.log('favvs',favs);
   }, [id]);
 
   const fetchFavorites = () => {
+    
     axios.get(`http://${IP}:8080/favorite/${id}`)
       .then((res) => {
+        console.log(id);
         setFavs(res.data);
         fetchFavoredEvents(res.data);
         console.log(res.data);
@@ -42,10 +45,11 @@ const Wishlist = () => {
       });
   };
 
-  const confirmRemoveFav = (eventId) => {
+  const confirmRemoveFav = (idevent) => {
+    setEventId(idevent)
     Alert.alert(
       "Remove from Favorites",
-      "Are you sure you want to remove this item from favorites?",
+      "Are you sure you want to remove this activity from favorites?",
       [
         {
           text: "Cancel",
@@ -53,7 +57,7 @@ const Wishlist = () => {
         },
         {
           text: "Remove",
-          onPress: () => removingFav(eventId),
+          onPress: () => removingFav(idevent),
           style: "destructive"
         }
       ],
@@ -61,7 +65,7 @@ const Wishlist = () => {
     );
   };
 
-  const removingFav = () => {
+  const removingFav = (id) => {
     axios.delete(`http://${IP}:8080/favorite/${id}`).then((res) => {
       console.log("Removed from favorites");
       fetchFavorites();
@@ -90,13 +94,14 @@ const Wishlist = () => {
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         {favs.map((event, index) => (
+          
           <View key={index} style={styles.itemContainer}>
-            <Image source={{ uri: event.image }} style={styles.image} />
+            <Image source={{ uri: event.event.image }} style={styles.image} />
             <View style={styles.textContainer}>
-              <Text style={styles.eventName}>{event.eventname}</Text>
-              <Text style={styles.eventCategory}>{event.eventcategory}</Text>
+              <Text style={styles.eventName}>{event.event.eventname}</Text>
+              <Text style={styles.eventCategory}>{event.event.eventcategory}</Text>
             </View>
-            <TouchableOpacity onPress={() => confirmRemoveFav(favs[index].id)} style={styles.removeButton}>
+            <TouchableOpacity onPress={() => confirmRemoveFav(event.event.idevent)} style={styles.removeButton}>
               <MaterialCommunityIcons name="heart-broken" size={24} color="red" />
             </TouchableOpacity>
           </View>

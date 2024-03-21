@@ -73,7 +73,7 @@ const Postdetails=({route})=>{
     try {
       const userId = await AsyncStorage.getItem("id");
       const obj = {
-        user_iduser: userId,
+        iduser: userId,
         event_idevent: item.idevent
       };
   

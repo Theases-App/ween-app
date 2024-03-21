@@ -6,9 +6,11 @@ exports.getnot = async (req, res) => {
       const eventid = req.params.idevent; 
   
       const notification = await Notifications.findAll({
+        where: { event_idevent: eventid } ,
         include:{
+        
           model:Event,
-          where: { event_idevent: eventid } 
+          
         }
         
       });

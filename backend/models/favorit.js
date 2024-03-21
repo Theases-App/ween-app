@@ -8,7 +8,7 @@ const Favorit = sequelize.define('favorit', {
     primaryKey: true,
     autoIncrement: true
   },
-  user_iduser:{
+  iduser:{
     type: DataTypes.INTEGER,
     allowNull: false 
   },
@@ -17,8 +17,8 @@ const Favorit = sequelize.define('favorit', {
     allowNull: false 
   }
 }, {
-  tableName: 'favorit' 
+  tableName: 'favorits' 
 });
-Favorit.belongsTo(User.User, { foreignKey: 'user_iduser' }); 
+Favorit.belongsTo(User.User, { foreignKey: 'iduser' }); 
 Favorit.belongsTo(Event.Event, { foreignKey: 'event_idevent' });
 module.exports = Favorit;

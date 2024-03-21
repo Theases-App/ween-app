@@ -2,28 +2,26 @@ const Favorit = require("../models/favorit");
 const {Event}=require("../models/event");
 const {User} = require("../models/user");
 
-exports.getFavorits = async (req, res) => {
+exports.getFavorites = async (req, res) => {
   try {
     const userId = req.params.userId; 
-
-    const favorits = await Event.findAll({
-      include:{
-        model:User,
-         where: { iduser: userId } 
+    const favorites = await Favorit.findAll({
+      where: { iduser: userId } ,
+      include: {
+        model: Event
       }
-      
     });
-
-    res.status(200).json(favorits);
+    res.status(200).json(favorites);
   } catch (error) {
-    console.error('Error retrieving favorits:', error);
+    console.error('Error retrieving favorites:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
 
+
 exports.createFavorit = (req, res) => {
   Favorit.create({
-    user_iduser: req.body.user_iduser,
+    iduser: req.body.iduser,
     event_idevent: req.body.event_idevent
   })
   .then((favorit) => {

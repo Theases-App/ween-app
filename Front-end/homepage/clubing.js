@@ -13,6 +13,7 @@ const clubbing=()=>{
     useEffect(()=>{
         axios.get(`http://${IP}:8080/event/getall`).then((res)=>{
              setData(res.data)
+             console.log(res.data,"aaaaaaa");
         }).catch((err)=>{
             console.log(err,"err")
         })

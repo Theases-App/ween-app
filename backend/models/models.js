@@ -64,13 +64,13 @@ Message.belongsTo(User, { foreignKey: 'user_iduser' });
 ChatRoom.hasMany(Message, { foreignKey: 'chatRoom_idchat' });
 Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });
 
-sequelize.sync()
-.then(()=>{
-    console.log("done")
-})
-.catch((err)=>{
-    console.log(err)
-})
+// sequelize.sync()
+// .then(()=>{
+//     console.log("done")
+// })
+// .catch((err)=>{
+//     console.log(err)
+// })
 
 
 
