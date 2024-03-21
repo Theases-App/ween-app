@@ -24,6 +24,8 @@ const Postdetails=({route})=>{
    const [initialRegion, setInitialRegion] = useState(null);
    const [loading,setLoading]=useState(true)
 
+
+ 
    const item = route.params.item 
    useEffect(()=>{
     const test=async()=>{
@@ -71,6 +73,26 @@ const Postdetails=({route})=>{
  
      getLocation();
    }, []);
+   const addtofavorite = async () => {
+    try {
+      const userId = await AsyncStorage.getItem("id");
+      const obj = {
+        user_iduser: userId,
+        event_idevent: item.idevent
+      };
+  
+      axios.post(`http://${IP}:8080/favorite/addfavorit`,obj)
+        .then((res) => {
+          console.log("Liked");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
 
 
   const Navigation = useNavigation()
@@ -98,6 +120,7 @@ const Postdetails=({route})=>{
    
 const handleIconPress = (iconName) => {
    setSelectedIcon(iconName)
+   addtofavorite()
  }
 
 
@@ -141,7 +164,7 @@ return (
    }}>{item.placename}</Text>
 
 <View style={{marginTop:-40,marginLeft:200}}>
-<TouchableWithoutFeedback onPress={() => handleIconPress('heart')}>
+<TouchableWithoutFeedback onPress={() => handleIconPress('heart')} > 
         <Icon name="heart" style={iconStyle('heart')} size={30} />
       </TouchableWithoutFeedback>
 </View>
