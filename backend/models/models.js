@@ -73,8 +73,8 @@ chatRoom.belongsTo(User)
 Event.hasMany(chatRoom)
 chatRoom.belongsTo(Event)
 //relation between chatRoom and messages
-chatRoom.hasMany(Message)
-Message.belongsTo(chatRoom)
+Event.hasMany(Message)
+Message.belongsTo(Event)
 //relation between Messages and users
 User.hasMany(Message)
 Message.belongsTo(User)

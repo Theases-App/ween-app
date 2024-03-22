@@ -1,6 +1,6 @@
 const chatRoom = require("../models/chatroom.js")
 const {Event}= require("../models/event.js")
-const User = require("../models/user.js")
+const {User} = require("../models/user.js")
 
 const GetRooms=async(req,res)=>{
     try {
