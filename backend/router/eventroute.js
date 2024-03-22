@@ -6,11 +6,7 @@ router.get('/getall', controller.getAll)
 router.get('/eventName/:eventname', controller.getEventByNames)
 router.get('/getall/:eventcategory',controller.geteventbycategory)
 router.get('/getall/:id',controller.getevent)
-
-router.post('/add/:iduser',controller.addevents)
-
 router.post('/add/:userIduser',controller.addevents)
-
 router.put('/update/:id',controller.updateevent)
 router.delete('/delete/:id',controller.deletedevents)
 router.get('/getall//:country',controller.getByCountry)

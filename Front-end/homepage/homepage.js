@@ -1,18 +1,18 @@
-import { View, FlatList, ViewPropTypes, Text, ScrollView, TouchableOpacity, Image, Pressable } from 'react-native';
+import { View, FlatList, ViewPropTypes,StyleSheet,ActivityIndicator, Text, ScrollView, TouchableOpacity, Image, Pressable } from 'react-native';
 import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { IP } from "../ip.json"
 import { useNavigation } from '@react-navigation/native'
+import Date from "../Nav/Date"
 
+const homepage = ({route}) => {
 
-
-const homepage = () => {
-
+     
       const Navigation = useNavigation()
       const [refresh, setRefresh] = useState(true);
       const [data, setData] = useState([])
-
+   const [loading,setLoading]=useState(true)
       const clubing = []
       const sports = []
       const spectacles = []
@@ -21,6 +21,7 @@ const homepage = () => {
       useEffect(() => {
             axios.get(`http://${IP}:8080/event/getall`).then((res) => {
                   setData(res.data)
+                   setLoading(false)
             }).catch((err) => {
                   console.log(err, "err")
             })
@@ -51,18 +52,40 @@ const homepage = () => {
       })
 
       data.map((e) => {
-            if (e.eventcategory === "Hotel & resto" && e.adminmessage == 1) {
+            if (e.eventcategory === "hotel & resto" && e.adminmessage == 1) {
                   hotelresto.push(e)
             }
       })
 
-      return (
-            <View style={{ marginTop: 190 }} >
+       if (loading){
+            return (
+                  <View style={[styles.container, styles.horizontal]}>
+                      
+    <ActivityIndicator style={{ marginLeft:10,marginTop:-400}} size="large" color="#ff5252" />
+  </View>
+            )
+       }
 
-                  <ScrollView style={{ marginBottom: 50 }}>
+      return (
+            <View style={{ marginTop: 200 }} >
+          <TouchableOpacity onPress={()=>{Navigation.navigate("date")}}> 
+
+   <View style={{marginTop:-70,backgroundColor:"#ff5252",
+   height:40,width:220,
+   borderRadius:20,
+   marginLeft:110}}>
+    <Text style={{fontSize:26,
+    marginTop:4,
+      fontFamily:"Inter-Black",color:"#ececec",
+      marginLeft:17
+      }}> Show Calendar </Text>
+  </View>
+      </TouchableOpacity>   
+        
+        <ScrollView style={{ marginBottom: 40 }}>
 
                         <View style={{ justifyContent: "center", gap: 35 }}>
-                        <View>
+                      <View>
                               <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:200}}>
                         
 
@@ -493,5 +516,18 @@ const homepage = () => {
             </View>
       );
 };
+
+const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+      
+        justifyContent: 'center',
+      },
+      horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10,
+      },
+    });
 
 export default homepage

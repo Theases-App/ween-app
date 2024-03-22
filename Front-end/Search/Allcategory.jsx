@@ -64,7 +64,7 @@ function Allcategory() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#111111",
+    backgroundColor: "#2E2D29",
     flex: 1,
     paddingTop: 20,
     paddingHorizontal: 20,

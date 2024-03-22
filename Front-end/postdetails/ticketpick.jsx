@@ -10,16 +10,25 @@ import { useContext } from 'react';
 import Idcontext from "../UseContext"
 import { useNavigation } from '@react-navigation/native'   
 
-    const ticketpick=({e,setTicket})=>{
+    const ticketpick=({e,setTicket,setPrice,price})=>{
     
        const [focus, setFocus] = useState('white')
        const [refresh,setRefresh]=useState(true)
+       const [selectedIcon, setSelectedIcon] = useState('');
+
+       const handleIconPress = (iconName) => {
+        setSelectedIcon(iconName)
+      }
+       const iconStyle = (iconName) => ({
+        color: selectedIcon === iconName ? '#ff5252' : 'black',
+      })
     return (
               <View>
 
               <TouchableOpacity
                 onPress={() => {
                   setTicket(e)
+                  setPrice(e.price) 
                   AsyncStorage.getItem('id')
                   .then((value) => {
                     console.log(e.idcategorydetails);
@@ -45,15 +54,15 @@ import { useNavigation } from '@react-navigation/native'
                   }}>
 
                   <Text style={{ fontFamily: "Inter-Black", fontSize: 20, marginLeft: 40, marginTop: 20 }}>{e.feature}</Text>
-                  <Text style={{ fontFamily: "Inter-Black", fontSize: 20, marginLeft: 220, marginTop: -27 }}>{e.price + " " + "Dt"}</Text>
-                  <Icon name="check" style={{ marginLeft: 10, marginTop: -23 }} size={20} />
-
+                  <Text style={{ fontFamily: "Inter-Black", fontSize: 20, marginLeft: 220, marginTop: -27 }}>{  e.price  + " " + "Dt"}</Text>
+                 <View style={{ marginLeft: 10, marginTop: -19 }}>
+                  <Icon name="check" style={iconStyle('check')} size={20} />
+                  </View>
+              
                 </View>
 
               </TouchableOpacity>
-              {/* <View style={{marginTop:-50,color:"red",marginLeft:40}}>
-   <CheckBox onPress={()=>{console.log("bara nikomek")}}></CheckBox>
-   </View> */}
+             
             </View>
         )
   }

@@ -3,8 +3,10 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Alert } fro
 import axios from 'axios';
 import { IP } from "../ip.json";
 import { FontAwesome5 } from '@expo/vector-icons'; 
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 
-const EditUser = ({ userId }) => {
+const EditUser = () => {
+  const [iduser, setIdUser] = useState(null); 
   const [userData, setUserData] = useState({});
   const [inputValues, setInputValues] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -12,14 +14,31 @@ const EditUser = ({ userId }) => {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://${IP}:8080/user/getuser/2`)
-      .then((res) => {
-        setUserData(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [userId, refresh]);
+   
+    const fetchUserId = async () => {
+      try {
+        const id = await AsyncStorage.getItem("id");
+        if (id !== null) {
+          setIdUser(id); 
+        }
+      } catch (error) {
+        console.error("Error retrieving user ID:", error);
+      }
+    };
+
+    fetchUserId(); 
+
+   
+    if (iduser) {
+      axios.get(`http://${IP}:8080/user/getuser/${iduser}`)
+        .then((res) => {
+          setUserData(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [iduser, refresh]);
 
   const deleteUser = () => {
     Alert.alert(
@@ -33,10 +52,10 @@ const EditUser = ({ userId }) => {
         {
           text: 'Yes',
           onPress: () => {
-            axios.delete(`http://${IP}:8080/user/delete/2`)
+            axios.delete(`http://${IP}:8080/user/delete/${iduser}`)
               .then((res) => {
                 console.log("User has been deleted");
-                // Perform any additional actions after deletion, such as navigating to a different screen
+               
               })
               .catch((error) => {
                 console.log(error);
@@ -56,7 +75,7 @@ const EditUser = ({ userId }) => {
       password: inputValues.password,
     };
 
-    axios.put(`http://${IP}:8080/user/editprofile/2`, updatedUserData)
+    axios.put(`http://${IP}:8080/user/editprofile/${iduser}`, updatedUserData)
       .then((res) => {
         console.log('updated');
         setIsModalVisible(false);

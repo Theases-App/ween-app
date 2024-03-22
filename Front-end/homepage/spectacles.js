@@ -19,14 +19,14 @@ const spectacles=()=>{
           },[refresh])
 
           data.map((e)=>{
-            if (e.eventcategory === "spectacles" && e.adminmessage == 1){
+            if (e.eventcategory === "clubbing" && e.adminmessage == 1){
               spectacles.push(e)
             } })
         
 return (
 
 
-
+<View style={{backgroundColor:"#2E2D29",flex:1}}>
 <View style={{marginTop:80}}>
 
 <View>
@@ -53,7 +53,7 @@ return (
 
 <TouchableOpacity style={{justifyContent:"space-between",padding:5}} onPress={()=>{Navigation.navigate('eventdetail', {item})}}>
 
-<View style={{backgroundColor:"black",borderColor:"black",borderRadius:20,height:270,width:420,marginTop:-5}} >  
+<View style={{backgroundColor:"white",borderColor:"black",borderRadius:20,height:270,width:420,marginTop:-5}} >  
 
        <Image style={{
         height:250,
@@ -64,7 +64,7 @@ return (
        
         }}source={{uri:item.image}}/>
 
-  <View style={{backgroundColor:"black",borderColor:"black",marginTop:-60,height:70,borderRadius:20}}>
+  <View style={{backgroundColor:"#ececec",borderColor:"black",marginTop:-60,height:70,borderRadius:20}}>
 
       <Text style={{color:"#ff5252",
              fontFamily:"Inter-Black",
@@ -75,7 +75,7 @@ return (
        }}>{item.eventname}</Text>
 
 
-        <Text style={{color:"white",
+        <Text style={{color:"#111111",
             fontFamily:"Inter-Black",
             fontSize:20,
             marginLeft:21,
@@ -84,7 +84,7 @@ return (
          }}>{item.placename}</Text>
 
 
-  <Text style={{color:"white",
+  <Text style={{color:"#111111",
            marginLeft:310,
            marginTop:-24,
            fontFamily:"Inter-Black",
@@ -112,7 +112,7 @@ return (
 </ScrollView>
 
 </View>
-
+</View>
 )
 
 }
