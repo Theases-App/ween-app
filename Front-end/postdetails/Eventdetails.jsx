@@ -4,11 +4,8 @@ import axios from 'axios';
 import Button from 'react-native-button';
 import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
 import { useNavigation } from '@react-navigation/native'
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 
@@ -73,6 +70,14 @@ const Postdetails=({route})=>{
  
      getLocation();
    }, []);
+
+//    if (loading){
+//     return (
+//           <View style={[styles.container, styles.horizontal]}>
+// <ActivityIndicator style={{ marginLeft:10,marginTop:-400}} size="large" color="#ff5252" />
+// </View>
+//     )
+//     }
    const addtofavorite = async () => {
     try {
       const userId = await AsyncStorage.getItem("id");
@@ -101,11 +106,6 @@ const Postdetails=({route})=>{
   const [chating,setChating]=useState("")
   const [text,setText]=useState("Buy a Ticket")
 
-// const id=async()=>{
-//   const x= await AsyncStorage.getItem("id")
-//   console.log(x);
-//   setChat(x)
-// }
 
   
    const chatting=()=>{

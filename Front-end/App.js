@@ -47,16 +47,26 @@ export default function App() {
         }   
         />
         
-   
+        <Stack.Screen
+          name="Addevent"
+          component={Addevent}
+          options={{ headerShown: false
+          }
+        }   
+        />
       <Stack.Screen
           name="signup"
           component={Signup} 
-
+          options={{ headerShown: false
+          }
+        }   
         />
           <Stack.Screen
           name="signin"
           component={Signin} 
-          
+          options={{ headerShown: false
+          }
+        }   
 
         />
             <Stack.Screen
@@ -75,13 +85,12 @@ export default function App() {
           }
         }
         />
-           <Stack.Screen name='your favorite' options={{ headerShown: false
+           <Stack.Screen name='your favorite' 
+           options={{ headerShown: false
         
-          }} component={Wishlist}></Stack.Screen>
-       
-        
-     
+          }} component={Wishlist}>
 
+          </Stack.Screen> 
      
      <Stack.Screen
         

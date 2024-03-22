@@ -170,20 +170,20 @@ const Addevent = () => {
   };
 
 
-//   const toggleModal = () => {
-//     setModalVisible(!modalVisible);
-//   };
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
 
 
-//   const selectInput = (input) => {
-//     setSelectedInput(input);
-//     if (input === "eventcategory") {
-//       setOptions(eventCategories);
-//     } else if (input === "country") {
-//       setOptions(countries);
-//     }
-//     setModalVisible(true);
-//   };
+  // const selectInput = (input) => {
+  //   setSelectedInput(input);
+  //   if (input === "eventcategory") {
+  //     setOptions(eventCategories);
+  //   } else if (input === "country") {
+  //     setOptions(countries);
+  //   }
+  //   setModalVisible(true);
+  // };
 
   const handleMapPress = (event) => {
     const { coordinate } = event.nativeEvent;
@@ -207,14 +207,14 @@ const Addevent = () => {
   };
 
 
-//   const selectItem = (item) => {
-//     if (selectedInput === "eventcategory") {
-//       setEventCategory(item);
-//     } else if (selectedInput === "country") {
-//       setCountry(item);
-//     }
-//     setModalVisible(false);
-//   };
+  const selectItem = (item) => {
+    if (selectedInput === "eventcategory") {
+      setEventCategory(item);
+    } else if (selectedInput === "country") {
+      setCountry(item);
+    }
+    setModalVisible(false);
+  };
 
 
 //   const cancelSelection = () => {
@@ -350,103 +350,103 @@ const Addevent = () => {
 //   );
 // };
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     paddingHorizontal: 5,
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 5,
    
-//     backgroundColor: "#111111", 
-//     position: 'relative', 
-//   },
-//   scrollContainer: {
-//     flexGrow: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     paddingTop: 200, 
-//   },
-//   input: {
-//     borderWidth: 1, 
-//     borderColor: "#ffffff", 
-//     color: "#111111",
-//     padding: 9,
-//     margin: 10,
-//     width: 350,
-//     borderRadius: 20,
-//     backgroundColor:"#ececec"
-//   },
-//   title: {
-//     top: 50,
-//     fontSize: 40,
-//     color: "#ececec", 
-//     fontFamily:'sans-serif-light',
-//   },
-//   addButton: {
-//     backgroundColor: "#ff5252",
-//     padding: 10,
-//     marginTop:-300,
-//     borderRadius: 20,
-//     width:"40%"
+    backgroundColor: "#111111", 
+    position: 'relative', 
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 200, 
+  },
+  input: {
+    borderWidth: 1, 
+    borderColor: "#ffffff", 
+    color: "#111111",
+    padding: 9,
+    margin: 10,
+    width: 350,
+    borderRadius: 20,
+    backgroundColor:"#ececec"
+  },
+  title: {
+    top: 50,
+    fontSize: 40,
+    color: "#ececec", 
+    fontFamily:'sans-serif-light',
+  },
+  addButton: {
+    backgroundColor: "#ff5252",
+    padding: 10,
+    marginTop:-300,
+    borderRadius: 20,
+    width:"40%"
     
-//   },
-//   buttonText: {
-//     color: "#ffffff", 
-//     textAlign: "center",
-//   },
-//   centeredView: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     marginTop: 22
-//   },
-//   modalView: {
-//     margin: 20,
-//     backgroundColor: "#6F6C6A",
-//     opacity:0.95,
-//     borderRadius: 20,
-//     padding: 35,
-//     alignItems: "center",
-//     shadowColor: "#000",
-//     shadowOffset: {
-//       width: 0,
-//       height: 2
-//     },
-//     shadowOpacity: 0.25,
-//     shadowRadius: 4,
-//     elevation: 5
-//   },
-//   optionItem: {
-//     color:"#ececec",
-//     padding: 10,
-//     borderBottomWidth: 1,
-//     borderBottomColor: "#CCCCCC",
-//     width: 200,
-//     alignItems: "center"
-//   },
-//   cancelButton: {
-//     marginTop: 10,
-//   },
-//   cancelButtonText: {
-//     color: "#ececec",
-//   },
-//   con: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
+  },
+  buttonText: {
+    color: "#ffffff", 
+    textAlign: "center",
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "#6F6C6A",
+    opacity:0.95,
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  optionItem: {
+    color:"#ececec",
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#CCCCCC",
+    width: 200,
+    alignItems: "center"
+  },
+  cancelButton: {
+    marginTop: 10,
+  },
+  cancelButtonText: {
+    color: "#ececec",
+  },
+  con: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   
-//     borderColor:"red",
-//     marginTop:200
-//   },
+    borderColor:"red",
+    marginTop:200
+  },
   
-//   map: {
-//     width: "100%",
-//     height: "40%",
-//     marginBottom: 0 ,
-//     borderRadius: 20,
+  map: {
+    width: "100%",
+    height: "40%",
+    marginBottom: 0 ,
+    borderRadius: 20,
     
-//   },
-// });
+  },
+});
 
             }
 

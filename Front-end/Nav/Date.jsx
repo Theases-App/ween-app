@@ -21,7 +21,7 @@ function dates() {
 
    const [selected, setSelected] = useState('');
 const x=selected
-console.log(x);
+
   return (
     <View style={{backgroundColor:"#2E2D29",flex:1}}>
 
