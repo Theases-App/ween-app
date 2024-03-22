@@ -2,7 +2,7 @@ require("dotenv").config()
 const jwt=require('jsonwebtoken')
 const bcrypt=require('bcrypt')
 
-const {getOneUser, addUser, editUser, deleteUser,findClients,findadmins,getAll} = require('../models/user')
+const {getOneUser, addUser, editUser, deleteUser,findClients,findadmins} = require('../models/user')
 const secretKey = 'ween'
 console.log(secretKey)
 

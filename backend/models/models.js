@@ -81,13 +81,13 @@ Message.belongsTo(User)
 
 
 
-// sequelize.sync()
-// .then(()=>{
-//     console.log("done")
-// })
-// .catch((err)=>{
-//     console.log(err)
-// })
+sequelize.sync()
+.then(()=>{
+    console.log("done")
+})
+.catch((err)=>{
+    console.log(err)
+})
 
 
 

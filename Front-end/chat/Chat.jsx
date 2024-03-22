@@ -142,6 +142,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });*/
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
 import axios from "axios";
@@ -156,7 +157,14 @@ export default function Chat({ route }) {
     const [refresh, setRefresh] = useState(false);
     const [loading, setLoading] = useState(true); 
     const roomsId = route.params.idRooms;
-    const userId = 1;
+
+    const [userId,setuserId]=useState('')
+    const get=async()=>{
+        setuserId(await AsyncStorage.getItem("id")) 
+        console.log(userId);
+    }
+
+    
     useEffect(() => {
         axios.get(`http://${IP}:8080/message/msg/${roomsId}`)
             .then(ress => {

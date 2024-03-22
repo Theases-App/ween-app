@@ -98,7 +98,7 @@ const sequelize = require('../database/index');
       });
       }
     
-    module.exports = {User, getOneUser, addUser, editUser, findClients,getAll, findadmins} 
+    module.exports = {User, getOneUser, addUser, editUser, findClients, findadmins} 
 
  
 
