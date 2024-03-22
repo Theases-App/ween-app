@@ -1,4 +1,4 @@
-import { View, StyleSheet, StatusBar, FlatList, ViewPropTypes, Text, ScrollView, SafeAreaView, TouchableOpacity, Image, Pressable, TouchableWithoutFeedback } from 'react-native';
+import { View, StyleSheet, StatusBar, FlatList, ViewPropTypes, Text, ScrollView, SafeAreaView, TouchableOpacity, Image, Pressable, TouchableWithoutFeedback,Linking  } from 'react-native';
 import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CheckBox } from 'react-native-elements';
 import { useContext } from 'react';
 import Idcontext from "../UseContext"
-import { useNavigation } from '@react-navigation/native'
+import { Link, useNavigation } from '@react-navigation/native'
 import Ticketpick from "./ticketpick"
 const Ticket = ({ route }) => {
 
@@ -16,9 +16,8 @@ const Ticket = ({ route }) => {
  
   const [res, setRes] = useState('')
   const Navigation = useNavigation()
-
+  const [price,setPrice] = useState(null)
   const item = route.params.item 
-
   const [chat,setChat]=useState(true)
 
   retrieveData = async () => {
@@ -39,6 +38,7 @@ const Ticket = ({ route }) => {
   const [ticket, setTicket] = useState('')
   const [data, setData] = useState([])
  const [chating,setChating]=useState("")
+const [dataa,setdataa]=useState("")
   const cat = ticket.idcategorydetails
 
   useEffect(() => {
@@ -47,9 +47,19 @@ const Ticket = ({ route }) => {
     }).catch((err) => {
       console.log(err)
     })
-  })
+  },[])
 
-  
+
+  const payment = async ()=>{
+
+    axios.post(`http://${IP}:8080/api/create-payment-intent`,{
+      amount:price
+    }).then((res)=>{
+      Linking.openURL(res.data.result.link)
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
   const reservation = async () => {
     axios.get(`http://${IP}:8080/res/getall`)
       .then((res) => {
@@ -65,12 +75,10 @@ const Ticket = ({ route }) => {
       const x = await AsyncStorage.getItem('id')
       axios.post(`http://${IP}:8080/res/add/${x}/${cat}/${item.idevent}`)
        .then((res) => {
-        console.log(x);
         console.log("done inserting")
         Navigation.navigate("pay")
       }).catch((err) => {
-        console.log(cat);
-        console.log(err)
+        console.log("jhgfbv",err)
       })
     }
   }
@@ -87,7 +95,7 @@ const Ticket = ({ route }) => {
     color: selectedIcon === iconName ? '#ff5252' : 'white',
   })
 
-
+ 
   return (
     <View style={{ backgroundColor: "#111111", flex: 1 }}>
       <View style={{ marginTop: 120 }}>
@@ -174,7 +182,6 @@ const Ticket = ({ route }) => {
 
       <View style={{ backgroundColor: "#111111", borderColor: "#ececec", marginTop: 0, height: 420, borderRadius: 5, width: 430 }}>
         <Text style={{ marginTop: 20, fontSize: 20, marginLeft: 20, justifyContent: "center", alignContent: "center", alignItems: "center" }}>{ }</Text>
-
         <Text style={{ color: "#ff5252", fontFamily: "Inter-Black", fontSize: 20, marginLeft: 160, marginTop: -30 }}>  Tickets : </Text>
         <Text style={{ color: "white", fontSize: 10, marginLeft: 100, marginTop: -10 }}>_____________________________________</Text>
 
@@ -188,14 +195,14 @@ const Ticket = ({ route }) => {
             return (
 
             <View>
-       <Ticketpick e={e} setTicket={setTicket}/>
+       <Ticketpick e={e} setTicket={setTicket} setPrice={setPrice} price={price}/>
             </View>
 
             )
           })}
         </ScrollView>
       </View>
-      <TouchableOpacity onPress={() => { reservation() }}>
+      <TouchableOpacity  onPress={() => { payment()}}>
         <View style={{
           backgroundColor: "#ff5252",
           color: "white",
@@ -206,7 +213,7 @@ const Ticket = ({ route }) => {
           borderRadius: 20
         }}>
           <Text style={{ color: "white", fontFamily: "Inter-Black",marginTop:10,
-           fontSize: 20, marginLeft: 15 }}> Confirm Purchase</Text>
+           fontSize: 20, marginLeft: 15 }}>  Confirm Purchase</Text>
         </View>
       </TouchableOpacity>
 

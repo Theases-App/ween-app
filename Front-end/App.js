@@ -1,4 +1,3 @@
-
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
 import EventCntry from './country/EventCntry.jsx';
@@ -28,20 +27,13 @@ import Date from "./Nav/Date.jsx"
 import Dates from "./Nav/Dates.jsx"
 import Wishlist from './components/wishlist.jsx';
 
-const Stack= createNativeStackNavigator()
-
 export default function App() {
-  
+  const Stack= createNativeStackNavigator()
+
   return (
 
 
-
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-const Stack = createNativeStackNavigator();
-
-
-
+<NavigationContainer>
       <Stack.Navigator>
 
       <Stack.Screen
@@ -52,16 +44,26 @@ const Stack = createNativeStackNavigator();
         }   
         />
         
-   
+        <Stack.Screen
+          name="Addevent"
+          component={Addevent}
+          options={{ headerShown: false
+          }
+        }   
+        />
       <Stack.Screen
           name="signup"
           component={Signup} 
-
+          options={{ headerShown: false
+          }
+        }   
         />
           <Stack.Screen
           name="signin"
           component={Signin} 
-          
+          options={{ headerShown: false
+          }
+        }   
 
         />
             <Stack.Screen
@@ -80,13 +82,12 @@ const Stack = createNativeStackNavigator();
           }
         }
         />
-           <Stack.Screen name='your favorite' options={{ headerShown: false
+           <Stack.Screen name='your favorite' 
+           options={{ headerShown: false
         
-          }} component={Wishlist}></Stack.Screen>
-       
-        
-     
+          }} component={Wishlist}>
 
+          </Stack.Screen> 
      
      <Stack.Screen
         
@@ -183,11 +184,6 @@ const Stack = createNativeStackNavigator();
         component={Rooms}
 
          />
-
-         
-          
-
-        />
       
         <Stack.Screen
           name="noticket"
@@ -225,7 +221,8 @@ const Stack = createNativeStackNavigator();
         
 
       </Stack.Navigator>
-    </NavigationContainer>
+      </NavigationContainer>
+    
   //   <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
   //      <Image style={{position:"absolute",top:10,height:100,width:100}} source={require("./idk/image.png")} ></Image>
   

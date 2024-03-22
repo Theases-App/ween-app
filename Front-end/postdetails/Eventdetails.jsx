@@ -192,14 +192,14 @@ return (
         <Icon name="calendar" style={iconStyle('calendar')} size={25} />
 </View>
 
-<Text style={{
+{/* <Text style={{
      color:"white",
      marginLeft:70,
      marginTop:-24,
      fontFamily:"Inter-Black",
       fontSize:16,
 
-}}>{item.date.slice(0,10)}</Text>
+}}>{item.date.slice(0,10)}</Text> */}
 
 <View style={{marginTop:-20,marginLeft:380,color:"red"}}>
 <Icon name="search-location" style={{color:"white"}} size={15} />

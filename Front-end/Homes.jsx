@@ -39,6 +39,11 @@ export default function Home() {
         {/* <Addevent/> */}
         <Homepage/>
        {/* <Eventdetails/> */}
+
+
+  
+
+
         <Nav />
       </View>
     
