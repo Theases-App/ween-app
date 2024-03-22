@@ -6,6 +6,8 @@ router.post('/signup', controller.signUp)
 
 router.post('/signin', controller.signIn)
 
+router.put("/block/:id",controller.updateBlockedUser)
+
 router.put('/edit/:id', controller.updateUser)
 
 router.delete('/delete/:id', controller.destroyUser)

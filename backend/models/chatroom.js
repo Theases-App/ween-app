@@ -1,6 +1,17 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
 
+const ChatRoom = sequelize.define('chatRoom', {
+
+});
+
+module.exports = ChatRoom;
+
+
+
+/*const { DataTypes } = require('sequelize');
+const sequelize = require('../database/index');
+
 
 const ChatRoom = sequelize.define('chatRoom', {
   idchat: {
@@ -18,5 +29,8 @@ const ChatRoom = sequelize.define('chatRoom', {
 });
 
 module.exports = ChatRoom;
+*/
+
+
 
 
