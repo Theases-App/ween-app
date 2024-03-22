@@ -1,4 +1,3 @@
-
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
 import EventCntry from './country/EventCntry.jsx';

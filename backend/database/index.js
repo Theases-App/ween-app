@@ -6,8 +6,11 @@ require('dotenv').config()
 
 
 
+const sequelize = new Sequelize('ween', 'root', '22802888', {
 
-const sequelize = new Sequelize('ween', 'root', 'hamouda3', {
+
+
+
 
     host:'localhost',
     dialect:'mysql',

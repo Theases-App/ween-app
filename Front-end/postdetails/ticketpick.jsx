@@ -10,7 +10,7 @@ import { useContext } from 'react';
 import Idcontext from "../UseContext"
 import { useNavigation } from '@react-navigation/native'   
 
-    const ticketpick=({e,setTicket})=>{
+    const ticketpick=({e,setTicket,setPrice,price})=>{
     
        const [focus, setFocus] = useState('white')
        const [refresh,setRefresh]=useState(true)
@@ -28,6 +28,7 @@ import { useNavigation } from '@react-navigation/native'
               <TouchableOpacity
                 onPress={() => {
                   setTicket(e)
+                  setPrice(e.price) 
                   AsyncStorage.getItem('id')
                   .then((value) => {
                     console.log(e.idcategorydetails);
@@ -53,10 +54,11 @@ import { useNavigation } from '@react-navigation/native'
                   }}>
 
                   <Text style={{ fontFamily: "Inter-Black", fontSize: 20, marginLeft: 40, marginTop: 20 }}>{e.feature}</Text>
-                  <Text style={{ fontFamily: "Inter-Black", fontSize: 20, marginLeft: 220, marginTop: -27 }}>{e.price + " " + "Dt"}</Text>
+                  <Text style={{ fontFamily: "Inter-Black", fontSize: 20, marginLeft: 220, marginTop: -27 }}>{  e.price  + " " + "Dt"}</Text>
                  <View style={{ marginLeft: 10, marginTop: -19 }}>
                   <Icon name="check" style={iconStyle('check')} size={20} />
                   </View>
+              
                 </View>
 
               </TouchableOpacity>

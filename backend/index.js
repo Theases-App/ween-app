@@ -47,9 +47,7 @@ app.use("/res",reservation)
 // app.use("/userchat",userhaschat)
 app.use("/user",user)
 
-
-
-
+app.use("/api",payment)
 app.listen(PORT, ()=>{
     console.log(`Server listening at http://localhost:${PORT}`)
 })
