@@ -13,7 +13,7 @@ const Nav = () => {
 
 
   const iconStyle = (iconName) => ({
-    color: selectedIcon === iconName ? 'red' : 'white',
+    color: selectedIcon === iconName ? '#ff5252' : 'white',
   });
     return (
       <View
@@ -22,18 +22,19 @@ const Nav = () => {
         flexDirection: 'row',
         gap: 60,
         alignItems: 'center',
+        backgroundColor:"#111111",
         paddingBottom: 40,
         borderRadius: 8,
         width: 600,
-        height: 100,
+        height: 90,
         paddingTop: 20,
         paddingLeft: 15,
-        marginTop:-60
+        marginTop:-70
       }}
     >
      
 
-      <TouchableWithoutFeedback onPress={() =>{navigation.navigate("Addevent"), handleIconPress('heart')}}>
+      <TouchableWithoutFeedback onPress={() =>{navigation.navigate("your favorite"), handleIconPress('heart')}}>
         <Icon name="heart" style={iconStyle('heart')} size={30} />
       </TouchableWithoutFeedback>
 

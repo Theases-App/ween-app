@@ -18,7 +18,7 @@ const IndexC = () => {
 
   return (
     <View style={{ backgroundColor: "#111111" }}>
-      <View style={{ position: '-webkit-sticky', position: 'sticky', top: 0, marginTop: 30, left: 110 }}>
+      <View style={{ position: '-webkit-sticky', position: 'sticky', top: 0, marginTop: 60, left: 110 }}>
         <Text style={styles.title}> Countries</Text>
       </View>
       <ScrollView>

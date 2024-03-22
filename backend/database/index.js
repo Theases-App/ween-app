@@ -5,13 +5,17 @@ require('dotenv').config()
 
 
 
-const sequelize = new Sequelize('ween', 'root', 'choclata', {
+
+const sequelize = new Sequelize('ween', 'root', '22802888', {
+
+
+
+
+
     host:'localhost',
     dialect:'mysql',
     define:{timestamps:false}
 })
-
-
 
 sequelize.authenticate()
 .then(()=>{
