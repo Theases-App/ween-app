@@ -27,16 +27,13 @@ import Date from "./Nav/Date.jsx"
 import Dates from "./Nav/Dates.jsx"
 import Wishlist from './components/wishlist.jsx';
 
-const Stack= createNativeStackNavigator()
-
 export default function App() {
-  
+  const Stack= createNativeStackNavigator()
+
   return (
 
 
-
 <NavigationContainer>
-
       <Stack.Navigator>
 
       <Stack.Screen
@@ -47,20 +44,28 @@ export default function App() {
         }   
         />
         
-   
+        <Stack.Screen
+          name="Addevent"
+          component={Addevent}
+          options={{ headerShown: false
+          }
+        }   
+        />
       <Stack.Screen
           name="signup"
           component={Signup} 
-
+          options={{ headerShown: false
+          }
+        }   
         />
           <Stack.Screen
           name="signin"
           component={Signin} 
-          
+          options={{ headerShown: false
+          }
+        }   
 
         />
-
-        
             <Stack.Screen
           name="eventdetail"
           component={Eventdetails} 
@@ -77,13 +82,12 @@ export default function App() {
           }
         }
         />
-           <Stack.Screen name='your favorite' options={{ headerShown: false
+           <Stack.Screen name='your favorite' 
+           options={{ headerShown: false
         
-          }} component={Wishlist}></Stack.Screen>
-       
-        
-     
+          }} component={Wishlist}>
 
+          </Stack.Screen> 
      
      <Stack.Screen
         
@@ -171,17 +175,15 @@ export default function App() {
         />
             
     <Stack.Screen
+
         name="Chat"
         component={Chat}
          />
-          
       <Stack.Screen
         name="Rooms"
         component={Rooms}
-         
-          
 
-        />
+         />
       
         <Stack.Screen
           name="noticket"
@@ -217,13 +219,17 @@ export default function App() {
       
       } />
         
+
       </Stack.Navigator>
-
-
-     </NavigationContainer>
-
-
-
+      </NavigationContainer>
+    
+  //   <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
+  //      <Image style={{position:"absolute",top:10,height:100,width:100}} source={require("./idk/image.png")} ></Image>
+  
+   
+  //  <TouchableOpacity style={{color:"#ff0000"}} >
+       
+      
 
   //     </TouchableOpacity>
     

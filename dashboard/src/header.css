@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 0.5rem 1rem;
+    margin-left: 300px;
+    margin-right: 150px;
+  }
+  
+  .menu-icon .icon,
+  .header-left .icon,
+  .header-right .icon {
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+  
+  .header-left,
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-right .icon {
+    font-size: 1.2rem; 
+  }
+  

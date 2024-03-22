@@ -5,7 +5,9 @@ require('dotenv').config()
 
 
 
+
 const sequelize = new Sequelize('ween', 'root', '22802888', {
+
 
 
 

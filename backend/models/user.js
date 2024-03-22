@@ -73,9 +73,15 @@ const sequelize = require('../database/index');
     return User.update(data, {where: {iduser: id}})
   }
   
+
+  const getAll = () => {
+    return User.findAll()
+  }
+
   // const getAll = () => {
   //   return User.findAll({include:Block})
   // }
+
 
   const findClients = () => {
     return User.findAll({
