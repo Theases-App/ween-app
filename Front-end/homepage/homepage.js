@@ -5,7 +5,7 @@ import axios from 'axios';
 import { IP } from "../ip.json"
 import { useNavigation } from '@react-navigation/native'
 import Date from "../Nav/Date"
-
+import Search from '../Search/Search';
 const homepage = ({route}) => {
 
      
@@ -68,6 +68,10 @@ const homepage = ({route}) => {
 
       return (
             <View style={{ marginTop: 200 }} >
+                  <View>    
+                        <Search  />
+                  </View>
+                 
           <TouchableOpacity onPress={()=>{Navigation.navigate("date")}}> 
 
    <View style={{marginTop:-70,backgroundColor:"#ff5252",
@@ -82,7 +86,7 @@ const homepage = ({route}) => {
   </View>
       </TouchableOpacity>   
         
-        <ScrollView style={{ marginBottom: 40 }}>
+        <ScrollView style={{ marginBottom: 70 }}>
 
                         <View style={{ justifyContent: "center", gap: 35 }}>
                       <View>
