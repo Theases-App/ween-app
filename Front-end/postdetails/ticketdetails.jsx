@@ -78,7 +78,7 @@ const [dataa,setdataa]=useState("")
         console.log("done inserting")
         Navigation.navigate("pay")
       }).catch((err) => {
-        console.log("jhgfbv",err)
+        console.log(err)
       })
     }
   }
@@ -202,7 +202,7 @@ const [dataa,setdataa]=useState("")
           })}
         </ScrollView>
       </View>
-      <TouchableOpacity  onPress={() => { payment()}}>
+      <TouchableOpacity  onPress={() => { reservation(), payment()}}>
         <View style={{
           backgroundColor: "#ff5252",
           color: "white",

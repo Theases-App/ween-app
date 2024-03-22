@@ -110,7 +110,7 @@ const Postdetails=({route})=>{
   
    const chatting=()=>{
        if (text==="Join Chat Room"){
-        Navigation.navigate("pay")
+        Navigation.navigate("chat")
         }
         else if (text==="Buy a Ticket"){
          Navigation.navigate("ticketdetails",{item})
@@ -134,7 +134,7 @@ const handleIconPress = (iconName) => {
 return (
    <View style={{backgroundColor:"#2E2D29",flex:1}}>
 <View style={{marginTop:120}}>
-<Text style={{position:"absolute",marginTop:-60,marginLeft:160,color:"white",fontFamily:"Inter-Black",fontSize:23}}>  {item.eventname}</Text>
+<Text style={{position:"absolute",marginTop:-60,marginLeft:150,color:"white",fontFamily:"Inter-Black",fontSize:23}}>  {item.eventname}</Text>
 </View>
 <ScrollView>
 
@@ -144,7 +144,7 @@ return (
 
   
 
-    <View style={{backgroundColor:"#111111",borderColor:"black",marginTop:-340,height:160,borderRadius:5,width:430}}>
+    <View style={{backgroundColor:"#111111",borderColor:"black",marginTop:-340,height:180,borderRadius:5,width:430}}>
 
 <Text style={{color:"#ff5252",
        fontFamily:"Inter-Black",
@@ -192,14 +192,14 @@ return (
         <Icon name="calendar" style={iconStyle('calendar')} size={25} />
 </View>
 
-{/* <Text style={{
+<Text style={{
      color:"white",
      marginLeft:70,
      marginTop:-24,
      fontFamily:"Inter-Black",
       fontSize:16,
 
-}}>{item.date.slice(0,10)}</Text> */}
+}}>{item.date}</Text> 
 
 <View style={{marginTop:-20,marginLeft:380,color:"red"}}>
 <Icon name="search-location" style={{color:"white"}} size={15} />
