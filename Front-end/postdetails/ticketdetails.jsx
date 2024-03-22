@@ -47,7 +47,7 @@ const Ticket = ({ route }) => {
     }).catch((err) => {
       console.log(err)
     })
-  })
+  },[])
 
   
   const reservation = async () => {

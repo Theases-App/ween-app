@@ -28,20 +28,13 @@ import Date from "./Nav/Date.jsx"
 import Dates from "./Nav/Dates.jsx"
 import Wishlist from './components/wishlist.jsx';
 
-const Stack= createNativeStackNavigator()
-
 export default function App() {
-  
+  const Stack= createNativeStackNavigator()
+
   return (
 
 
-
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-const Stack = createNativeStackNavigator();
-
-
-
+<NavigationContainer>
       <Stack.Navigator>
 
       <Stack.Screen
@@ -192,11 +185,6 @@ const Stack = createNativeStackNavigator();
         component={Rooms}
 
          />
-
-         
-          
-
-        />
       
         <Stack.Screen
           name="noticket"
@@ -234,7 +222,8 @@ const Stack = createNativeStackNavigator();
         
 
       </Stack.Navigator>
-    </NavigationContainer>
+      </NavigationContainer>
+    
   //   <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
   //      <Image style={{position:"absolute",top:10,height:100,width:100}} source={require("./idk/image.png")} ></Image>
   
