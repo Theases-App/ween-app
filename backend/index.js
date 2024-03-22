@@ -32,8 +32,14 @@ app.use("/block",block)
 app.use("/cat",categorydetails)
 app.use("/chat",chat)
 app.use("/event",event)
+
 // app.use("/favorite",favorite)
 app.use("/message",message)
+
+app.use("/notification",notification)
+app.use("/favorite",favorite)
+// app.use("/message",message)
+
 // app.use("/notification",notification)
 // app.use("/payment",payment)
 // app.use("/reports",reports)

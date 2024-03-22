@@ -81,13 +81,13 @@ Message.belongsTo(User)
 
 
 
-sequelize.sync()
-.then(()=>{
-    console.log("done")
-})
-.catch((err)=>{
-    console.log(err)
-})
+// sequelize.sync()
+// .then(()=>{
+//     console.log("done")
+// })
+// .catch((err)=>{
+//     console.log(err)
+// })
 
 
 
@@ -167,12 +167,11 @@ sequelize.sync()
 // // Event.belongsTo(Categorydetails, { foreignKey: 'categorydetails_idcategorydetails' });
 // // Favorit.belongsTo(User, { foreignKey: 'user_iduser' });
 // // Categorydetails.belongsTo(User, { foreignKey: 'user_iduser' });
-// // Message.belongsTo(User, { foreignKey: 'user_iduser' });
-// // Reports.belongsTo(User, { foreignKey: 'user_iduser' });
-// // Reservation.belongsTo(Event, { foreignKey: 'event_idevent' });
-// // Reservation.belongsTo(User, { foreignKey: 'user_iduser' });
-// // Reservation.belongsTo(Categorydetails, { foreignKey: 'categorydetails_idcategorydetails' });
-// // Payment.belongsTo(User, { foreignKey: 'user_iduser' });
-// // Payment.belongsTo(Categorydetails, { foreignKey: 'categorydetails_idcategorydetails' });
-
+// Message.belongsTo(User, { foreignKey: 'user_iduser' });
+// Reports.belongsTo(User, { foreignKey: 'user_iduser' });
+// Reservation.belongsTo(Event, { foreignKey: 'event_idevent' });
+// Reservation.belongsTo(User, { foreignKey: 'user_iduser' });
+// Reservation.belongsTo(Categorydetails, { foreignKey: 'categorydetails_idcategorydetails' });
+// Payment.belongsTo(User, { foreignKey: 'user_iduser' });
+// Payment.belongsTo(Categorydetails, { foreignKey: 'categorydetails_idcategorydetails' });
 

@@ -20,6 +20,7 @@ const EventCntry = ({ route }) => {
 
   return (
     <View style={styles.container}>
+      <View style={{marginTop:60,marginBottom:80}}>
       <Text style={styles.title}>{countryName}</Text>
       <ScrollView>
         {events.map((event, index) => (
@@ -33,6 +34,7 @@ const EventCntry = ({ route }) => {
         ))}
 
       </ScrollView>
+      </View>
     </View>
   );
 };
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#111111',
+    
   },
   title: {
     color: '#ff5252',

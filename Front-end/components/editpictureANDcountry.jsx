@@ -3,26 +3,34 @@ import { View, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { IP } from "../ip.json";
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 
 const EditPictureAndCountry = () => {
   const [userData, setUserData] = useState([]);
   const [newImage, setNewImage] = useState("");
+  const [iduser, setIdUser] = useState(null); 
 
   useEffect(() => {
-    axios.get(`http://${IP}:8080/user/getuser/2`)
-      .then((res) => {
-        setUserData(res.data);
+    
+    AsyncStorage.getItem("id")
+      .then((id) => {
+        setIdUser(id); 
+        axios.get(`http://${IP}:8080/user/getuser/${iduser}`)
+          .then((res) => {
+            setUserData(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.error("Error retrieving user ID:", error));
   }, []);
 
   const updateImage = () => {
     const obj = {
       image: newImage
     }
-    axios.put(`http://${IP}:8080/user/editimage/2`, obj)
+    axios.put(`http://${IP}:8080/user/editimage/${iduser}`, obj)
       .then((res) => {
         console.log("updated");
       })

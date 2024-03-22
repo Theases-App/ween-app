@@ -71,7 +71,7 @@ const  author = async (id, token, role) => {
 
    
     <View style={{justifyContent:'center',alignItems:"center"}}>
-         <View style={{justifyContent:'center',alignItems:"center",position:"absolute",top:60}}> 
+         <View style={{justifyContent:'center',alignItems:"center",position:"absolute",top:90}}> 
        <Text style={{color:"#ff5252",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:26,position:'sticky',top:0}}> Connection </Text>
        </View>
      <ScrollView style={{marginTop:140}}>
@@ -104,7 +104,6 @@ const  author = async (id, token, role) => {
      onPress={()=>{!refresh}}
        autoFocus={true}
       style={styles.input2}
-    
       placeholderTextColor={"#111111"}
       placeholder="Password"
       onChangeText={setPsw}
@@ -128,8 +127,8 @@ const  author = async (id, token, role) => {
       
       </View > 
       <View style={{justifyContent:'center',alignItems:"center",
-      position:"absolute",top:260,left:138}}> 
-       <Text style={{color:"red",fontFamily:"sans-serif-light",
+      position:"absolute",top:265,left:138}}> 
+       <Text style={{color:"#ff5252",fontFamily:"sans-serif-light",
        fontWeight: 'bold',fontSize:15}}> Or </Text>
        </View>
 
@@ -155,9 +154,9 @@ const  author = async (id, token, role) => {
   button
   type='instagram'
 />
-<View style={{top:20,gap:20,left:60,flex:1,height:100}}> 
+<View style={{top:20,gap:20,left:55,flex:1,height:100}}> 
 <TouchableOpacity onPress={()=>{navigation.navigate('signup')}}>
-       <Text style={{color:"black",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12,left:12}}> I don't Have An Account </Text>
+       <Text style={{color:"black",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12,left:11}}> I don't Have An Account </Text>
       </TouchableOpacity>
        <Text style={{color:"black",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12}}> Oups ! I forget My Password </Text>
        </View>
@@ -193,10 +192,10 @@ const styles = StyleSheet.create({
     
     backgroundColor:"#ececec",
       width: 300,
-      height: 40,
+      height: 45,
       marginVertical: 10,
       padding: 10,
-      borderColor: 'white',
+      borderColor: '#111111',
       borderWidth: 1.5,
       borderRadius: 5,
       color:"black",

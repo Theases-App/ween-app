@@ -7,6 +7,8 @@ import axios from 'axios';
 import { IP } from './ip.json';
 import Homepage from './homepage/homepage.js';
 import Eventdetails from "./postdetails/Eventdetails.jsx"
+
+// import Map from './Map/Map.jsx'
  import Addevent from './components/addevent.jsx'
  import EditPictureAndCountry  from './components/editpictureANDcountry.jsx'
  import Date from './Nav/Date.jsx';
@@ -33,14 +35,10 @@ export default function Home() {
          
         </View>
         <Search />
-        <Date/>
+      {/* <Date/> */}
         {/* <Addevent/> */}
         <Homepage/>
        {/* <Eventdetails/> */}
-
-  
-
-
         <Nav />
       </View>
     
@@ -50,7 +48,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   viewstyle1: {
-    backgroundColor: "#111111",
+    backgroundColor: "#2E2D29",
     flex: 1,
     justifyContent: "center",
   },
@@ -65,7 +63,7 @@ const styles = StyleSheet.create({
     top: 10,
     height: 100,
     width: 100,
-    marginTop:180
+    marginTop:20
   },
   circleContainer: {
     flexDirection: 'row', 

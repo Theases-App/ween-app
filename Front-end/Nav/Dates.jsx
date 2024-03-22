@@ -5,24 +5,33 @@ import axios from 'axios';
 import {IP} from "../ip.json"
 import { useNavigation } from '@react-navigation/native'
 
-const concerts=()=>{
+const dates=({route})=>{
+
+  
+  const xs= route.params.x
+  const [data2,setData2]=useState([])
   const Navigation = useNavigation()
     const [refresh, setRefresh] = useState(true);
     const [data,setData]=useState([])
-    const concerts=[]
+    const datt=[]
+  
     useEffect(()=>{
         axios.get(`http://${IP}:8080/event/getall`).then((res)=>{
              setData(res.data)
+             setData2(res.data[2].date.slice(0,10))
         }).catch((err)=>{
             console.log(err,"err")
         })
           },[refresh])
 
           data.map((e)=>{
-            if (e.eventcategory === "clubbing" && e.adminmessage == 1){
-              concerts.push(e)
-            } })
-        
+           const x=e.date.slice(0,10)
+            if (x === xs && e.adminmessage == 1){
+              datt.push(e)
+           
+            }})
+     
+       
 return (
 
 
@@ -32,7 +41,7 @@ return (
 <View>
   
 
-  <Text style={{fontFamily:"Inter-Black",fontSize:24,color:"#ececec",alignItems:"center",marginTop:-20,marginLeft:150}}> Concerts </Text>
+  <Text style={{fontFamily:"Inter-Black",fontSize:24,color:"#ececec",alignItems:"center",marginTop:-20,marginLeft:120}}> Your Date Events </Text>
  
   </View>
 
@@ -46,7 +55,7 @@ return (
 
 
    <FlatList 
-       data={concerts}  renderItem={({item})=><View>
+       data={datt}  renderItem={({item})=><View>
       
          <ScrollView>
 
@@ -116,4 +125,4 @@ return (
 )
 
 }
-export default concerts
+export default dates
