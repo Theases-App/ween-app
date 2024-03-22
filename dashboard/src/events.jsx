@@ -130,6 +130,7 @@ const AllEvents = () => {
             <th>Image</th>
             <th>Event name</th>
             <th>Date</th>
+            <th>Price</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -140,12 +141,12 @@ const AllEvents = () => {
                 <img
                   loading="lazy"
                   src={event.image}
-                  alt={event.eventname}
                   className="user-image"
                 />
               </td>
               <td>{event.eventname}</td>
               <td>{event.date}</td>
+              <td>{event.price}</td>
               <td>
                 <button
                   onClick={() => handleDelete(event.idevent)}

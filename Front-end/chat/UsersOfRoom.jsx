@@ -3,7 +3,6 @@ import React,{useState, useEffect } from "react"
 import {View,Text, TouchableOpacity} from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import {IP} from '../ip.json'
-
 export default function UsersOfRoom({roomId}) {
     const [users,setUsers]=useState([])
    console.log(roomId);
@@ -21,7 +20,9 @@ export default function UsersOfRoom({roomId}) {
         <View>
             <Text>Users</Text>
             {users?.map((el,i)=>(
-                    <Text>{el.User.fullname}</Text>        
+
+                    <Text>{el.User.fullname}</Text>
+   
              ))}
         </View>
     )
