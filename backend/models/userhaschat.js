@@ -3,6 +3,21 @@ const sequelize = require('../database/index');
 
 
 const UserHasChat = sequelize.define('user_has_chat', {
+
+});
+
+
+module.exports = UserHasChat;
+
+
+
+
+
+/*const {  DataTypes } = require('sequelize');
+const sequelize = require('../database/index');
+
+
+const UserHasChat = sequelize.define('user_has_chat', {
   user_iduser: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -20,4 +35,4 @@ const UserHasChat = sequelize.define('user_has_chat', {
 
 
   
-  module.exports = UserHasChat;
+  module.exports = UserHasChat;*/

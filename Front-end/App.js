@@ -1,3 +1,4 @@
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ScrollView, Text, View,Button ,TouchableOpacity,Image} from 'react-native';
 import EventCntry from './country/EventCntry.jsx';
@@ -35,7 +36,11 @@ export default function App() {
 
 
 
-<NavigationContainer>
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+const Stack = createNativeStackNavigator();
+
+
 
       <Stack.Navigator>
 
@@ -169,13 +174,16 @@ export default function App() {
         />
             
     <Stack.Screen
+
         name="Chat"
         component={Chat}
          />
-          
       <Stack.Screen
         name="Rooms"
         component={Rooms}
+
+         />
+
          
           
 
@@ -215,13 +223,16 @@ export default function App() {
       
       } />
         
+
       </Stack.Navigator>
-
-
-     </NavigationContainer>
-
-
-
+    </NavigationContainer>
+  //   <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
+  //      <Image style={{position:"absolute",top:10,height:100,width:100}} source={require("./idk/image.png")} ></Image>
+  
+   
+  //  <TouchableOpacity style={{color:"#ff0000"}} >
+       
+      
 
   //     </TouchableOpacity>
     

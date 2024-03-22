@@ -3,14 +3,13 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, ScrollView } from 
 import axios from "axios";
 import { IP } from '../ip.json';
 import io from 'socket.io-client';
-
 const socket = io(`http://${IP}:3001`);
-
 export default function Chat({ route }) {
     const [conv, setConv] = useState([]);
     const [text, setText] = useState("");
     const [refresh, setRefresh] = useState(false);
-    // const roomsId = route.params.idRooms;
+     const roomsId = route.params.idRooms;
+    
     //const roomsId = 1;
     //const userId = 1;
 
@@ -23,7 +22,6 @@ export default function Chat({ route }) {
                 console.log(err);
             });
     }, [refresh]);
-
     const handleAdd = async () => {
         try {
             await axios.post(`http://${IP}:8080/message/msg`, {
@@ -50,6 +48,7 @@ export default function Chat({ route }) {
             setRefresh(!refresh)
         });
 
+    
         return ()=>{
             socket.disconnect()
         }
@@ -80,7 +79,6 @@ export default function Chat({ route }) {
         </View>
     );
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
