@@ -1,9 +1,9 @@
-const User=require("../models/user.js")
+const {User}=require("../models/user.js")
 const Message=require("../models/message.js")
 
 const Getmessage=async(req,res)=>{
     try {
-        const result=await Message.findAll({where:{chatRoomId:req.params.room},include:User})  
+        const result=await Message.findAll({where:{eventIdevent:req.params.room},include:User})  
         res.send(result)
     } catch (error) {
         res.send(error)
