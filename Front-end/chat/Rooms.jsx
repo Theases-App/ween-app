@@ -6,7 +6,7 @@ import {IP} from '../ip.json'
 import UsersOfRoom from "./UsersOfRoom.jsx"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 export default function Rooms() {
-    
+
     const [rooms,setRooms]=useState([])
     const [show,setShow]=useState(0)
     const navigation=useNavigation()
@@ -33,7 +33,7 @@ export default function Rooms() {
     return (
         <View>
             {rooms.map((el,i)=>(
-                <TouchableOpacity onPress={()=>{navigation.navigate("Chat",{idRooms:el.id})}} key={i}>
+                <TouchableOpacity onPress={()=>{navigation.navigate("Chat",{el})}} key={i}>
                     <Text>Event Title :{el.event.eventname}</Text>
                     <TouchableOpacity onPress={()=>{handleShow(el.id)}} key={i}><Text>see Users</Text></TouchableOpacity>  
                     {(show==el.id)&&<UsersOfRoom roomId={el.eventIdevent}/>}

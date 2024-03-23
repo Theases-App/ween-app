@@ -58,7 +58,7 @@ export default function Signup() {
   return (
 
    
-    <View style={{justifyContent:'center',alignItems:"center",flex:1}}>
+    <View style={{justifyContent:'center',alignItems:"center",flex:1,backgroundColor:"#2E2D29"}}>
         
          <View style={{justifyContent:'center',alignItems:"center",position:"absolute",top:100}}> 
        <Text style={{color:"#ff5252",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:26}}> Inscription </Text>

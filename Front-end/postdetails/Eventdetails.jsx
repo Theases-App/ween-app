@@ -98,10 +98,7 @@ const Postdetails=({route})=>{
     }
   };
   
-
-
   const Navigation = useNavigation()
-  const [chat,setChat]=useState("")
   const [selectedIcon, setSelectedIcon] = useState('');
   const [chating,setChating]=useState("")
   const [text,setText]=useState("Buy a Ticket")
