@@ -156,7 +156,8 @@ export default function Chat({ route }) {
     const [text, setText] = useState("");
     const [refresh, setRefresh] = useState(false);
     const [loading, setLoading] = useState(true); 
-    const roomsId = route.params.idRooms;
+    const roomsId = route.params.el.idchat;
+    console.log(roomsId);
 
     const [userId,setuserId]=useState('')
     const get=async()=>{
@@ -237,7 +238,6 @@ export default function Chat({ route }) {
                         flex: 1,
                         height: 40,
                         marginHorizontal: 10,
-                        
                         borderWidth: 1,
                         borderRadius: 20,
                         paddingHorizontal: 10,
