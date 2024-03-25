@@ -148,22 +148,12 @@ export default function App() {
       }
       
       />
-        {/* <Stack.Screen
-          name="IndexC"
-          component={IndexC}
-          options={{ headerShown: false
-
-          }
-        }
-        /> */}
+      
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
          options={{ headerShown: false }}
         />
-
-         
-
 
          <Stack.Screen
           name="IndexC"

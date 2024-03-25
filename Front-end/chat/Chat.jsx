@@ -156,7 +156,7 @@ export default function Chat({ route }) {
     const [text, setText] = useState("");
     const [refresh, setRefresh] = useState(false);
     const [loading, setLoading] = useState(true); 
-    const roomsId = route.params.el.idchat;
+    const roomsId = route.params.idRooms;
     console.log(roomsId);
 
     const [userId,setuserId]=useState('')
