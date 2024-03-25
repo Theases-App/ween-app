@@ -46,7 +46,7 @@ export default function Signup() {
         axios.post(`http://${IP}:8080/user/signup`,data)
         .then((res)=>{
         console.log("done",res.data)
-          //    / navigate('/signin')
+          navigation.navigate('signin')
        }
         )
         .catch((err)=>{
@@ -58,7 +58,7 @@ export default function Signup() {
   return (
 
    
-    <View style={{justifyContent:'center',alignItems:"center",flex:1}}>
+    <View style={{justifyContent:'center',alignItems:"center",flex:1,backgroundColor:"#2E2D29"}}>
         
          <View style={{justifyContent:'center',alignItems:"center",position:"absolute",top:100}}> 
        <Text style={{color:"#ff5252",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:26}}> Inscription </Text>
@@ -111,13 +111,17 @@ export default function Signup() {
       placeholder='Select your Country'
     />
    
-    <View  style={{top:90,height:200,width:150,marginLeft:80,flex:1}}>
-      <Button  onPress={()=> {navigation.navigate("signin"), handleSubmit(obj)}}
-       
-       style={{borderColor:"black"}}
-      color="#ff5252"
-      title="Confirm "
-     />
+   <View  style={{top:5 ,height:44,width:120,backgroundColor:'#ff5252',
+    borderRadius:20,marginTop:60,marginLeft:90
+   }}>
+    <TouchableOpacity onPress={()=>handleSubmit(obj)}>
+      <Text  
+       style={{borderColor:"black",color:'white',
+       marginTop:8,marginLeft:18,fontSize:20
+      }}
+    
+     > Confirm </Text>
+     </TouchableOpacity>
      </View>
      </ScrollView>
     
@@ -144,21 +148,21 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderRadius: 8,
         paddingHorizontal: 8,
-        borderColor:"white"
+        borderColor:"black"
       },
     input: {
     
-    backgroundColor:"#ececec",
+      backgroundColor:"#ececec",
       width: 300,
-      height: 40,
+      height: 50,
       marginVertical: 10,
       padding: 10,
-      borderColor: 'white',
+      borderColor: '#111111',
       borderWidth: 1.5,
       borderRadius: 5,
       color:"black",
       fontFamily:"sans-serif-light",
-      marginBottom:35
+      marginBottom:30
     },
     button: {
      paddingBottom:200,

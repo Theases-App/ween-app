@@ -16,6 +16,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from "react-native-elements";
 
 const Addevent = () => {
+
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [initialRegion, setInitialRegion] = useState(null);
+  const [selectedCoordinates, setSelectedCoordinates] = useState(null);
   const [eventname, setEventName] = useState("");
   const [eventcategory, setEventCategory] = useState("");
   const [gallery,setGallery]=useState(null)
@@ -36,6 +40,30 @@ const Addevent = () => {
     "spectacles",
   ];
   const countries = ["Hammamet", "Tunis", "Sousse", "Sfax", "Djerba"];
+  useEffect(() => {
+    const getLocation = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.log("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setCurrentLocation(location.coords);
+
+      setInitialRegion({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
+      });
+
+      console.log("Latitude:", location.coords.latitude);
+      console.log("Longitude:", location.coords.longitude);
+    };
+
+    getLocation();
+  }, []);
   useEffect(()=>{
     (async()=>{
       const galleryStatus=await ImagePicker.requestMediaLibraryPermissionsAsync()
@@ -71,9 +99,12 @@ const Addevent = () => {
       price: price,
       country: country,
       location: location,
+      map:selectedCoordinates.latitude,
+      map2:selectedCoordinates.longitude
     };
 
     axios
+      .post(`http://${IP}:8080/event/add/${id}`, eventData)
       .post(`http://${IP}:8080/event/add/${id}`, eventData)
       .then((res) => {
         console.log("Event added successfully",res.data);
@@ -82,15 +113,38 @@ const Addevent = () => {
         setImage("");
         setPrice(0);
         setCountry("");
-        setLocation("");
+        setSelectedCoordinates("")
       })
       .catch((error) => {
         console.error("Error adding event:", error);
       });
   };
 
+
   const toggleModal = () => {
     setModalVisible(!modalVisible);
+  };
+
+
+  // const selectInput = (input) => {
+  //   setSelectedInput(input);
+  //   if (input === "eventcategory") {
+  //     setOptions(eventCategories);
+  //   } else if (input === "country") {
+  //     setOptions(countries);
+  //   }
+  //   setModalVisible(true);
+  // };
+
+  const handleMapPress = (event) => {
+    const { coordinate } = event.nativeEvent;
+    setSelectedCoordinates(coordinate);
+    Alert.alert(
+      "Location Selected",
+      `Latitude: ${coordinate.latitude}, Longitude: ${coordinate.longitude}`,
+      [{ text: "OK" }]
+    );
+    console.log(coordinate.latitude,"ahwaaaq",coordinate.longitude)
   };
 
   const selectInput = (input) => {
@@ -102,6 +156,7 @@ const Addevent = () => {
     }
     setModalVisible(true);
   };
+
 
   const selectItem = (item) => {
     if (selectedInput === "eventcategory") {
@@ -251,8 +306,37 @@ const Addevent = () => {
               )}
             </View>
 
+
       ))}
       </View>
+      {initialRegion && (
+         <MapView
+         style={styles.map}
+         initialRegion={initialRegion}
+         onPress={handleMapPress}
+       >
+         {currentLocation && (
+           <Marker
+             coordinate={{
+               latitude: currentLocation.latitude,
+               longitude: currentLocation.longitude,
+             }}
+             title="Your location"
+           />
+         )}
+         {selectedCoordinates && (
+           <Marker
+             coordinate={{
+               latitude: selectedCoordinates.latitude,
+               longitude: selectedCoordinates.longitude,
+             }}
+             title="Selected Location"
+             pinColor="red"
+           />
+         )}
+       </MapView>
+
+      )}
       
         <View style={{ marginTop: "2%" }}>
           <TouchableOpacity style={styles.addButton} onPress={add}>
@@ -325,6 +409,7 @@ const styles = StyleSheet.create({
   addButton: {
     backgroundColor: "#ff5252",
     padding: 10,
+    marginTop:-300,
     borderRadius: 20,
     width: "60%",
   },
@@ -406,7 +491,15 @@ imagebutton:{
   backgroundColor: "#ececec",
   padding:20
 },
+map: {
+  width: "100%",
+  height: "40%",
+  marginBottom: 0 ,
+  borderRadius: 20,
+
+},
 
 });
 
 export default Addevent;
+

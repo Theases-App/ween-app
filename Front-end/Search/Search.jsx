@@ -11,12 +11,21 @@ function Search() {
   return (
 
     
-    <View style={{ position: 'absolute', top:60, right: 20 }}> 
-     <View >
+    <View > 
+     <View style={{ position: 'absolute', top:-100, right: 20 }}>
+
       <TouchableOpacity onPress={()=>{navigation.navigate("Allcategory")}}>
        <Icon name="search" style={{ color: 'white' }} size={30} />
       </TouchableOpacity>
+      
       </View>
+      
+      <View style={{position:"absolute",top:-100,left:30}} >
+<TouchableOpacity onPress={()=>{navigation.navigate("Addevent")}}>
+ <Icon name="plus" style={{ color: 'white' }} size={30} />
+</TouchableOpacity>
+
+</View>
       </View>
     
   );

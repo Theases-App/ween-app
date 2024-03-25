@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/index');
+// const Block=require("../models/block").Block
 
 
   
@@ -37,17 +38,17 @@ const sequelize = require('../database/index');
       type: DataTypes.STRING(45),
       allowNull: true
     },
-    blockIdblock: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+     blockIdblock: {
+       type: DataTypes.INTEGER,
+       allowNull: true,
       references: {
-        model: 'Block',
-        key: 'idblock'
-      }
-    },
-    reservationIdreservation: {
-      type: DataTypes.INTEGER,
-      allowNull: true
+         model: 'block',
+         key: 'idblock'
+       }
+     },
+     reservationIdreservation: {
+       type: DataTypes.INTEGER,
+       allowNull: true
     }
   }, {
     sequelize,
@@ -60,22 +61,27 @@ const sequelize = require('../database/index');
   
 
 
-  const getOneUser = (iduser) => {
-    return User.findOne({where: {iduser: iduser}})
+  const getOneUser = (email) => {
+    return User.findOne({where: {emailphone: email}})
   }
   
   const addUser = (data) => {
     return User.create(data)
   }
   
-  
   const editUser = (id, data) => {
     return User.update(data, {where: {iduser: id}})
   }
   
+
   const getAll = () => {
-    return User.findAll({include:Block})
+    return User.findAll()
   }
+
+  // const getAll = () => {
+  //   return User.findAll({include:Block})
+  // }
+
 
   const findClients = () => {
     return User.findAll({
@@ -91,11 +97,8 @@ const sequelize = require('../database/index');
         }
       });
       }
-      const deleteUser=(id)=>{
-        return User.destroy({where :{iduser:id}})
-      }
     
-    module.exports = {User, getOneUser, addUser, editUser, getAll, findClients, findadmins,deleteUser} 
+    module.exports = {User, getOneUser, addUser, editUser, findClients, findadmins} 
 
  
 

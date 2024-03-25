@@ -13,6 +13,7 @@ const clubbing=()=>{
     useEffect(()=>{
         axios.get(`http://${IP}:8080/event/getall`).then((res)=>{
              setData(res.data)
+             console.log(res.data,"aaaaaaa");
         }).catch((err)=>{
             console.log(err,"err")
         })
@@ -26,7 +27,7 @@ const clubbing=()=>{
 return (
 
 
-
+<View style={{backgroundColor:"#2E2D29",flex:1}}>
 <View style={{marginTop:80}}>
 
 <View>
@@ -53,7 +54,7 @@ return (
 
 <TouchableOpacity style={{justifyContent:"space-between",padding:5}} onPress={()=>{Navigation.navigate('eventdetail', {item})}}>
 
-<View style={{backgroundColor:"#111111",borderColor:"black",borderRadius:20,height:270,width:420,marginTop:-5}} >  
+<View style={{backgroundColor:"white",borderColor:"black",borderRadius:20,height:270,width:420,marginTop:-5}} >  
 
        <Image style={{
         height:250,
@@ -64,7 +65,7 @@ return (
        
         }}source={{uri:item.image}}/>
 
-  <View style={{backgroundColor:"#111111",borderColor:"black",marginTop:-60,height:70,borderRadius:20}}>
+  <View style={{backgroundColor:"#ececec",borderColor:"black",marginTop:-60,height:70,borderRadius:20}}>
 
       <Text style={{color:"#ff5252",
              fontFamily:"Inter-Black",
@@ -112,7 +113,7 @@ return (
 </ScrollView>
 
 </View>
-
+</View>
 )
 
 }

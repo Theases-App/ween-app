@@ -6,7 +6,7 @@ import Nav from './Nav/Nav.jsx';
 import Search from './Search/Search.jsx';
 import Home from './Homes.jsx';
 import Allcategory from './Search/Allcategory.jsx';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer,useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Signin from './signin & signup/signin.js';
 import Signup from './signin & signup/signup.js';
@@ -21,50 +21,24 @@ import Addevent from './components/addevent.jsx';
 import EditUser from './components/edituser.jsx';
 import UpdatingCountry from './components/updatingcountry.jsx'
 import EditPictureAndCountry from './components/editpictureANDcountry.jsx';
-const Stack= createNativeStackNavigator()
-
-import Index from './signin & signup/index.js';
-import Homepage from "./homepage/index.js"
-
+import Noticket from './postdetails/Notickets.jsx';
+import Pay from './postdetails/Pay.jsx';
+import Rooms from "./chat/Rooms.jsx";
+import Chat from "./chat/Chat.jsx";
+import Date from "./Nav/Date.jsx"
+import Dates from "./Nav/Dates.jsx"
+import Wishlist from './components/wishlist.jsx';
 
 export default function App() {
-  
-  return (
+  const Stack= createNativeStackNavigator()
 
+  return (
 
 
 <NavigationContainer>
       <Stack.Navigator>
-      
-        {/* <Stack.Screen
-        
-          name="home"
-          component={Home}
-          options={{ headerShown: false
-          
-          }
-        }   
-        /> */}
 
-       <Stack.Screen
-        
-        name="EditPictureAndCountry"
-        component={EditPictureAndCountry}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
       <Stack.Screen
-        
-        name="UpdatingCountry"
-        component={UpdatingCountry}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
-       <Stack.Screen
         
         name="Addevent"
         component={Addevent}
@@ -73,25 +47,32 @@ export default function App() {
         }
       }   
       />
-       <Stack.Screen
-        
-        name="EditUser"
-        component={EditUser}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
+      
         <Stack.Screen
         
-        name="Clubbing"
-        component={Clubbing}
+          name="home"
+          component={Home}
+          options={{ headerShown: false
+          
+          }
+        }   
+        />
+
+      {/* <Stack.Screen
+        
+        name="ticketdetails"
+        component={Ticket}
         options={{ headerShown: false
         
         }
       }
       
-      />
+      /> */}
+        <Stack.Screen
+        
+        name="Clubbing"
+        component={Clubbing}
+        options={{ headerShown:false}}  />
         <Stack.Screen
         
         name="Concerts"
@@ -99,9 +80,7 @@ export default function App() {
         options={{ headerShown: false
         
         }
-      }
-      
-      />
+      }/>
       <Stack.Screen
         
         name="Hotelresto"
@@ -109,20 +88,14 @@ export default function App() {
         options={{ headerShown: false
         
         }
-      }
-      
-      />
+        }/>
       <Stack.Screen
         
         name="Spectacles"
         component={Spectacles}
-        options={{ headerShown: false
-        
-        }
-      }
-      
-      />
-      <Stack.Screen
+        options={{ headerShown: false }}/>
+
+       <Stack.Screen
         
         name="Sports"
         component={Sports}
@@ -132,43 +105,61 @@ export default function App() {
       }
       
       />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="IndexC"
           component={IndexC}
           options={{ headerShown: false
 
           }
         }
-        />
+        /> */}
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
-
+         options={{ headerShown: false }}
         />
 
-     
+         
+
+
+         <Stack.Screen
+          name="IndexC"
+          component={IndexC} 
+          options={{ headerShown: false
+
+          }
+        }
+        />
         <Stack.Screen
+
           name="search"
           component={Search} 
-
+        
         />
+            
+   
+      <Stack.Screen
+        name="Rooms"
+        component={Rooms}
+
+         />
+      
         <Stack.Screen
-          name="signin"
-          component={Signin} 
-
+          name="noticket"
+          component={Noticket} 
+          options={{ headerShown: false
+        
+          }
+        }
         />
-        <Stack.Screen
-          name="signup"
-          component={Signup} 
-
+ <Stack.Screen
+          name="date"
+          component={Date} 
+          options={{ headerShown: false
+        
+          }
+        }
         />
-       <Stack.Screen
-          name="eventdetail"
-          component={Eventdetails} 
-
-        />
-       
-
         <Stack.Screen
           name="Allcategory"
           component={Allcategory}
@@ -183,42 +174,57 @@ export default function App() {
 
       ),
     }
-   
 
-    // <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
-     
+      
+      } />
+        
+
+      </Stack.Navigator>
+      </NavigationContainer>
+    
+  //   <View  style={{backgroundColor:"#111111",flex:1,justifyContent:"center",alignItems:"center"}} >
+  //      <Image style={{position:"absolute",top:10,height:100,width:100}} source={require("./idk/image.png")} ></Image>
+  
    
   //  <TouchableOpacity style={{color:"#ff0000"}} >
-    
-
+       
       
-      }
-        />
-      </Stack.Navigator>
 
-
-     </NavigationContainer>
-
-
-
-
-   
-
-  
-     
-      
-     
+  //     </TouchableOpacity>
     
-     
-  )
-
-      // </TouchableOpacity>
     
-  
-
-    //  </View>
-     
-  ;
-
+ 
+  //    </View>
+  );
 }
 
+const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  box: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'skyblue',
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  }
+
+})
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor:"red",
+    width:2, // Change the width as needed
+    height: 3, // Change the height as needed
+  },
+});

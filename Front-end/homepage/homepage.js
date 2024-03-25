@@ -1,18 +1,18 @@
-import { View, FlatList, ViewPropTypes, Text, ScrollView, TouchableOpacity, Image, Pressable } from 'react-native';
+import { View, FlatList, ViewPropTypes,StyleSheet,ActivityIndicator, Text, ScrollView, TouchableOpacity, Image, Pressable } from 'react-native';
 import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { IP } from "../ip.json"
 import { useNavigation } from '@react-navigation/native'
+import Date from "../Nav/Date"
+import Search from '../Search/Search';
+const homepage = ({route}) => {
 
-
-
-const homepage = () => {
-
+     
       const Navigation = useNavigation()
       const [refresh, setRefresh] = useState(true);
       const [data, setData] = useState([])
-
+   const [loading,setLoading]=useState(true)
       const clubing = []
       const sports = []
       const spectacles = []
@@ -21,6 +21,7 @@ const homepage = () => {
       useEffect(() => {
             axios.get(`http://${IP}:8080/event/getall`).then((res) => {
                   setData(res.data)
+                   setLoading(false)
             }).catch((err) => {
                   console.log(err, "err")
             })
@@ -51,18 +52,44 @@ const homepage = () => {
       })
 
       data.map((e) => {
-            if (e.eventcategory === "Hotel & resto" && e.adminmessage == 1) {
+            if (e.eventcategory === "hotel & resto" && e.adminmessage == 1) {
                   hotelresto.push(e)
             }
       })
 
-      return (
-            <View style={{ marginTop: 190 }} >
+       if (loading){
+            return (
+                  <View style={[styles.container, styles.horizontal]}>
+                      
+    <ActivityIndicator style={{ marginLeft:10,marginTop:-400}} size="large" color="#ff5252" />
+  </View>
+            )
+       }
 
-                  <ScrollView style={{ marginBottom: 50 }}>
+      return (
+            <View style={{ marginTop: 200 }} >
+                  <View>    
+                        <Search  />
+                  </View>
+                 
+          <TouchableOpacity onPress={()=>{Navigation.navigate("date")}}> 
+
+   <View style={{marginTop:-70,backgroundColor:"#ff5252",
+   height:40,width:220,
+   borderRadius:20,
+   marginLeft:110}}>
+    <Text style={{fontSize:26,
+    marginTop:4,
+      fontFamily:"Inter-Black",color:"#ececec",
+      marginLeft:17
+      }}> Show Calendar </Text>
+  </View>
+      </TouchableOpacity>   
+        
+        <ScrollView style={{ marginBottom: 70 }}>
 
                         <View style={{ justifyContent: "center", gap: 35 }}>
-                        <View>
+                      <View>
                               <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:200}}>
                         
 
@@ -78,7 +105,6 @@ const homepage = () => {
 
                                     <FlatList
                                           data={clubing} horizontal={true} renderItem={({ item }) => (<View>
-
 
 
 
@@ -150,16 +176,16 @@ const homepage = () => {
 
 
                               <View>
-                                    <TouchableOpacity onPress={()=>{Navigation.navigate("Hotelresto")}}>
-                                    <Text  style={{
-                                          fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252", marginLeft: 310,
-                                          marginBottom: -32,
+                              <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:150}}>
+                        
 
-                                    }}> Show All</Text>
-                                         </TouchableOpacity>
-
-
-                                    <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Hotel & Resto </Text>
+                        <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Hotel & Resto </Text>
+                        <Pressable   onPress={()=>{Navigation.navigate("Hotelresto")}}>
+                  <Text style={{
+                              fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252"
+                             
+                        }} > Show All</Text></Pressable> 
+                        </View>
 
                                     <Text style={{ fontFamily: "Inter-Black", fontSize: 14, color: "#ececec", marginTop: -10, marginLeft: 45 }}> _________________________________________ </Text>
 
@@ -236,15 +262,16 @@ const homepage = () => {
 
 
                               <View>
-                                    <Text onPress={() => { }} style={{
-                                          fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252", marginLeft: 310,
-                                          marginBottom: -32,
+                              <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:220}}>
+                        
 
-                                    }}> Show All</Text>
-
-
-
-                                    <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Sports </Text>
+                        <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Sports </Text>
+                        <Pressable   onPress={()=>{Navigation.navigate("Sports")}}>
+                  <Text style={{
+                              fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252"
+                             
+                        }} > Show All</Text></Pressable> 
+                        </View>
 
                                     <Text style={{ fontFamily: "Inter-Black", fontSize: 14, color: "#ececec", marginTop: -10, marginLeft: 45 }}> _________________________________________ </Text>
 
@@ -318,15 +345,16 @@ const homepage = () => {
 
 
                               <View>
-                                    <Text onPress={() => { }} style={{
-                                          fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252", marginLeft: 310,
-                                          marginBottom: -32,
+                              <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:198}}>
+                        
 
-                                    }}> Show All</Text>
-
-
-
-                                    <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Concerts </Text>
+                        <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Concerts </Text>
+                        <Pressable   onPress={()=>{Navigation.navigate("Concerts")}}>
+                  <Text style={{
+                              fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252"
+                             
+                        }} > Show All</Text></Pressable> 
+                        </View>
 
                                     <Text style={{ fontFamily: "Inter-Black", fontSize: 14, color: "#ececec", marginTop: -10, marginLeft: 45 }}> _________________________________________ </Text>
 
@@ -403,15 +431,16 @@ const homepage = () => {
 
 
                               <View>
-                                    <Text onPress={() => { }} style={{
-                                          fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252", marginLeft: 310,
-                                          marginBottom: -32,
+                              <View style={{display:"flex",flexDirection:"row",flexBasis:"auto",columnGap:175}}>
+                        
 
-                                    }}> Show All</Text>
-
-
-
-                                    <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Spectacles </Text>
+                        <Text style={{ fontFamily: "Inter-Black", fontSize: 24, color: "#ececec", marginLeft: 12 }}> Spectacles </Text>
+                        <Pressable   onPress={()=>{Navigation.navigate("Spectacles")}}>
+                  <Text style={{
+                              fontFamily: "Inter-Black", fontSize: 20, color: "#ff5252"
+                             
+                        }} > Show All</Text></Pressable> 
+                        </View>
 
                                     <Text style={{ fontFamily: "Inter-Black", fontSize: 14, color: "#ececec", marginTop: -10, marginLeft: 45 }}> _________________________________________ </Text>
 
@@ -491,5 +520,18 @@ const homepage = () => {
             </View>
       );
 };
+
+const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+      
+        justifyContent: 'center',
+      },
+      horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10,
+      },
+    });
 
 export default homepage

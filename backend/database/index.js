@@ -4,13 +4,18 @@ require('dotenv').config()
 
 
 
+
+
 const sequelize = new Sequelize('ween', 'root', 'root', {
+
+
+
+
+
     host:'localhost',
     dialect:'mysql',
     define:{timestamps:false}
 })
-
-
 
 sequelize.authenticate()
 .then(()=>{
