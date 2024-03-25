@@ -28,6 +28,7 @@ import Chat from "./chat/Chat.jsx";
 import Date from "./Nav/Date.jsx"
 import Dates from "./Nav/Dates.jsx"
 import Wishlist from './components/wishlist.jsx';
+import dates from './Nav/Date.jsx';
 
 export default function App() {
   const Stack= createNativeStackNavigator()
@@ -38,6 +39,82 @@ export default function App() {
 <NavigationContainer>
       <Stack.Navigator>
 
+        <Stack.Screen
+        
+          name="home"
+          component={Home}
+          options={{ headerShown: false
+          
+          }
+        }   
+        />
+         <Stack.Screen
+        
+        name="hj"
+        component={Home}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+ <Stack.Screen
+        
+        name="your favorite"
+        component={Wishlist}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+      <Stack.Screen
+        
+        name="UpdatingCountry"
+        component={UpdatingCountry}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+      <Stack.Screen
+        
+        name="eventdetail"
+        component={Eventdetails}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+      <Stack.Screen
+        
+        name="ticketdetails"
+        component={Ticket}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      />
+       <Stack.Screen
+        
+        name="dates"
+        component={Dates}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      />
+        <Stack.Screen
+        
+        name="EditUser"
+        component={EditUser}
+        options={{ headerShown: false
+        
+        }
+      }
+      
+      />
+      
       <Stack.Screen
         
         name="Addevent"
@@ -48,26 +125,6 @@ export default function App() {
       }   
       />
       
-        <Stack.Screen
-        
-          name="home"
-          component={Home}
-          options={{ headerShown: false
-          
-          }
-        }   
-        />
-
-      {/* <Stack.Screen
-        
-        name="ticketdetails"
-        component={Ticket}
-        options={{ headerShown: false
-        
-        }
-      }
-      
-      /> */}
         <Stack.Screen
         
         name="Clubbing"
@@ -105,22 +162,12 @@ export default function App() {
       }
       
       />
-        {/* <Stack.Screen
-          name="IndexC"
-          component={IndexC}
-          options={{ headerShown: false
-
-          }
-        }
-        /> */}
+      
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
          options={{ headerShown: false }}
         />
-
-         
-
 
          <Stack.Screen
           name="IndexC"
@@ -147,6 +194,30 @@ export default function App() {
         <Stack.Screen
           name="noticket"
           component={Noticket} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
+         <Stack.Screen
+          name="signin"
+          component={Signin} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
+         <Stack.Screen
+          name="edit"
+          component={EditPictureAndCountry} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
+         <Stack.Screen
+          name="signup"
+          component={Signup} 
           options={{ headerShown: false
         
           }

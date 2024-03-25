@@ -3,7 +3,6 @@ import { View, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { IP } from "../ip.json";
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import * as ImagePicker from 'expo-image-picker';
 import EditUser from './edituser';
 import Addevent from './addevent';
@@ -13,36 +12,40 @@ import { useNavigation } from '@react-navigation/native'
 const EditPictureAndCountry = () => {
   const [userData, setUserData] = useState([]);
   const [newImage, setNewImage] = useState("");
-  const [iduser, setIdUser] = useState(null); 
   const [gallery, setGallery] = useState(null);
   const navigation = useNavigation()
   useEffect(() => {
-    
-    AsyncStorage.getItem("id")
-      .then((id) => {
-        setIdUser(id); 
-        axios.get(`http://${IP}:8080/user/getuser/${iduser}`)
-          .then((res) => {
-            setUserData(res.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      })
-      .catch((error) => console.error("Error retrieving user ID:", error));
-  }, []);
-
-  const updateImage = () => {
-    const obj = {
-      image: newImage
-    }
-    axios.put(`http://${IP}:8080/user/editimage/2`, obj)
+    axios.get(`http://${IP}:8080/user/getuser/2`)
       .then((res) => {
-        console.log("updated");
+        setUserData(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      setGallery(galleryStatus.status === 'granted');
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setNewImage(result.uri);
+    }
+  }
+
+  if (gallery === false) {
+    return <Text>No access to Internal Storage</Text>
   }
 
   return (

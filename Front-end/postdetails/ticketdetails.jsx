@@ -76,7 +76,7 @@ const [dataa,setdataa]=useState("")
       axios.post(`http://${IP}:8080/res/add/${x}/${cat}/${item.idevent}`)
        .then((res) => {
         console.log("done inserting")
-        Navigation.navigate("pay")
+        // Navigation.navigate("pay")
       }).catch((err) => {
         console.log(err)
       })

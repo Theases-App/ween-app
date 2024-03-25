@@ -103,7 +103,6 @@ const Postdetails=({route})=>{
   const [chating,setChating]=useState("")
   const [text,setText]=useState("Buy a Ticket")
 
-
   
    const chatting=()=>{
        if (text==="Join Chat Room"){
@@ -138,8 +137,6 @@ return (
    <View style={{marginBottom:300}}>
    <Image style={{marginLeft:0,height:280,width:430,borderRadius:10}} source={{uri:item.image}}/>
 </View>
-
-  
 
     <View style={{backgroundColor:"#111111",borderColor:"black",marginTop:-340,height:180,borderRadius:5,width:430}}>
 

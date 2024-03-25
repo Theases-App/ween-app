@@ -6,15 +6,20 @@ import {
   StyleSheet,
   Text,
   ScrollView,
+  Dimensions,
   Image,
   Modal,
+  Alert
 } from "react-native";
 import axios from "axios";
 import { IP } from "../ip.json";
 import * as ImagePicker from 'expo-image-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from "react-native-elements";
-
+import * as Location from "expo-location";
+import MapView, { Marker } from "react-native-maps";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 const Addevent = () => {
 
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -40,6 +45,7 @@ const Addevent = () => {
     "spectacles",
   ];
   const countries = ["Hammamet", "Tunis", "Sousse", "Sfax", "Djerba"];
+
   useEffect(() => {
     const getLocation = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -120,21 +126,9 @@ const Addevent = () => {
       });
   };
 
-
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
-
-
-  // const selectInput = (input) => {
-  //   setSelectedInput(input);
-  //   if (input === "eventcategory") {
-  //     setOptions(eventCategories);
-  //   } else if (input === "country") {
-  //     setOptions(countries);
-  //   }
-  //   setModalVisible(true);
-  // };
 
   const handleMapPress = (event) => {
     const { coordinate } = event.nativeEvent;
@@ -156,7 +150,6 @@ const Addevent = () => {
     }
     setModalVisible(true);
   };
-
 
   const selectItem = (item) => {
     if (selectedInput === "eventcategory") {
@@ -338,7 +331,7 @@ const Addevent = () => {
 
       )}
       
-        <View style={{ marginTop: "2%" }}>
+        <View style={{ marginTop: 0 }}>
           <TouchableOpacity style={styles.addButton} onPress={add}>
             <Text style={styles.buttonText}>Add Event</Text>
           </TouchableOpacity>
@@ -381,7 +374,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
-    backgroundColor: "#111111",
+    backgroundColor: "#2E2D29",
     position: "relative",
   },
   scrollContainer: {
@@ -409,7 +402,7 @@ const styles = StyleSheet.create({
   addButton: {
     backgroundColor: "#ff5252",
     padding: 10,
-    marginTop:-300,
+    marginTop:10,
     borderRadius: 20,
     width: "60%",
   },
@@ -492,9 +485,10 @@ imagebutton:{
   padding:20
 },
 map: {
-  width: "100%",
-  height: "40%",
+  width: "90%",
+  height: "25%",
   marginBottom: 0 ,
+  marginTop:10,
   borderRadius: 20,
 
 },
@@ -502,4 +496,3 @@ map: {
 });
 
 export default Addevent;
-
