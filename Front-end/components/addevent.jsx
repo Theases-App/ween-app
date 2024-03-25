@@ -1,23 +1,69 @@
-import React, { useState } from "react";
-import { View, TextInput, TouchableOpacity, StyleSheet, Text, ScrollView, Modal } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  ScrollView,
+  Image,
+  Modal,
+} from "react-native";
 import axios from "axios";
 import { IP } from "../ip.json";
-import Map from '../Map/Map.jsx'
+import * as ImagePicker from 'expo-image-picker';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button } from "react-native-elements";
+
 const Addevent = () => {
   const [eventname, setEventName] = useState("");
   const [eventcategory, setEventCategory] = useState("");
-  const [image, setImage] = useState("");
+  const [gallery,setGallery]=useState(null)
+  const [image, setImage] = useState('');
   const [price, setPrice] = useState(0);
   const [country, setCountry] = useState("");
   const [location, setLocation] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [options, setOptions] = useState([]);
   const [selectedInput, setSelectedInput] = useState("");
+  const [inputs, setInputs] = useState([{ category: '', price: '' }]);
 
-  const eventCategories = ["Sports", "Concerts", "Hotel & resto", "Clubbing", "Spectacles"];
+  const eventCategories = [
+    "sports",
+    "concerts",
+    "hotel & resto",
+    "clubbing",
+    "spectacles",
+  ];
   const countries = ["Hammamet", "Tunis", "Sousse", "Sfax", "Djerba"];
+  useEffect(()=>{
+    (async()=>{
+      const galleryStatus=await ImagePicker.requestMediaLibraryPermissionsAsync()
+      setGallery(galleryStatus.status === 'granted')
+    })()
+  },[])
 
-  const add = () => {
+  const pickImage=async()=>{
+    let result =await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing:true,
+      aspect:[4,3],
+      quality:1,
+    });
+    console.log(result,'res');
+ 
+    if(!result.canceled){
+      setImage(result.assets[0].uri)
+      console.log('image',image);
+    }
+    console.log('ima',image);
+  }
+
+  if(gallery===false){
+    return <Text>No access to Internal Storage</Text>
+  }
+
+  const add = (id) => {
     const eventData = {
       eventname: eventname,
       eventcategory: eventcategory,
@@ -28,9 +74,9 @@ const Addevent = () => {
     };
 
     axios
-      .post(`http://${IP}:8080/event/add/2`, eventData)
+      .post(`http://${IP}:8080/event/add/${id}`, eventData)
       .then((res) => {
-        console.log("Event added successfully");
+        console.log("Event added successfully",res.data);
         setEventName("");
         setEventCategory("");
         setImage("");
@@ -70,10 +116,51 @@ const Addevent = () => {
     setModalVisible(false);
   };
 
+  const handleAddInput = () => {
+    setInputs([...inputs, { category: '', price: '' }]);
+  };
+
+  const handleCategoryChange = (text, index) => {
+    const newInputs = [...inputs];
+    newInputs[index].category = text;
+    setInputs(newInputs);
+  };
+
+  const handlePriceChange = (text, index) => {
+    const newInputs = [...inputs];
+    newInputs[index].price = text;
+    setInputs(newInputs);
+  };
+
+  
+  // const selectImage = () => {
+  //   const options = {
+  //     title: 'Select Image',
+  //     storageOptions: {
+  //       skipBackup: true,
+  //       path: 'images',
+  //     },
+  //   };
+    
+
+  //   ImagePicker.showImagePicker(options, async(response) => {
+  //     if (response.didCancel) {
+  //       console.log('User cancelled image picker');
+  //     } else if (response.error) {
+  //       console.log('ImagePicker Error: ', response.error);
+  //     } else {
+  //       setImage(response.uri);
+  //     }
+  //   });
+
+
+  //   console.log(options)
+  // } 
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>New Event</Text>
-      
+
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <TextInput
           style={styles.input}
@@ -86,15 +173,23 @@ const Addevent = () => {
           style={styles.input}
           onPress={() => selectInput("eventcategory")}
         >
-          <Text >{eventcategory || "Select Event Category"}</Text>
+          <Text>{eventcategory || "Select Event Category"}</Text>
         </TouchableOpacity>
 
-        <TextInput
+        {/* <TouchableOpacity
+          style={styles.input}
+          onPress={selectImage}
+        >
+          <Text>{image ? "Image Selected" : "Select Image"}</Text>
+        </TouchableOpacity> */}
+        {/* <Button title='Pick Image' onPress={()=>pickImage()} />
+        {image && <Image source={{uri:image}} />} */}
+          {/* <TextInput
           style={styles.input}
           placeholder="Image URL"
           placeholderTextColor="#999999"
           onChangeText={(val) => setImage(val)}
-        />
+        /> */}
 
         <TextInput
           keyboardType="numeric"
@@ -103,12 +198,22 @@ const Addevent = () => {
           placeholderTextColor="#999999"
           onChangeText={(val) => setPrice(val)}
         />
+        <View style={{ marginTop: "2%" }} placeholder="image">
+          <TouchableOpacity style={styles.imagebutton} onPress={()=>pickImage()}>
+          { console.log('ima',image)}
+          
+           {image && <Image style={{width:"full",height:50}} source={{uri:image}} />}
+            {/* <Text style={styles.image}>Image</Text> */}
+          </TouchableOpacity>
+        </View>
 
         <TouchableOpacity
           style={styles.input}
           onPress={() => selectInput("country")}
         >
-          <Text style={{color:"#111111" }}>{country || "Select Country"}</Text>
+          <Text style={{ color: "#111111" }}>
+            {country || "Select Country"}
+          </Text>
         </TouchableOpacity>
 
         <TextInput
@@ -117,14 +222,44 @@ const Addevent = () => {
           placeholderTextColor="#999999"
           onChangeText={(val) => setLocation(val)}
         />
+       
+        
+        <View>
+          {inputs.map((input, index) => (
+            <View style={styles.containerCategory} key={index}>
+              <View style={styles.column}>
+                <TextInput
+                  style={styles.inputs}
+                  placeholder="Category"
+                  value={input.category}
+                  onChangeText={text => handleCategoryChange(text, index)}
+                />
+              </View>
+              <View style={{flex:1}}>
+                <TextInput
+                  style={styles.inputs}
+                  placeholder="Price"
+                  value={input.price}
+                  onChangeText={text => handlePriceChange(text, index)}
+                  keyboardType="numeric"
+                />
+              </View>
+              {index === inputs.length - 1 && (
+                <TouchableOpacity onPress={handleAddInput}>
+                  <Icon name="plus" size={20} color="#ff5252" style={styles.icon} />
+                </TouchableOpacity>
+              )}
+            </View>
 
-<Map/>
-     <TouchableOpacity style={styles.addButton} onPress={add}>
-        <Text style={styles.buttonText}>Add Event</Text>
-      </TouchableOpacity>
-
-      </ScrollView>
+      ))}
+      </View>
       
+        <View style={{ marginTop: "2%" }}>
+          <TouchableOpacity style={styles.addButton} onPress={add}>
+            <Text style={styles.buttonText}>Add Event</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
       
 
       <Modal
@@ -156,84 +291,122 @@ const Addevent = () => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
-    backgroundColor: "#111111", 
-    position: 'relative', 
+    backgroundColor: "#111111",
+    position: "relative",
   },
   scrollContainer: {
     flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 100, 
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "10%",
   },
   input: {
-    borderWidth: 1, 
-    borderColor: "#ffffff", 
+    borderWidth: 1,
+    borderColor: "#ffffff",
     color: "#111111",
     padding: 9,
     margin: 10,
     width: 350,
     borderRadius: 20,
-    backgroundColor:"#ececec"
+    backgroundColor: "#ececec",
   },
   title: {
     top: 50,
     fontSize: 40,
-    color: "#ececec", 
-    fontFamily:'sans-serif-light',
+    color: "#ececec",
+    fontFamily: "sans-serif-light",
   },
   addButton: {
     backgroundColor: "#ff5252",
     padding: 10,
     borderRadius: 20,
-    width:"40%"
+    width: "60%",
   },
   buttonText: {
-    color: "#ffffff", 
+    color: "#ffffff",
     textAlign: "center",
   },
   centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
+    marginTop: 22,
   },
   modalView: {
     margin: 20,
     backgroundColor: "#6F6C6A",
-    opacity:0.95,
+    opacity: 0.95,
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5
+    elevation: 5,
   },
   optionItem: {
-    color:"#ececec",
+    color: "#ececec",
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#CCCCCC",
     width: 200,
-    alignItems: "center"
+    alignItems: "center",
   },
   cancelButton: {
     marginTop: 10,
   },
-  cancelButtonText: {
+  cancelButtonText: { 
     color: "#ececec",
-  }
+  },
+containerCategory: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  paddingHorizontal: 20,
+  // marginRight:150,
+},
+// column: {
+//   flex: 1,
+// },
+inputs: {
+  width:167,
+  paddingHorizontal: 10,
+  borderWidth:1,
+  borderColor: "#ffffff",
+  color: "#111111",
+  borderRadius: 20,
+  backgroundColor: "#ececec",
+  padding: 7,
+  
+}, 
+icon: {
+  // alignSelf: 'center',
+  marginLeft:145,
+  marginTop:13,
+},
+image:{
+
+},
+imagebutton:{
+  borderWidth: 1,
+  borderColor: "#ffffff",
+  color: "#111111",
+  margin: 10,
+  width: 350,
+  borderRadius: 20,
+  backgroundColor: "#ececec",
+  padding:20
+},
+
 });
 
 export default Addevent;

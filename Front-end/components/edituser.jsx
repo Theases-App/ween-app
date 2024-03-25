@@ -84,9 +84,10 @@ const EditUser = ({ userId }) => {
   };
 
   return (
+    
     <View style={styles.container}>
       <Text style={styles.editProfileText}>Edit Profile</Text>
-
+    <View style={{backgroundColor:"#DDD6D1",padding:30, marginTop:"10%",borderWidth:2,borderColor:"#ececec"}}>
       <View style={styles.userInfo}>
         <Text style={styles.label}>Email:</Text>
         <Text style={styles.info}>{userData.emailphone}</Text>
@@ -105,11 +106,12 @@ const EditUser = ({ userId }) => {
       <TouchableOpacity style={styles.editButton} onPress={openModal}>
         <FontAwesome5 name="edit" size={16} color="#fff" />
       </TouchableOpacity>
-
+      
+      
       <TouchableOpacity style={styles.deleteButton} onPress={deleteUser}>
         <Text style={styles.deleteButtonText}>Delete Account</Text>
       </TouchableOpacity>
-
+      </View>
       <Modal visible={isModalVisible} transparent animationType="slide">
         <View style={styles.modalContainer}>
           <TextInput
@@ -147,19 +149,25 @@ const EditUser = ({ userId }) => {
 
       {isBlurred && <View style={styles.blurBackground} />}
     </View>
+   
+
+
+   
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingHorizontal: 50,
+    backgroundColor: '#111111',
+    paddingHorizontal: 10,
     paddingTop: 60,
+    
   },
   editProfileText: {
-    color: '#000',
-    fontSize: 20,
+    fontSize: 40,
+    color: "#ececec", 
+    fontFamily:'sans-serif-light',
     alignSelf: 'center',
     marginBottom: 15,
   },
@@ -190,7 +198,7 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     alignSelf: 'center',
-    marginTop: 400,
+    marginLeft:'66%'
   },
   deleteButtonText: {
     color: 'red',
@@ -201,7 +209,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#111111',
   },
   input: {
     backgroundColor: '#fff',

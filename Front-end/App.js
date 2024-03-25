@@ -19,6 +19,8 @@ import Spectacles from './homepage/spectacles.js';
 import Sports from './homepage/sports.js';
 import Addevent from './components/addevent.jsx';
 import EditUser from './components/edituser.jsx';
+import UpdatingCountry from './components/updatingcountry.jsx'
+import EditPictureAndCountry from './components/editpictureANDcountry.jsx';
 const Stack= createNativeStackNavigator()
 
 import Index from './signin & signup/index.js';
@@ -33,8 +35,36 @@ export default function App() {
 
 <NavigationContainer>
       <Stack.Navigator>
+      
+        {/* <Stack.Screen
+        
+          name="home"
+          component={Home}
+          options={{ headerShown: false
+          
+          }
+        }   
+        /> */}
 
+       <Stack.Screen
+        
+        name="EditPictureAndCountry"
+        component={EditPictureAndCountry}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
       <Stack.Screen
+        
+        name="UpdatingCountry"
+        component={UpdatingCountry}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+       <Stack.Screen
         
         name="Addevent"
         component={Addevent}
@@ -43,27 +73,15 @@ export default function App() {
         }
       }   
       />
-      
-        <Stack.Screen
+       <Stack.Screen
         
-          name="home"
-          component={Home}
-          options={{ headerShown: false
-          
-          }
-        }   
-        />
-
-      {/* <Stack.Screen
-        
-        name="ticketdetails"
-        component={Ticket}
+        name="EditUser"
+        component={EditUser}
         options={{ headerShown: false
         
         }
-      }
-      
-      /> */}
+      }   
+      />
         <Stack.Screen
         
         name="Clubbing"
