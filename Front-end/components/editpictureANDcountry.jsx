@@ -4,12 +4,18 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { IP } from "../ip.json";
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage'; 
+import * as ImagePicker from 'expo-image-picker';
+import EditUser from './edituser';
+import Addevent from './addevent';
+import UpdatingCountry from './updatingcountry';
+import { useNavigation } from '@react-navigation/native'
 
 const EditPictureAndCountry = () => {
   const [userData, setUserData] = useState([]);
   const [newImage, setNewImage] = useState("");
   const [iduser, setIdUser] = useState(null); 
-
+  const [gallery, setGallery] = useState(null);
+  const navigation = useNavigation()
   useEffect(() => {
     
     AsyncStorage.getItem("id")
@@ -30,7 +36,7 @@ const EditPictureAndCountry = () => {
     const obj = {
       image: newImage
     }
-    axios.put(`http://${IP}:8080/user/editimage/${iduser}`, obj)
+    axios.put(`http://${IP}:8080/user/editimage/2`, obj)
       .then((res) => {
         console.log("updated");
       })
@@ -38,32 +44,35 @@ const EditPictureAndCountry = () => {
         console.log(error);
       });
   }
-  
+
   return (
     <View style={styles.container}>
+      <Text style={{ marginTop: "-40%", color: '#ff5252', fontFamily: 'sans-serif-light', fontSize: 40 }}>Profile</Text>
       {userData && (
         <View style={styles.userInfoContainer}>
           <View style={styles.userImageContainer}>
-            <Image
-              style={styles.userImage}
-              source={{ uri: userData.image }}
-              resizeMode="cover"
-            />
-            <TouchableOpacity style={styles.cameraIcon} onPress={() => console.log('Camera icon clicked')}>
+            <TouchableOpacity style={styles.cameraIcon} onPress={pickImage}>
               <MaterialIcons name="camera-alt" size={24} color="white" />
             </TouchableOpacity>
+            {newImage && <Image source={{ uri: newImage }} style={styles.userImage} />}
           </View>
           <Text style={styles.fullname}>{userData.fullname}</Text>
         </View>
       )}
       <View style={styles.actionsContainer}>
-        <TouchableOpacity style={styles.actionButton}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate("EditUser")}>
           <MaterialIcons name="person" size={30} color="black" />
           <Text style={styles.actionText}>Edit User</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate("UpdatingCountry")}>
           <MaterialIcons name="location-on" size={24} color="black" />
           <Text style={styles.actionText}>City</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{ width: "50%", marginTop: 8 }}>
+        <TouchableOpacity style={styles.actionButtonevent} onPress={() => navigation.navigate("Addevent")}>
+          <MaterialIcons name="playlist-add" size={35} color="black" />
+          <Text style={styles.actionText}>Add Event</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -75,11 +84,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#111111',
   },
   userInfoContainer: {
     alignItems: 'center',
-    marginBottom: 20,
+    marginTop: "40%"
+
   },
   userImageContainer: {
     width: 150,
@@ -87,11 +97,12 @@ const styles = StyleSheet.create({
     borderRadius: 75,
     overflow: 'hidden',
     marginBottom: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    backgroundColor: '#999999',
   },
   userImage: {
     width: '100%',
     height: '100%',
+    resizeMode: 'cover',
   },
   cameraIcon: {
     position: 'absolute',
@@ -104,12 +115,13 @@ const styles = StyleSheet.create({
   fullname: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#ececec',
   },
   actionsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '80%', 
+    width: '80%',
+    marginTop: "10%",
   },
   actionButton: {
     alignItems: 'center',
@@ -127,6 +139,20 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     flex: 1,
     marginHorizontal: 5,
+  },
+  actionButtonevent: {
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   actionText: {
     marginTop: 5,
