@@ -53,7 +53,7 @@ const  author = async (id, token, role) => {
               );
             }  if (role === "client") {
                 await AsyncStorage.setItem("id",JSON.stringify(id))
-                navigation.navigate("home")
+                navigation.navigate("edit")
                 console.log("done")
               }
       })

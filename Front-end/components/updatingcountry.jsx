@@ -98,9 +98,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     marginBottom: 10,
+    backgroundColor: "#111111",
   },
   imageContainer: {
-    width: 250,
+    width: 390,
     height: 200,
     margin: 5,
     borderRadius: 10,
