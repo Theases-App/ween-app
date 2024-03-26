@@ -38,7 +38,7 @@ const Event = sequelize.define('event', {
     allowNull: true
   },
   date: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING(45),
     allowNull: true
   },
   time: {

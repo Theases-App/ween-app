@@ -21,9 +21,14 @@ import Addevent from './components/addevent.jsx';
 import EditUser from './components/edituser.jsx';
 import Noticket from './postdetails/Notickets.jsx';
 import Pay from './postdetails/Pay.jsx';
+import Rooms from "./chat/Rooms.jsx";
+import Chat from "./chat/Chat.jsx";
+import Date from "./Nav/Date.jsx"
+import Dates from "./Nav/Dates.jsx"
 import Wishlist from './components/wishlist.jsx';
-import Chat from './chat/Chat.jsx';
-import Rooms from './chat/Rooms.jsx';
+import notifications from './components/notifications.jsx';
+
+
 const Stack= createNativeStackNavigator()
 
 export default function App() {
@@ -35,18 +40,31 @@ export default function App() {
 <NavigationContainer>
 
       <Stack.Navigator>
-   
       <Stack.Screen
           name="signup"
           component={Signup} 
 
         />
-          <Stack.Screen
+    
+      <Stack.Screen
           name="signin"
           component={Signin} 
           
 
         />
+      
+
+      <Stack.Screen
+          name="home"
+          component={Home}
+          options={{ headerShown: false
+          }
+        }   
+        />
+        
+   
+  
+    
             <Stack.Screen
           name="eventdetail"
           component={Eventdetails} 
@@ -55,28 +73,40 @@ export default function App() {
           }
         }
         />
-           <Stack.Screen name='your favorite' component={Wishlist}></Stack.Screen>
+            <Stack.Screen
+          name="pay"
+          component={Pay} 
+          options={{ headerShown: false
+        
+          }
+        }
+        />
+        <Stack.Screen name="Notifications" component={notifications}  options={{ headerShown: false}}  >
+          
+        </Stack.Screen>
+           <Stack.Screen name='your favorite' options={{ headerShown: false
+        
+          }} component={Wishlist}></Stack.Screen>
        
         
-        <Stack.Screen
-          name="home"
-          component={Home}
-          options={{ headerShown: false
-          }
-        }   
-        />
-        
-
      
 
-      {/* <Stack.Screen
+     
+     <Stack.Screen
+        
+        name="dates"
+        component={Dates}
+        options={{ headerShown: false}}  />
+
+     
+       <Stack.Screen
         
         name="ticketdetails"
         component={Ticket}
         options={{ headerShown: false
         
         }
-      } />  */}
+      } />  
    
         <Stack.Screen
         
@@ -126,11 +156,11 @@ export default function App() {
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
-
+         options={{ headerShown: false }}
         />
-           <Stack.Screen
 
-        
+
+         <Stack.Screen
           name="IndexC"
           component={IndexC} 
           options={{ headerShown: false
@@ -139,16 +169,15 @@ export default function App() {
         }
         />
         <Stack.Screen
-          name="search"
-          component={Search} 
 
-        />
-      
-     
-        
        
 
-     
+          name="search"
+          component={Search} 
+        
+        />
+
+    
             
     <Stack.Screen
         name="Chat"
@@ -162,14 +191,7 @@ export default function App() {
           
 
         />
-       {/* <Stack.Screen
-          name="eventdetail"
-          component={Eventdetails} 
-          options={{ headerShown: false
-        
-          }
-        }
-        /> */}
+      
         <Stack.Screen
           name="noticket"
           component={Noticket} 
@@ -178,6 +200,13 @@ export default function App() {
           }
         }
         />
+
+
+      
+     
+        
+       
+
 
         <Stack.Screen
           name="Allcategory"

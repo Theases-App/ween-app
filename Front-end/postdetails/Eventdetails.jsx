@@ -1,4 +1,4 @@
-import { View,FlatList,ViewPropTypes,Text,ScrollView,StyleSheet,TouchableOpacity,Image,Pressable,TouchableWithoutFeedback} from 'react-native';
+import { View,FlatList,ViewPropTypes,Text,ScrollView,ActivityIndicator,StyleSheet,TouchableOpacity,Image,Pressable,TouchableWithoutFeedback} from 'react-native';
 import{useEffect,useState,useRef} from 'react';
 import axios from 'axios';
 import Button from 'react-native-button';
@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
+
 // const windowWidth = Dimensions.get("window").width;
 // const windowHeight = Dimensions.get("window").height;
   
@@ -21,6 +22,8 @@ import MapView, { Marker } from "react-native-maps";
 const Postdetails=({route})=>{
    const [currentLocation, setCurrentLocation] = useState(null);
    const [initialRegion, setInitialRegion] = useState(null);
+   const [loading,setLoading]=useState(true)
+
 
  
    const item = route.params.item 
@@ -46,6 +49,7 @@ const Postdetails=({route})=>{
    useEffect(() => {
      const getLocation = async () => {
        let { status } = await Location.requestForegroundPermissionsAsync();
+       setLoading(false)
        if (status !== "granted") {
          console.log("Permission to access location was denied");
          return;
@@ -73,7 +77,7 @@ const Postdetails=({route})=>{
     try {
       const userId = await AsyncStorage.getItem("id");
       const obj = {
-        iduser: userId,
+        user_iduser: userId,
         event_idevent: item.idevent
       };
   
@@ -123,22 +127,24 @@ const handleIconPress = (iconName) => {
  const iconStyle = (iconName) => ({
    color: selectedIcon === iconName ? '#ff5252' : 'white',
  })
-
+ const iconStyle2 = (iconName) => ({
+  color: selectedIcon === iconName ? '#ff5252' : '#ff525',
+})
 
 return (
-   <View style={{backgroundColor:"#111111",flex:1}}>
+   <View style={{backgroundColor:"#2E2D29",flex:1}}>
 <View style={{marginTop:120}}>
-<Text style={{position:"absolute",marginTop:-60,marginLeft:140,color:"white",fontFamily:"Inter-Black",fontSize:23}}>  {item.eventname}</Text>
+<Text style={{position:"absolute",marginTop:-60,marginLeft:160,color:"white",fontFamily:"Inter-Black",fontSize:23}}>  {item.eventname}</Text>
 </View>
 <ScrollView>
 
    <View style={{marginBottom:300}}>
-   <Image style={{marginLeft:0,height:280,width:420,borderRadius:10}} source={{uri:item.image}}/>
+   <Image style={{marginLeft:0,height:280,width:430,borderRadius:10}} source={{uri:item.image}}/>
 </View>
 
   
 
-    <View style={{backgroundColor:"black",borderColor:"black",marginTop:-340,height:160,borderRadius:5,width:420}}>
+    <View style={{backgroundColor:"#111111",borderColor:"black",marginTop:-340,height:160,borderRadius:5,width:430}}>
 
 <Text style={{color:"#ff5252",
        fontFamily:"Inter-Black",
@@ -167,7 +173,7 @@ return (
 <Text style={{
      color:"white",
      marginLeft:310,
-     marginTop:-19,
+     marginTop:-16,
      fontFamily:"Inter-Black",
      fontSize:17,
 
@@ -195,6 +201,9 @@ return (
 
 }}>{item.date}</Text>
 
+<View style={{marginTop:-20,marginLeft:380,color:"red"}}>
+<Icon name="search-location" style={{color:"white"}} size={15} />
+</View>
 <Text style={{color:"white",
      marginLeft:330,
      marginTop:-20,
@@ -203,23 +212,26 @@ return (
 
 }}>{item.location}</Text>
 
+
 <View>
-   <TouchableOpacity onPress={()=>{chatting()}}>
+   <TouchableOpacity  onPress={()=>{chatting()}}>
 
-
-    <Button style={{marginTop:20,
+<View style={{ backgroundColor:"#EAEAEA", width:260,height:32,
+borderRadius:10,
+marginTop:25,left:85}}>
+    <Text style={{marginTop:2,
+    padding:2,
   fontFamily:"Inter-Black",
-  backgroundColor:"#111111",color:"#ff5252",
-  width:300,height:32,
-  marginLeft:70,fontSize:20,
-  borderColor:"#ff5252",
-  borderRadius:10
-  }} > {text} </Button> 
-  
+ color:"#ff5252",
  
+  marginLeft:80,fontSize:20,
+  
+  }} > {text} </Text> 
 
-<View style={{marginTop:-27,marginLeft:120}}>
-<Icon name="check" style={iconStyle('check')} size={20} />
+</View>
+
+<View style={{marginTop:-27,marginLeft:125}}>
+<Icon name="check" style={iconStyle2('check')} size={20} />
 </View>
 </TouchableOpacity>
 </View>
@@ -227,7 +239,7 @@ return (
 
 </View>
 
-<View style={{backgroundColor:"#ececec",borderColor:"#ececec",marginTop:0,height:490,borderRadius:5,width:420}}>
+<View style={{backgroundColor:"#ececec",borderColor:"#ececec",marginTop:0,height:490,borderRadius:5,width:430}}>
 
  <Text style={{marginTop:10,fontSize:20,marginLeft:20,marginRight:20,justifyContent:"center",alignContent:"center",alignItems:"center"}}>* {item.description}</Text>
 
@@ -254,10 +266,10 @@ return (
        )}
      </View>
 
-<View>
+<View style={{marginTop:-20,marginBottom:20}}>
 
 
-<View style={{marginTop:-16,marginLeft:10,color:"black"}}>
+<View style={{marginTop:-30,marginLeft:10,color:"black"}}>
 <Icon name="phone" style={{color:'black'}} size={20} />
 </View>
 <Text style={{marginLeft:50,marginTop:-22,fontSize:18}}>{ item.phonenumber}</Text>

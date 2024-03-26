@@ -10,7 +10,7 @@ const Notifications = require('./notification');
 const Reservation = require('./reservation').Reservation
 const Payment = require('./payment')
 const Reports = require('./reports');
-const UserHasNotifications = require('./userhasnotifications');
+const UserHasNotifications = require('./UserHasNotifications');
 const ChatRoom = require('./chatroom');
 const UserHasChat = require('./userhaschat');
 const Message = require('./message');
@@ -64,7 +64,7 @@ Message.belongsTo(User, { foreignKey: 'user_iduser' });
 ChatRoom.hasMany(Message, { foreignKey: 'chatRoom_idchat' });
 Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });
 
-// sequelize.sync()
+// sequelize.sync({force:true})
 // .then(()=>{
 //     console.log("done")
 // })

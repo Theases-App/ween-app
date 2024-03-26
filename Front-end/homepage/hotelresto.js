@@ -26,7 +26,7 @@ const hotelresto=()=>{
 return (
 
 
-<View style={{backgroundColor:"#111111",flex:1}}>
+<View style={{backgroundColor:"#2E2D29",flex:1}}>
 <View style={{marginTop:80}}>
 
 <View>
@@ -53,7 +53,7 @@ return (
 
 <TouchableOpacity style={{justifyContent:"space-between",padding:5}} onPress={()=>{Navigation.navigate('eventdetail', {item})}}>
 
-<View style={{backgroundColor:"#111111",borderColor:"black",borderRadius:20,
+<View style={{backgroundColor:"white",borderColor:"black",borderRadius:20,
     marginLeft:-6,
    height:270,width:420,marginTop:-5}} >  
 
