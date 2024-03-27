@@ -6,13 +6,13 @@ import { IP } from "../ip.json"
 import { useNavigation } from '@react-navigation/native'
 import Date from "../Nav/Date"
 import Search from '../Search/Search';
+
 const homepage = ({route}) => {
 
-     
       const Navigation = useNavigation()
       const [refresh, setRefresh] = useState(true);
       const [data, setData] = useState([])
-   const [loading,setLoading]=useState(true)
+      const [loading,setLoading]=useState(true)
       const clubing = []
       const sports = []
       const spectacles = []
@@ -75,17 +75,31 @@ const homepage = ({route}) => {
           <TouchableOpacity onPress={()=>{Navigation.navigate("date")}}> 
 
    <View style={{marginTop:-70,backgroundColor:"#ff5252",
-   height:40,width:220,
+   height:40,width:120,
    borderRadius:20,
-   marginLeft:110}}>
-    <Text style={{fontSize:26,
-    marginTop:4,
-      fontFamily:"Inter-Black",color:"#ececec",
-      marginLeft:17
-      }}> Show Calendar </Text>
+   marginLeft:80}}>
+    <Text style={{fontSize:20,
+    marginTop:9,
+    color:"#ececec",
+      marginLeft:12
+      }}> Calendar </Text>
   </View>
-      </TouchableOpacity>   
-        
+      </TouchableOpacity>  
+
+<TouchableOpacity onPress={()=>{Navigation.navigate("chat")}}>
+      
+      <View style={{marginTop:-70,backgroundColor:"#ff5252",
+   height:40,width:120,
+   borderRadius:20,
+   marginLeft:220}}>
+    <Text style={{fontSize:18,
+    marginTop:8,
+    color:"#ececec",
+      marginLeft:6
+      }}> Chat Rooms </Text>
+  </View> 
+  </TouchableOpacity>
+
         <ScrollView style={{ marginBottom: 70 }}>
 
                         <View style={{ justifyContent: "center", gap: 35 }}>

@@ -48,15 +48,7 @@ export default function App() {
           }
         }   
         />
-         <Stack.Screen
-        
-        name="hj"
-        component={Home}
-        options={{ headerShown: false
-        
-        }
-      }   
-      />
+       
  <Stack.Screen
         
         name="your favorite"
