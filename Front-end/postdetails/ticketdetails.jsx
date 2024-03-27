@@ -76,9 +76,9 @@ const [dataa,setdataa]=useState("")
       axios.post(`http://${IP}:8080/res/add/${x}/${cat}/${item.idevent}`)
        .then((res) => {
         console.log("done inserting")
-        // Navigation.navigate("pay")
+        Navigation.navigate("pay")
       }).catch((err) => {
-        console.log(err)
+        console.log("jhgfbv",err)
       })
     }
   }
@@ -202,7 +202,7 @@ const [dataa,setdataa]=useState("")
           })}
         </ScrollView>
       </View>
-      <TouchableOpacity  onPress={() => {  payment()}}>
+      <TouchableOpacity  onPress={() => {reservation(), payment()}}>
         <View style={{
           backgroundColor: "#ff5252",
           color: "white",
@@ -225,7 +225,4 @@ const [dataa,setdataa]=useState("")
 }
 
 export default Ticket;
-
-
-
 
