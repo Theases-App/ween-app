@@ -46,7 +46,7 @@ const Nav = () => {
         <Icon name="star" style={ iconStyle('star')} size={30} />
       </TouchableWithoutFeedback>
 
-      <TouchableWithoutFeedback onPress={() => handleIconPress('home')}>
+      <TouchableWithoutFeedback onPress={() => {navigation.navigate("home"), handleIconPress('home')}}>
         <Icon name="home" style={iconStyle('home')} size={30} />
       </TouchableWithoutFeedback>
       

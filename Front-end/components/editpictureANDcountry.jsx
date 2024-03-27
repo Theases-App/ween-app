@@ -8,7 +8,7 @@ import EditUser from './edituser';
 import Addevent from './addevent';
 import UpdatingCountry from './updatingcountry';
 import { useNavigation } from '@react-navigation/native'
-
+import Nav from '../Nav/Nav';
 const EditPictureAndCountry = () => {
   const [userData, setUserData] = useState([]);
   const [newImage, setNewImage] = useState("");
@@ -50,7 +50,7 @@ const EditPictureAndCountry = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={{ marginTop: "-40%", color: '#ff5252', fontFamily: 'sans-serif-light', fontSize: 40 }}>Profile</Text>
+      <Text style={{ marginTop: "-10%", color: '#ff5252', fontFamily: 'sans-serif-light', fontSize: 40 }}>Profile</Text>
       {userData && (
         <View style={styles.userInfoContainer}>
           <View style={styles.userImageContainer}>
@@ -77,6 +77,10 @@ const EditPictureAndCountry = () => {
           <MaterialIcons name="playlist-add" size={35} color="black" />
           <Text style={styles.actionText}>Add Event</Text>
         </TouchableOpacity>
+        <View style={{marginTop:350,marginLeft:-100}}>
+       <Nav/>
+       </View>
+        {/* <View style={{marginTop:-200}}> <Nav/></View> */}
       </View>
     </View>
   );

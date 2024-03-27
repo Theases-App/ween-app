@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
       padding: 10,
       borderColor: '#111111',
       borderWidth: 1.5,
-      borderRadius: 5,
+      borderRadius: 20,
       color:"black",
       fontFamily:"sans-serif-light",
       marginBottom:30
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderColor: 'red',
         borderWidth: 1.5,
-        borderRadius: 5,
+        borderRadius: 20,
         color:"black",
         fontFamily:"sans-serif-light",
         marginBottom:30

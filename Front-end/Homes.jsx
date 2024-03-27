@@ -21,7 +21,7 @@ export default function Home() {
       .then((res) => {
         setdate(res.data);
         setLoading(false)
-        console.log("this is the data from home ", res.data);
+        // console.log("this is the data from home ", res.data);
       })
       .catch((err) => {
         console.log(err);
