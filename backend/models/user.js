@@ -38,14 +38,14 @@ const sequelize = require('../database/index');
       type: DataTypes.STRING(45),
       allowNull: true
     },
-     blockIdblock: {
+     /*blockIdblock: {
        type: DataTypes.INTEGER,
        allowNull: true,
       references: {
          model: 'block',
          key: 'idblock'
        }
-     },
+     },*/
      reservationIdreservation: {
        type: DataTypes.INTEGER,
        allowNull: true

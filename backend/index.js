@@ -4,7 +4,7 @@ const cors = require('cors')
 
 require("./models/models.js")
 const athentification=require("./router/authentificationroute")
-const block=require("./router/blockroute")
+/*const block=require("./router/blockroute")*/
 const categorydetails=require("./router/categorydetailsroute")
 const chat=require("./router/chatroute")
 const event=require("./router/eventroute")
@@ -28,7 +28,7 @@ app.use(express.urlencoded({extended: true}))
 // app.use(express.static(__dirname + '../../index.html'))
 
 app.use("/token",athentification)
-app.use("/block",block)
+//app.use("/block",block)
 app.use("/cat",categorydetails)
 app.use("/chat",chat)
 app.use("/event",event)
