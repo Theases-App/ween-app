@@ -48,7 +48,16 @@ export default function App() {
           }
         }   
         />
-       
+       <Stack.Screen
+        
+        name="Chat"
+        component={Chat}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+     
  <Stack.Screen
         
         name="your favorite"
@@ -190,7 +199,7 @@ export default function App() {
       <Stack.Screen
         name="Rooms"
         component={Rooms}
-
+        options={{ headerShown: false }}
          />
       
         <Stack.Screen

@@ -63,12 +63,19 @@ import { useNavigation } from "@react-navigation/native"
 import {IP} from '../ip.json'
 import UsersOfRoom from "./UsersOfRoom.jsx"
 import lookup from "socket.io-client"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 export default function Rooms() {
     const [rooms,setRooms]=useState([])
     const [show,setShow]=useState(0)
     const navigation=useNavigation()
-    const UserIduser=1
+    const [UserIduser,setUserIduser]=useState('')
+
+    const r=async()=>{
+        setUserIduser(await AsyncStorage.getItem("id"))
+        console.log(UserIduser)
+    }
+    r()
     useEffect(()=>{
         axios.get(`http://${IP}:8080/chat/rooms/${UserIduser}`)
         .then((res)=>{
@@ -84,12 +91,12 @@ export default function Rooms() {
         ids==show?setShow(0):setShow(ids)
     }
     return (
-        
+        <View style={{backgroundColor:"#2E2D29",flex:1}}>
         <View style={styles.container}>
             {rooms.map((el,i)=>(
                 <TouchableOpacity 
                     key={i} 
-                    onPress={()=>{navigation.navigate("Chat",{idRooms:el.id})}}
+                    onPress={()=>{navigation.navigate("Chat",{idRooms:el.eventIdevent})}}
                     style={styles.roomContainer}
                 >
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -106,6 +113,7 @@ export default function Rooms() {
                 </TouchableOpacity>           
              ))}
         </View>
+        </View>
     )
 }    
 
@@ -114,7 +122,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent:'center',
         alignItems: 'center',
-        marginBottom:500
+        marginBottom:500,
+       
     },
     roomContainer: {
         backgroundColor:'#ff5252',

@@ -106,7 +106,7 @@ const Postdetails=({route})=>{
   
    const chatting=()=>{
        if (text==="Join Chat Room"){
-        Navigation.navigate("chat")
+        Navigation.navigate("Chat",{idRooms:item.idevent})
         }
         else if (text==="Buy a Ticket"){
          Navigation.navigate("ticketdetails",{item})

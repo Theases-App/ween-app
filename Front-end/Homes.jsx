@@ -49,14 +49,14 @@ export default function Home() {
 
       {/* <Date/> */}
         {/* <Addevent/> */}
-      { /* <Homepage/>*/}
+       <Homepage/> 
        {/* <Eventdetails/> */}
 
-<Rooms/>
+{/* <Rooms/> */}
   
 
 
-      {  /*<Nav />*/}
+        <Nav />
       </View>
     
     
