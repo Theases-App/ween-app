@@ -10,9 +10,9 @@ const Notifications = require('./notification');
 const Reservation = require('./reservation').Reservation
 const Payment = require('./payment')
 const Reports = require('./reports');
-const UserHasNotifications = require('./userhasnotifications');
-const chatRoom = require('./chatroom');
-//const UserHasChat = require('./userhaschat');
+const UserHasNotifications = require('./UserHasNotifications');
+const ChatRoom = require('./chatroom');
+const UserHasChat = require('./userhaschat');
 const Message = require('./message');
 
 

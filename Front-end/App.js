@@ -28,7 +28,9 @@ import Chat from "./chat/Chat.jsx";
 import Date from "./Nav/Date.jsx"
 import Dates from "./Nav/Dates.jsx"
 import Wishlist from './components/wishlist.jsx';
-import dates from './Nav/Date.jsx';
+import Notification from "./components/notifications.jsx"
+
+const Stack= createNativeStackNavigator()
 
 export default function App() {
   const Stack= createNativeStackNavigator()
@@ -38,16 +40,30 @@ export default function App() {
 
 <NavigationContainer>
       <Stack.Navigator>
-
-        <Stack.Screen
+      <Stack.Screen
         
-          name="home"
-          component={Home}
-          options={{ headerShown: false
-          
-          }
-        }   
+        name="home"
+        component={Home}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+      <Stack.Screen
+          name="signup"
+          component={Signup} 
+
         />
+    
+      <Stack.Screen
+          name="signin"
+          component={Signin} 
+          
+
+        />
+      
+
+  
        <Stack.Screen
         
         name="Chat"
@@ -85,17 +101,29 @@ export default function App() {
         }
       }   
       />
+      <Stack.Screen name='Notifications' component={Notification}  options={{ headerShown: false
+        
+      }}>
+
+      </Stack.Screen>
       <Stack.Screen
         
         name="ticketdetails"
         component={Ticket}
         options={{ headerShown: false
         
+          }
         }
-      }
-      
-      />
-       <Stack.Screen
+        />
+           <Stack.Screen name='your favorite' options={{ headerShown: false
+        
+          }} component={Wishlist}></Stack.Screen>
+       
+        
+     
+
+     
+     <Stack.Screen
         
         name="dates"
         component={Dates}
@@ -180,6 +208,9 @@ export default function App() {
          options={{ headerShown: false }}
         />
 
+         
+
+
          <Stack.Screen
           name="IndexC"
           component={IndexC} 
@@ -190,10 +221,14 @@ export default function App() {
         />
         <Stack.Screen
 
+       
+
           name="search"
           component={Search} 
         
         />
+
+    
             
    
       <Stack.Screen
@@ -205,30 +240,6 @@ export default function App() {
         <Stack.Screen
           name="noticket"
           component={Noticket} 
-          options={{ headerShown: false
-        
-          }
-        }
-        />
-         <Stack.Screen
-          name="signin"
-          component={Signin} 
-          options={{ headerShown: false
-        
-          }
-        }
-        />
-         <Stack.Screen
-          name="edit"
-          component={EditPictureAndCountry} 
-          options={{ headerShown: false
-        
-          }
-        }
-        />
-         <Stack.Screen
-          name="signup"
-          component={Signup} 
           options={{ headerShown: false
         
           }

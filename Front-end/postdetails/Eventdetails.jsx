@@ -193,7 +193,7 @@ return (
      fontFamily:"Inter-Black",
       fontSize:16,
 
-}}>{item.date}</Text> 
+}}>{item.date.slice(0,10)}</Text>
 
 <View style={{marginTop:-20,marginLeft:380,color:"red"}}>
 <Icon name="search-location" style={{color:"white"}} size={15} />

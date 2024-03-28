@@ -11,6 +11,7 @@ const event=require("./router/eventroute")
 const favorite=require("./router/favoritroute")
 const message=require("./router/messageroute")
 const notification=require("./router/notificationroute")
+const Userhasnotifcations=require("./router/userhasnotifcations")
 const payment=require("./router/paymentroute")
 const reports=require("./router/reportsroute")
 const reservation=require("./router/reservationroute")
@@ -37,6 +38,8 @@ app.use("/event",event)
 app.use("/message",message)
 
 app.use("/notification",notification)
+app.use("/usernotification",Userhasnotifcations)
+
 app.use("/favorite",favorite)
 // app.use("/message",message)
 
