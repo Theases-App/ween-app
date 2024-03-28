@@ -118,7 +118,7 @@ const AllUsers = () => {
           <tr>
             <th>Image</th>
             <th>Name</th>
-            <th>Email</th>
+            <th>Email or Phone Number</th>
             <th>Action</th>
           </tr>
         </thead>

@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native'
 const dates=({route})=>{
 
   
-  const xs= route.params.x
+  // const xs= route.params.x
   const [data2,setData2]=useState([])
   const Navigation = useNavigation()
     const [refresh, setRefresh] = useState(true);
@@ -26,7 +26,7 @@ const dates=({route})=>{
 
           data.map((e)=>{
            const x=e.date.slice(0,10)
-            if (x === xs && e.adminmessage == 1){
+            if (x === 1 && e.adminmessage == 1){
               datt.push(e)
            
             }})
@@ -36,7 +36,7 @@ return (
 
 
 <View style={{backgroundColor:"#2E2D29",flex:1}}>
-<View style={{marginTop:80}}>
+<View style={{marginTop:480}}>
 
 <View>
   
@@ -55,7 +55,7 @@ return (
 
 
    <FlatList 
-       data={datt}  renderItem={({item})=><View>
+       data={datt} horizontal={true} renderItem={({item})=><View>
       
          <ScrollView>
 

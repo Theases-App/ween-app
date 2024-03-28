@@ -78,7 +78,7 @@ const sequelize = require('../database/index');
     return User.findAll()
   }
 
-  // const getAll = () => {
+  // const getAll2 = () => {
   //   return User.findAll({include:Block})
   // }
 

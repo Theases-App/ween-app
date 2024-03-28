@@ -7,11 +7,12 @@ import axios from 'axios';
 import { IP } from './ip.json';
 import Homepage from './homepage/homepage.js';
 import Eventdetails from "./postdetails/Eventdetails.jsx"
-
+import Chat from "./chat/Rooms.jsx";
 // import Map from './Map/Map.jsx'
  import Addevent from './components/addevent.jsx'
  import EditPictureAndCountry  from './components/editpictureANDcountry.jsx'
  import Date from './Nav/Date.jsx';
+import Rooms from './chat/Rooms.jsx';
 export default function Home() {
 
   const [date, setdate] = useState([]);
@@ -21,7 +22,7 @@ export default function Home() {
       .then((res) => {
         setdate(res.data);
         setLoading(false)
-        console.log("this is the data from home ", res.data);
+        // console.log("this is the data from home ", res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -41,13 +42,17 @@ export default function Home() {
           <Image source={require("./idk/image.png")} style={styles.img} />
          
         </View>
+
+       {/* <Search />*/}
+
         {/* <Search /> */}
+
       {/* <Date/> */}
         {/* <Addevent/> */}
-        <Homepage/>
+       <Homepage/> 
        {/* <Eventdetails/> */}
 
-
+{/* <Rooms/> */}
   
 
 

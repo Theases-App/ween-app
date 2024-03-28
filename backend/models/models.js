@@ -65,13 +65,40 @@ ChatRoom.hasMany(Message, { foreignKey: 'chatRoom_idchat' });
 Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });*/
 
 
-// sequelize.sync({force:true})
-// .then(()=>{
-//     console.log("done")
-// })
-// .catch((err)=>{
-//     console.log(err)
-// })
+//<-----------------------------  chat relations  ----------------------------->//
+//relation between chatRoom and Users
+User.hasMany(chatRoom)
+chatRoom.belongsTo(User)
+//relation between chatRoom and Event
+Event.hasMany(chatRoom)
+chatRoom.belongsTo(Event)
+//relation between chatRoom and messages
+Event.hasMany(Message)
+Message.belongsTo(Event)
+//relation between Messages and users
+User.hasMany(Message)
+Message.belongsTo(User)
+
+
+
+
+/* sequelize.sync()
+ .then(()=>{
+    console.log("done")
+})
+.catch((err)=>{
+   console.log(err)
+ })
+*/
+
+sequelize.sync()
+.then(()=>{
+    console.log("done")
+})
+.catch((err)=>{
+    console.log(err)
+})
+
 
 
 

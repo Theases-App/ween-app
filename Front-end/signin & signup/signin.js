@@ -36,7 +36,7 @@ const obj={emailphone:email,password:psw}
         })
         .catch((err) => {
           setWrong(false);
-          console.log(err);
+          console.log('this',err);
         });
     }
   };
@@ -45,7 +45,7 @@ const  author = async (id, token, role) => {
     const data = { token: token, user_Iduser:id }
     await axios.post(`http://${IP}:8080/token/add/${id}`, data)
       .then(() => {
-        axios.get(`http://${IP}:8080/block/check/${id}`)
+        axios.get(`http://${IP}:8080/block/check/${id}`) 
           .then(async (result) => {
             if (result.data) {
               alert(
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
       padding: 10,
       borderColor: '#111111',
       borderWidth: 1.5,
-      borderRadius: 5,
+      borderRadius: 20,
       color:"black",
       fontFamily:"sans-serif-light",
       marginBottom:30
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderColor: 'red',
         borderWidth: 1.5,
-        borderRadius: 5,
+        borderRadius: 20,
         color:"black",
         fontFamily:"sans-serif-light",
         marginBottom:30

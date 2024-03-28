@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { IP } from '../ip.json';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Nav from '../Nav/Nav';
 
 const Wishlist = () => {
   const [favs, setFavs] = useState([]);
@@ -91,9 +92,9 @@ const[eventid,setEventId]=useState(0)
   };
 
   return (
-  
+  <View style={{backgroundColor:"#2E2D29",flex:1}}>
     <ScrollView style={styles.scrollView}>
-      <Text style={{color:"#ff5252",marginTop:70,marginLeft:170,fontSize:30}}>Favorit</Text>
+      <Text style={{color:"#ff5252",marginTop:70,marginLeft:160,fontSize:30}}>Favorite</Text>
       <View style={{marginTop:10}}>
       <View style={styles.container}>
         {favs.map((event, index) => (
@@ -112,14 +113,18 @@ const[eventid,setEventId]=useState(0)
       </View>
       </View>
     </ScrollView>
-  
+    <View >
+      <Nav/>
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
-    backgroundColor: '#111111', 
+    backgroundColor: '#2E2D29', 
+    
   },
   container: {
     marginTop:20,

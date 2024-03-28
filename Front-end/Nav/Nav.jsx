@@ -59,10 +59,8 @@ const Nav = () => {
         </View>
       </TouchableWithoutFeedback>
 
-      <TouchableWithoutFeedback onPress={() => handleIconPress('home')}>
-        <View>
-          <Icon name="home" style={iconStyle('home')} size={30} />
-        </View>
+      <TouchableWithoutFeedback onPress={() => {navigation.navigate("home"), handleIconPress('home')}}>
+        <Icon name="home" style={iconStyle('home')} size={30} />
       </TouchableWithoutFeedback>
 
       <TouchableWithoutFeedback onPress={() => { navigation.navigate("Notifications"), handleIconPress('bell') }}>

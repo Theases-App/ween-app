@@ -54,7 +54,7 @@ import { useNavigation } from '@react-navigation/native'
                   }}>
 
                   <Text style={{ fontFamily: "Inter-Black", fontSize: 20, marginLeft: 40, marginTop: 20 }}>{e.feature}</Text>
-                  <Text style={{ fontFamily: "Inter-Black", fontSize: 20, marginLeft: 220, marginTop: -27 }}>{  e.price  + " " + "Dt"}</Text>
+                  <Text style={{ fontFamily: "Inter-Black", fontSize: 20, marginLeft: 220, marginTop: -27 }}>{  Math.floor(e.price /1000 )  + " "+ "Dt"}</Text>
                  <View style={{ marginLeft: 10, marginTop: -19 }}>
                   <Icon name="check" style={iconStyle('check')} size={20} />
                   </View>

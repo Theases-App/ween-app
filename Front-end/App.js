@@ -41,6 +41,15 @@ export default function App() {
 <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen
+        
+        name="home"
+        component={Home}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+      <Stack.Screen
           name="signup"
           component={Signup} 
 
@@ -54,20 +63,40 @@ export default function App() {
         />
       
 
-        <Stack.Screen
+  
+       <Stack.Screen
         
-          name="home"
-          component={Home}
-          options={{ headerShown: false
-          
-          }
-        }   
-        />
-
-            <Stack.Screen
-          name="eventdetail"
-          component={Eventdetails} 
-          options={{ headerShown: false
+        name="Chat"
+        component={Chat}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+     
+ <Stack.Screen
+        
+        name="your favorite"
+        component={Wishlist}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+      <Stack.Screen
+        
+        name="UpdatingCountry"
+        component={UpdatingCountry}
+        options={{ headerShown: false
+        
+        }
+      }   
+      />
+      <Stack.Screen
+        
+        name="eventdetail"
+        component={Eventdetails}
+        options={{ headerShown: false
         
         }
       }   
@@ -162,7 +191,17 @@ export default function App() {
       }
       
       />
-      
+
+        { /*<Stack.Screen
+          name="IndexC"
+          component={IndexC}
+          options={{ headerShown: false
+
+           }
+        }
+      /> */}
+
+
         <Stack.Screen
           name="EventCntry"
           component={EventCntry} 
@@ -195,7 +234,7 @@ export default function App() {
       <Stack.Screen
         name="Rooms"
         component={Rooms}
-
+        options={{ headerShown: false }}
          />
       
         <Stack.Screen
