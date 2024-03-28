@@ -250,7 +250,7 @@ export default function Chat({ route }) {
       socket.disconnect();
     };
   }, [refresh]);
-console.log("bbbbb",conv);
+
   return (
     <View style={styles.container}>
       {loading ? (
@@ -266,9 +266,9 @@ console.log("bbbbb",conv);
                 <View
                   key={i}
                   style={
-                    el.UserIduser === userId
-                      ? styles.sentMessageContainer
-                      : styles.receivedMessageContainer
+                    el.user_iduser == userId
+                      ? styles.receivedMessageContainer
+                      : styles.sentMessageContainer
                   }
                 >
                   <Image
