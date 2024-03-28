@@ -111,7 +111,6 @@ const Addevent = () => {
 
     axios
       .post(`http://${IP}:8080/event/add/${id}`, eventData)
-      .post(`http://${IP}:8080/event/add/${id}`, eventData)
       .then((res) => {
         console.log("Event added successfully",res.data);
         setEventName("");
@@ -181,29 +180,29 @@ const Addevent = () => {
   };
 
   
-  // const selectImage = () => {
-  //   const options = {
-  //     title: 'Select Image',
-  //     storageOptions: {
-  //       skipBackup: true,
-  //       path: 'images',
-  //     },
-  //   };
+  const selectImage = () => {
+    const options = {
+      title: 'Select Image',
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
     
 
-  //   ImagePicker.showImagePicker(options, async(response) => {
-  //     if (response.didCancel) {
-  //       console.log('User cancelled image picker');
-  //     } else if (response.error) {
-  //       console.log('ImagePicker Error: ', response.error);
-  //     } else {
-  //       setImage(response.uri);
-  //     }
-  //   });
+    ImagePicker.showImagePicker(options, async(response) => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else {
+        setImage(response.uri);
+      }
+    });
 
 
-  //   console.log(options)
-  // } 
+    console.log(options)
+  } 
 
   return (
     <View style={styles.container}>
@@ -223,21 +222,6 @@ const Addevent = () => {
         >
           <Text>{eventcategory || "Select Event Category"}</Text>
         </TouchableOpacity>
-
-        {/* <TouchableOpacity
-          style={styles.input}
-          onPress={selectImage}
-        >
-          <Text>{image ? "Image Selected" : "Select Image"}</Text>
-        </TouchableOpacity> */}
-        {/* <Button title='Pick Image' onPress={()=>pickImage()} />
-        {image && <Image source={{uri:image}} />} */}
-          {/* <TextInput
-          style={styles.input}
-          placeholder="Image URL"
-          placeholderTextColor="#999999"
-          onChangeText={(val) => setImage(val)}
-        /> */}
 
         <TextInput
           keyboardType="numeric"
@@ -450,6 +434,8 @@ containerCategory: {
   flexDirection: 'row',
   justifyContent: 'space-between',
   paddingHorizontal: 20,
+  gap:14,
+  marginTop:8,
   // marginRight:150,
 },
 // column: {
@@ -468,8 +454,8 @@ inputs: {
 }, 
 icon: {
   // alignSelf: 'center',
-  marginLeft:145,
-  marginTop:13,
+  marginLeft:137,
+  marginTop:8,
 },
 image:{
 
