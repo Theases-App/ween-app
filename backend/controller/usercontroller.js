@@ -121,5 +121,16 @@ const getadmins = async (req,res) =>{
 console.log(err);
     }
 }
+const updateBlockedUser = async (req, res) => {
+    const id = req.params.id
+    const { blockIdblock } = req.body
+    try {
+        await editUser(id, { blockIdblock: blockIdblock });
+        res.status(201).json('blocked status updated');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
 
-module.exports = {signUp, signIn, updateUser, destroyUser, getusers, getClients, getadmins}
+
+module.exports = {signUp, signIn, updateUser, destroyUser, getusers, getClients, getadmins,updateBlockedUser}

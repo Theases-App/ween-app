@@ -51,7 +51,7 @@ Reports.belongsTo(User, { foreignKey: 'userIduser' });
 User.belongsToMany(Notifications, { through: UserHasNotifications, foreignKey: 'user_iduser' });
 Notifications.belongsToMany(User, { through: UserHasNotifications, foreignKey: 'idnotification' });
 
-Event.hasOne(ChatRoom, { foreignKey: 'event_idevent' });
+/*Event.hasOne(ChatRoom, { foreignKey: 'event_idevent' });
 ChatRoom.belongsTo(Event, { foreignKey: 'event_idevent' });
 
 User.belongsToMany(ChatRoom, { through: UserHasChat, foreignKey: 'user_iduser' });
@@ -62,7 +62,8 @@ Message.belongsTo(User, { foreignKey: 'user_iduser' });
 
 
 ChatRoom.hasMany(Message, { foreignKey: 'chatRoom_idchat' });
-Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });
+Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });*/
+
 
 // sequelize.sync({force:true})
 // .then(()=>{

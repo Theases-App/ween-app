@@ -53,7 +53,7 @@ const  author = async (id, token, role) => {
               );
             }  if (role === "client") {
                 await AsyncStorage.setItem("id",JSON.stringify(id))
-                navigation.navigate("home")
+                navigation.navigate("edit")
                 console.log("done")
               }
       })
@@ -70,7 +70,7 @@ const  author = async (id, token, role) => {
 
 
    
-    <View style={{justifyContent:'center',alignItems:"center"}}>
+    <View style={{justifyContent:'center',alignItems:"center",backgroundColor:"#2E2D29",flex:1}}>
          <View style={{justifyContent:'center',alignItems:"center",position:"absolute",top:90}}> 
        <Text style={{color:"#ff5252",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:26,position:'sticky',top:0}}> Connection </Text>
        </View>
@@ -156,9 +156,9 @@ const  author = async (id, token, role) => {
 />
 <View style={{top:20,gap:20,left:55,flex:1,height:100}}> 
 <TouchableOpacity onPress={()=>{navigation.navigate('signup')}}>
-       <Text style={{color:"black",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12,left:11}}> I don't Have An Account </Text>
+       <Text style={{color:"white",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12,left:11}}> I don't Have An Account </Text>
       </TouchableOpacity>
-       <Text style={{color:"black",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12}}> Oups ! I forget My Password </Text>
+       <Text style={{color:"white",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:12}}> Oups ! I forget My Password </Text>
        </View>
       
      </View>

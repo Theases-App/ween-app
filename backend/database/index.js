@@ -3,6 +3,9 @@ const { Sequelize } =require('sequelize')
 require('dotenv').config()
 
 
+
+
+
 const sequelize = new Sequelize('ween', 'root', 'kh@lilbou@rrouj69', {
     host:'localhost',
     dialect:'mysql',
