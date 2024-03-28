@@ -52,6 +52,7 @@ const Notification = () => {
         updatedNotifications[index].seen = 'seen';
         setNotifications(updatedNotifications);
         console.log("updated");
+        navigation.navigate('eventdetail', { eventId: notifications[index].idevent });
       }
     } catch (error) {
       console.log(error);

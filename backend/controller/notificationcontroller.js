@@ -31,8 +31,8 @@ exports.createNotification = (req, res) => {
 
 exports.updateSeenStatus = async (req, res) => {
   try {
-    const { idnotification } = req.params; // Retrieve from URL parameter
-    const { seen } = req.body; // Retrieve from request body
+    const { idnotification } = req.params;
+    const { seen } = req.body; 
 
     const notification = await Notifications.findOne({ where: { idnotification } });
     if (!notification) {

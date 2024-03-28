@@ -28,6 +28,7 @@ import Chat from "./chat/Chat.jsx";
 import Date from "./Nav/Date.jsx"
 import Dates from "./Nav/Dates.jsx"
 import Wishlist from './components/wishlist.jsx';
+import Notification from "./components/notifications.jsx"
 
 const Stack= createNativeStackNavigator()
 
@@ -62,20 +63,7 @@ export default function App() {
           }
         }   
         />
-         <Stack.Screen
-        
-   
-      <Stack.Screen
-          name="signup"
-          component={Signup} 
 
-        />
-          <Stack.Screen
-          name="signin"
-          component={Signin} 
-          
-
-        />
             <Stack.Screen
           name="eventdetail"
           component={Eventdetails} 
@@ -84,6 +72,11 @@ export default function App() {
         }
       }   
       />
+      <Stack.Screen name='Notifications' component={Notification}  options={{ headerShown: false
+        
+      }}>
+
+      </Stack.Screen>
       <Stack.Screen
         
         name="ticketdetails"

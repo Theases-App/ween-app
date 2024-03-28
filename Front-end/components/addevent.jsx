@@ -96,6 +96,19 @@ const Addevent = () => {
   if(gallery===false){
     return <Text>No access to Internal Storage</Text>
   }
+  const addnotification=(eventid)=>{
+    const obj={
+      event_idevent:eventid,
+      seen:"not seen"
+    }
+    axios.post(`http://${IP}:8080/notification/add`,obj).then((res)=>{
+      console.log("notification added");
+      
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  }
 
   const add = (id) => {
     const eventData = {
@@ -111,7 +124,6 @@ const Addevent = () => {
 
     axios
       .post(`http://${IP}:8080/event/add/${id}`, eventData)
-      .post(`http://${IP}:8080/event/add/${id}`, eventData)
       .then((res) => {
         console.log("Event added successfully",res.data);
         setEventName("");
@@ -120,6 +132,8 @@ const Addevent = () => {
         setPrice(0);
         setCountry("");
         setSelectedCoordinates("")
+  const eid=res.data.idevent
+        addnotification(eid)
       })
       .catch((error) => {
         console.error("Error adding event:", error);
