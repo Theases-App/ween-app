@@ -24,6 +24,7 @@
     "axios": "^1.6.7",
     "deprecated-react-native-prop-types": "^5.0.0",
     "expo": "~50.0.8",
+    "expo-image-picker": "~14.7.1",
     "expo-location": "^16.5.5",
     "expo-status-bar": "~1.11.1",
     "jsonwebtoken": "^9.0.2",

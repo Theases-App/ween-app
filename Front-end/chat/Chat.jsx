@@ -141,7 +141,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
+
 })*/
+
+});*/
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -162,6 +167,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 const socket = io(`http://${IP}:3001`);
 
 export default function Chat({ route }) {
+
   const [conv, setConv] = useState([]);
   const [text, setText] = useState("");
   const [refresh, setRefresh] = useState(false);
@@ -181,6 +187,34 @@ export default function Chat({ route }) {
         setLoading(false);
       });
   }, [refresh, roomsId]);
+
+    const [conv, setConv] = useState([]);
+    const [text, setText] = useState("");
+    const [refresh, setRefresh] = useState(false);
+    const [loading, setLoading] = useState(true); 
+    const roomsId = route.params.idRooms;
+    console.log(roomsId);
+
+    const [userId,setuserId]=useState('')
+    const get=async()=>{
+        setuserId(await AsyncStorage.getItem("id")) 
+        console.log(userId);
+    }
+
+    
+    useEffect(() => {
+        axios.get(`http://${IP}:8080/message/msg/${roomsId}`)
+            .then(ress => {
+                setConv(ress.data);
+                console.log(ress.data);
+                setLoading(false); 
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false); 
+            });
+    }, [refresh, roomsId]);
+
 
   const handleAdd = async () => {
     try {
@@ -272,6 +306,32 @@ export default function Chat({ route }) {
         <TouchableOpacity style={styles.button} onPress={handleAdd}>
         <Icon name="paper-plane" size={25} color="#f7f3f3" />
         </TouchableOpacity> 
+
+
+
+            <KeyboardAvoidingView
+               behavior={Platform.OS ==="ios" ? "padding" : "height"}  keyboardVerticalOffset={Platform.OS==="ios" ? 100 : 0}
+                style={styles.inputContainer}  >
+               <TextInput
+                    onChangeText={setText}
+                    value={text}
+                    style={{  
+                        flex: 1,
+                        height: 40,
+                        marginHorizontal: 10,
+                        borderWidth: 1,
+                        borderRadius: 20,
+                        paddingHorizontal: 10,
+                        borderColor: '#111111',
+                        color: '#111111',}}
+                    placeholder="Type your message..."
+                />
+                <TouchableOpacity style={styles.button} onPress={handleAdd}>
+                    <Text style={styles.buttonText}>Send</Text>
+                </TouchableOpacity>
+                
+            </KeyboardAvoidingView>
+           
 
         
       </KeyboardAvoidingView>

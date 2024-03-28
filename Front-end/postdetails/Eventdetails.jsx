@@ -4,11 +4,8 @@ import axios from 'axios';
 import Button from 'react-native-button';
 import {IP} from "../ip.json"
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
 import { useNavigation } from '@react-navigation/native'
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 
@@ -73,6 +70,14 @@ const Postdetails=({route})=>{
  
      getLocation();
    }, []);
+
+//    if (loading){
+//     return (
+//           <View style={[styles.container, styles.horizontal]}>
+// <ActivityIndicator style={{ marginLeft:10,marginTop:-400}} size="large" color="#ff5252" />
+// </View>
+//     )
+//     }
    const addtofavorite = async () => {
     try {
       const userId = await AsyncStorage.getItem("id");
@@ -93,24 +98,15 @@ const Postdetails=({route})=>{
     }
   };
   
-
-
   const Navigation = useNavigation()
-  const [chat,setChat]=useState("")
   const [selectedIcon, setSelectedIcon] = useState('');
   const [chating,setChating]=useState("")
   const [text,setText]=useState("Buy a Ticket")
 
-// const id=async()=>{
-//   const x= await AsyncStorage.getItem("id")
-//   console.log(x);
-//   setChat(x)
-// }
-
   
    const chatting=()=>{
        if (text==="Join Chat Room"){
-        Navigation.navigate("pay")
+        Navigation.navigate("chat")
         }
         else if (text==="Buy a Ticket"){
          Navigation.navigate("ticketdetails",{item})
@@ -134,7 +130,7 @@ const handleIconPress = (iconName) => {
 return (
    <View style={{backgroundColor:"#2E2D29",flex:1}}>
 <View style={{marginTop:120}}>
-<Text style={{position:"absolute",marginTop:-60,marginLeft:160,color:"white",fontFamily:"Inter-Black",fontSize:23}}>  {item.eventname}</Text>
+<Text style={{position:"absolute",marginTop:-60,marginLeft:150,color:"white",fontFamily:"Inter-Black",fontSize:23}}>  {item.eventname}</Text>
 </View>
 <ScrollView>
 
@@ -142,9 +138,7 @@ return (
    <Image style={{marginLeft:0,height:280,width:430,borderRadius:10}} source={{uri:item.image}}/>
 </View>
 
-  
-
-    <View style={{backgroundColor:"#111111",borderColor:"black",marginTop:-340,height:160,borderRadius:5,width:430}}>
+    <View style={{backgroundColor:"#111111",borderColor:"black",marginTop:-340,height:180,borderRadius:5,width:430}}>
 
 <Text style={{color:"#ff5252",
        fontFamily:"Inter-Black",
@@ -192,14 +186,14 @@ return (
         <Icon name="calendar" style={iconStyle('calendar')} size={25} />
 </View>
 
-{/* <Text style={{
+<Text style={{
      color:"white",
      marginLeft:70,
      marginTop:-24,
      fontFamily:"Inter-Black",
       fontSize:16,
 
-}}>{item.date.slice(0,10)}</Text> */}
+}}>{item.date}</Text> 
 
 <View style={{marginTop:-20,marginLeft:380,color:"red"}}>
 <Icon name="search-location" style={{color:"white"}} size={15} />

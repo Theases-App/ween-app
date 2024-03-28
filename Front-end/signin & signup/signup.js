@@ -7,6 +7,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {NavigationContainer} from '@react-navigation/native';
 import {useNavigation} from'@react-navigation/native'
 import {IP} from "../ip.json"
+
 export default function Signup() {
   
 
@@ -30,8 +31,7 @@ export default function Signup() {
     const [wrong, setWrong] = useState(true)
     const [refresh, setRefresh] = useState(true)
 
-    // const navigate = useNavigate()
-    // const defaultTheme = createTheme()
+   
     const obj={fullname: fullname,
         emailphone: email,
         password: psw,
@@ -58,7 +58,7 @@ export default function Signup() {
   return (
 
    
-    <View style={{justifyContent:'center',alignItems:"center",flex:1}}>
+    <View style={{justifyContent:'center',alignItems:"center",flex:1,backgroundColor:"#2E2D29"}}>
         
          <View style={{justifyContent:'center',alignItems:"center",position:"absolute",top:100}}> 
        <Text style={{color:"#ff5252",fontFamily:"sans-serif-light",fontWeight: 'bold',fontSize:26}}> Inscription </Text>
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
         width:300,
         borderColor: 'black',
         borderWidth: 0.5,
-        borderRadius: 8,
+        borderRadius: 20,
         paddingHorizontal: 8,
         borderColor:"black"
       },
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
       padding: 10,
       borderColor: '#111111',
       borderWidth: 1.5,
-      borderRadius: 5,
+      borderRadius: 20,
       color:"black",
       fontFamily:"sans-serif-light",
       marginBottom:30

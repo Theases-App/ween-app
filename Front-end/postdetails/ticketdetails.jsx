@@ -202,7 +202,7 @@ const [dataa,setdataa]=useState("")
           })}
         </ScrollView>
       </View>
-      <TouchableOpacity  onPress={() => { payment()}}>
+      <TouchableOpacity  onPress={() => {reservation(), payment()}}>
         <View style={{
           backgroundColor: "#ff5252",
           color: "white",
@@ -225,7 +225,4 @@ const [dataa,setdataa]=useState("")
 }
 
 export default Ticket;
-
-
-
 
