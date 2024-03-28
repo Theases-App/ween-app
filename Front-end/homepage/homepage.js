@@ -86,7 +86,7 @@ const homepage = ({route}) => {
   </View>
       </TouchableOpacity>  
 
-<TouchableOpacity onPress={()=>{Navigation.navigate("chat")}}>
+<TouchableOpacity onPress={()=>{Navigation.navigate("Rooms")}}>
       
       <View style={{marginTop:-70,backgroundColor:"#ff5252",
    height:40,width:120,

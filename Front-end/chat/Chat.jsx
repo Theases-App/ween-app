@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
 
 })*/
 
-});*/
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import React, { useState, useEffect } from "react";
@@ -173,7 +173,8 @@ export default function Chat({ route }) {
   const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(true);
   const roomsId = route.params.idRooms;
-  const userId = 1;
+  const [userId,setuserId]=useState('')
+
   useEffect(() => {
     axios
       .get(`http://${IP}:8080/message/msg/${roomsId}`)
@@ -188,25 +189,20 @@ export default function Chat({ route }) {
       });
   }, [refresh, roomsId]);
 
-    const [conv, setConv] = useState([]);
-    const [text, setText] = useState("");
-    const [refresh, setRefresh] = useState(false);
-    const [loading, setLoading] = useState(true); 
-    const roomsId = route.params.idRooms;
-    console.log(roomsId);
-
-    const [userId,setuserId]=useState('')
+   
+   
     const get=async()=>{
         setuserId(await AsyncStorage.getItem("id")) 
         console.log(userId);
     }
-
+    get() 
     
     useEffect(() => {
+      console.log(roomsId, "hhhh");
         axios.get(`http://${IP}:8080/message/msg/${roomsId}`)
             .then(ress => {
                 setConv(ress.data);
-                console.log(ress.data);
+                console.log(ress.data,"response");
                 setLoading(false); 
             })
             .catch(err => {
@@ -216,17 +212,25 @@ export default function Chat({ route }) {
     }, [refresh, roomsId]);
 
 
+
   const handleAdd = async () => {
     try {
-      await axios.post(`http://${IP}:8080/message/msg`, {
+      console.log({
+        chatRoom_idchat:roomsId,
         content: text,
         eventIdevent: roomsId,
-        UserIduser: userId
+        user_iduser: userId
+      }, "============================");
+      await axios.post(`http://${IP}:8080/message/msg`, {
+        chatRoom_idchat:roomsId,
+        content: text,
+        eventIdevent: roomsId,
+        user_iduser: userId
       });
       await socket.emit("send", {
         content: text,
-        chatRoomId: roomsId,
-        iduser: userId
+        chatRoom_idchat: roomsId,
+        user_iduser: userId
       });
       setText("");
       setRefresh(!refresh);
@@ -246,7 +250,7 @@ export default function Chat({ route }) {
       socket.disconnect();
     };
   }, [refresh]);
-
+console.log("bbbbb",conv);
   return (
     <View style={styles.container}>
       {loading ? (
@@ -268,7 +272,7 @@ export default function Chat({ route }) {
                   }
                 >
                   <Image
-                    src={el.User.image}
+                    src={el.User? el.User.image: ""}
                     style={{ width: 42, height: 42, borderRadius: 35 }}
                   />
                   <Text style={styles.messageText}>
