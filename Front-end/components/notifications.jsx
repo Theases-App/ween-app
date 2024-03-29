@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import axios from 'axios';
 import { IP } from '../ip.json';
-
+import Nav from '../Nav/Nav';
 const Notification = () => {
   const [notifications, setNotifications] = useState([]);
   const [events, setEvents] = useState([]);
@@ -60,6 +60,9 @@ const Notification = () => {
   };
 
   return (
+    <View style={{backgroundColor:"#2E2D29",flex:1}}>
+      <Text style={{marginTop:80,marginLeft:125,fontSize:30,color:"#ff5252"}}>Notifications</Text>
+   <View style={{marginTop:40,backgroundColor:"#2E2D29",flex:1}}>
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
       {notifications.map((notification, index) => {
         const event = notification.event;
@@ -77,14 +80,18 @@ const Notification = () => {
         );
       })}
     </ScrollView>
+    </View>
+    <Nav/>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   scrollViewContainer: {
     flexGrow: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#2E2D29',
     paddingTop: 20,
+   
   },
   notificationContainer: {
     backgroundColor: '#333',

@@ -11,7 +11,7 @@
  import { useContext } from 'react';
  import Usecontext from "../UseContext.js"
 import Idcontext from '../UseContext.js';
-
+import Nav from '../Nav/Nav.jsx';
  export default function Signin() {
 
   const navigation=useNavigation()
@@ -167,6 +167,9 @@ const  author = async (id, token, role) => {
      <Idcontext.Provider value={myid}>
     </Idcontext.Provider>
     </>
+    <View style={{marginLeft:170}}>
+    <Nav/>
+    </View>
      </View>
   );
 

@@ -11,7 +11,7 @@ const Reservation = require('./reservation').Reservation
 const Payment = require('./payment')
 const Reports = require('./reports');
 const UserHasNotifications = require('./UserHasNotifications');
-const ChatRoom = require('./chatroom');
+const ChatRoom = require('./chatroom')
 const UserHasChat = require('./userhaschat');
 const Message = require('./message');
 
@@ -67,11 +67,11 @@ Message.belongsTo(ChatRoom, { foreignKey: 'chatRoom_idchat' });*/
 
 //<-----------------------------  chat relations  ----------------------------->//
 //relation between chatRoom and Users
-User.hasMany(chatRoom)
-chatRoom.belongsTo(User)
+User.hasMany(ChatRoom)
+ChatRoom.belongsTo(User)
 //relation between chatRoom and Event
-Event.hasMany(chatRoom)
-chatRoom.belongsTo(Event)
+Event.hasMany(ChatRoom)
+ChatRoom.belongsTo(Event)
 //relation between chatRoom and messages
 Event.hasMany(Message)
 Message.belongsTo(Event)

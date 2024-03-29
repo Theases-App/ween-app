@@ -119,10 +119,11 @@ export default function Rooms() {
 
 const styles = StyleSheet.create({
     container: {
+        marginTop:-100,
         flex: 1,
         justifyContent:'center',
         alignItems: 'center',
-        marginBottom:500,
+        
        
     },
     roomContainer: {
