@@ -52,13 +52,19 @@ export default function App() {
       <Stack.Screen
           name="signup"
           component={Signup} 
-
+          options={{ headerShown: false
+        
+          }
+        }
         />
     
       <Stack.Screen
           name="signin"
           component={Signin} 
-          
+          options={{ headerShown: false
+        
+          }
+        }
 
         />
       
@@ -115,10 +121,10 @@ export default function App() {
           }
         }
         />
-           <Stack.Screen name='your favorite' options={{ headerShown: false
+          {/* <Stack.Screen name='your favorite' options={{ headerShown: false
         
           }} component={Wishlist}></Stack.Screen>
-       
+        */}
         
      
 
@@ -236,7 +242,11 @@ export default function App() {
         component={Rooms}
         options={{ headerShown: false }}
          />
-      
+       <Stack.Screen
+        name="edit"
+        component={EditPictureAndCountry}
+        options={{ headerShown: false }}
+         />
         <Stack.Screen
           name="noticket"
           component={Noticket} 

@@ -19,7 +19,7 @@ const IndexC = () => {
   return (
     <View style={{ backgroundColor: "#2E2D29" }}>
       <View style={{ position: '-webkit-sticky', position: 'sticky', top: 0, marginTop: 60, left: 110 }}>
-        <Text style={styles.title}> Countries</Text>
+        <Text style={styles.title}> States </Text>
       </View>
       <ScrollView>
         <View style={{ justifyContent: 'space-between', gap: 10, marginTop: '5%',marginBottom:"25%" }}>
@@ -42,9 +42,10 @@ const styles=StyleSheet.create({
       color: '#ff5252',
       fontFamily:'sans-serif-light',
       fontSize: 40,
+      marginLeft:38
   },
   image:{
-    marginLeft:5,
+    marginLeft:13,
       width: 403,
       height: 170,
       borderRadius:10
@@ -55,7 +56,7 @@ const styles=StyleSheet.create({
   imageText: {
       position: 'absolute',
       bottom: 10,
-      left: 10,
+      left: 20,
       color: '#ececec',
       fontSize: 25,
       fontfamily: "sans-serif-light",

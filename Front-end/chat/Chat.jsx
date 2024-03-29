@@ -252,6 +252,7 @@ export default function Chat({ route }) {
   }, [refresh]);
 
   return (
+   
     <View style={styles.container}>
       {loading ? (
         <Text>Loading...</Text>
@@ -287,7 +288,7 @@ export default function Chat({ route }) {
 
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 20 : 0}
         style={styles.inputContainer}
       >
         <TextInput
@@ -295,14 +296,14 @@ export default function Chat({ route }) {
           value={text}
           style={{
             flex: 1,
-            height: 40,
-            marginHorizontal: 10,
-            marginVertical: 20,
+            height: 0,
+            marginLeft:-6,
             borderWidth: 1,
             borderRadius: 15,
             paddingHorizontal: 10,
             borderColor: "white",
-            color: "white"
+            color: "white",
+            marginBottom:50
           }}
           placeholder="Type your message..."
           placeholderTextColor="white"
@@ -324,15 +325,16 @@ export default function Chat({ route }) {
                         height: 40,
                         marginHorizontal: 10,
                         borderWidth: 1,
+                        maxWidth:330,
                         borderRadius: 20,
                         paddingHorizontal: 10,
                         borderColor: '#111111',
-                        color: '#111111',}}
+                        color: '#111111'}}
                     placeholder="Type your message..."
                 />
-                <TouchableOpacity style={styles.button} onPress={handleAdd}>
+                {/* <TouchableOpacity style={styles.button} onPress={handleAdd}>
                     <Text style={styles.buttonText}>Send</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 
             </KeyboardAvoidingView>
            
@@ -340,16 +342,19 @@ export default function Chat({ route }) {
         
       </KeyboardAvoidingView>
     </View>
+   
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#111111"
+    backgroundColor: "#2E2D29"
   },
   scrollView: {
-    flexGrow: 1
+    marginTop:30,
+    flexGrow: 1,
+  
   },
   sentMessageContainer: {
     backgroundColor: "#FFFFFF",
@@ -379,34 +384,33 @@ const styles = StyleSheet.create({
     color: "#111111"
   },
   inputContainer: {
-    flexDirection: "row",
+    marginTop:10,
+    marginBottom:10,
+    display:"flex",
+   flexDirection:"row-reverse",
+   justifyContent:"center",
     alignItems: "center",
-    backgroundColor: "#111111",
-    borderTopWidth: 1,
+    backgroundColor: "white",
+    borderTopWidth: 0,
     borderTopColor: "#CCCCCC",
-    paddingVertical: 5
+    paddingVertical: 0,
+    marginLeft:-15,    
   },
-  input: {
-    flex: 1,
-    height: 40,
-    marginHorizontal: 10,
-    marginBottom: 100,
-    borderWidth: 1,
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    borderColor: "#111111",
-    color: "#111111"
-  },
+
   button: {
     backgroundColor: "#ff5252",
     paddingHorizontal: 20,
     padding: 10,
     borderRadius: 20,
-    marginHorizontal: 10
+    marginHorizontal: 10,
+    marginTop:0,
+    marginLeft:15
   },
-  buttonText: {
-    color: "#ececec",
-    fontSize: 16,
-    fontWeight: "bold"
-  }
+  // buttonText: {
+
+  //   marginRight:20,
+  //   color: "#ececec",
+  //   fontSize: 0,
+  //   fontWeight: "bold"
+  // }
 });

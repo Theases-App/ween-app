@@ -111,7 +111,7 @@ export default function UsersOfRoom({roomId}){
     return (
         <View style={styles.container}>
         <View style={{  alignItems: 'center' }}>
-        <Icon name="user" size={30} color="#111111" />
+        <Icon name="user" size={20} color="black" />
             <Text style={styles.title}>Users</Text>
         </View>
             {users.map((el,i)=>(

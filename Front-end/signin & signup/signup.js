@@ -7,7 +7,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {NavigationContainer} from '@react-navigation/native';
 import {useNavigation} from'@react-navigation/native'
 import {IP} from "../ip.json"
-
+import Nav from '../Nav/Nav';
 export default function Signup() {
   
 
@@ -126,7 +126,9 @@ export default function Signup() {
      </ScrollView>
     
       </View > 
-  
+      <View style={{marginLeft:170}}>
+    <Nav/>
+    </View>
      </View>
   );
 }
